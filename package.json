@@ -9,6 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.114.0",
+    "@react-three/fiber": "^8.17.8",
+    "@react-three/rapier": "^1.4.0",
+    "@types/three": "^0.169.0",
+    "leva": "^0.9.35",
+    "meshline": "^3.3.1",
+    "three": "^0.169.0",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",

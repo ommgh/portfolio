@@ -6,7 +6,7 @@ import { Project } from "@/lib/projects";
 import { ExternalLinkIcon, GithubIcon } from "lucide-react";
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  const { title, description, tags, url, githubUrl } = project;
+  const { title, description, url, githubUrl } = project;
   const { logo } = project;
 
   const Logo =

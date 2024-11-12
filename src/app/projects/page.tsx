@@ -4,10 +4,6 @@ import ProjectCard from "@/components/project-card";
 import { H3, Text } from "@/components/text";
 import { projects } from "@/lib/projects";
 
-const url = "https://mattiapomelli.com/projects";
-const title = "Projects – Om Mishra";
-const description = "Projects I have worked on.";
-
 const ProjectsPage = () => {
   const personalProjects = projects.filter((project) => !project.hackathon);
   const hackathonProjects = projects.filter((project) => project.hackathon);
@@ -26,10 +22,8 @@ const ProjectsPage = () => {
         ))}
       </div>
 
-      <H3 className="mt-20 mb-3">Hackathon projects</H3>
-      <Text className="mb-5">
-        Some stuff that I built during Web3 hackathons.
-      </Text>
+      <H3 className="mt-20 mb-3">Freelance Projects</H3>
+      <Text className="mb-5">Some projects that I built for my clients</Text>
 
       <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-4">
         {hackathonProjects.map((project) => (

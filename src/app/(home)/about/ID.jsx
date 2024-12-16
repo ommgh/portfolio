@@ -26,7 +26,7 @@ useTexture.preload(
   "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1731424905/NEXT-RIBBON_im1jdu.png"
 );
 
-export default function Hire() {
+export default function ID() {
   return (
     <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
       <ambientLight intensity={Math.PI} />

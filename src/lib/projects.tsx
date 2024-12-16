@@ -12,7 +12,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "BashCraft",
-    description: "A Community For Devs Who Loves Cli And Linux",
+    description: "A community for devs who loves CLI & LINUX",
     tags: [],
     url: "https://bashcraft.club",
     githubUrl: "https://github.com/BashCraftClub/bashcraft",
@@ -20,12 +20,14 @@ export const projects: Project[] = [
     showOnHomepage: true,
   },
   {
-    title: "Connect 4",
-    description: "A MultiPlayer Game, To Fight For The Fist 4 Steps",
-    tags: ["Next.js", "Tailwind CSS", "Supabase", "Shadcn/UI"],
-    url: "https://connectfour-chi.vercel.app",
-    logo: "/connect.png",
-    showOnHomepage: false,
+    title: "NEX MCF",
+    description:
+      "A versatile tool for e-commerce sellers to manage different channels",
+    tags: ["Next.js", "RPC", "Shopify API", "Shadcn/UI"],
+    url: "https://nexmcf.vercel.app",
+    githubUrl: "https://github.vom/ommgh/dashboard",
+    logo: "/nexmcf.png",
+    showOnHomepage: true,
   },
 
   {
@@ -35,14 +37,14 @@ export const projects: Project[] = [
     url: "https://projectvistaar.vercel.app",
     githubUrl: "https://github.com/ommgh/vistaar",
     logo: "/vistaar.png",
-    showOnHomepage: true,
+    showOnHomepage: false,
   },
   {
-    title: "SQTS",
-    description: "Smart Quality Testing System For E-Commerce Platforms",
-    tags: [],
-    url: "https://sqts.vercel.app",
-    logo: "/sqts.png",
+    title: "Connect 4",
+    description: "A MultiPlayer Game, To Fight For The Fist 4 Steps",
+    tags: ["Next.js", "Tailwind CSS", "Supabase", "Shadcn/UI"],
+    url: "https://connectfour-chi.vercel.app",
+    logo: "/connect.png",
     showOnHomepage: false,
   },
   {
@@ -56,7 +58,7 @@ export const projects: Project[] = [
   {
     title: "NexaBetX",
     description: "A Betting Platform With Multiple Games, Play & Win",
-    tags: ["Next.js", "Lens Protocol", "Railgun", "Sismo"],
+    tags: ["Next.js", "Recoil", "Canvas", "NextAuth", "Shadcn/UI"],
     url: "https://nexabetx.vercel.app",
     logo: "/nexabet.png",
     hackathon: true,
@@ -64,7 +66,7 @@ export const projects: Project[] = [
   {
     title: "Quickboarder",
     description: "Catalogue Digitilization For Local Commerce",
-    tags: ["MongoDB", "Next.js", "Tailwind", "Typescript"],
+    tags: ["Postgre SQL", "Next.js", "Tailwind", "Typescript"],
     url: "https://scan2sell.vercel.app/",
     githubUrl: "https://github.com/QuickBoarder/scan2sell",
     logo: "/quick.png",

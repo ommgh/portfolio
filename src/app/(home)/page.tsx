@@ -16,16 +16,16 @@ const HomePage = () => {
         <Text>
           I&apos;m currently working on{" "}
           <a
-            href="https://bashcraft.club"
+            href="https://bioshop.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#40C096] hover:underline"
+            className="text-[#40C057] hover:underline"
           >
-            bashcraft
+            bioshop.one
           </a>
-          , a community for developers and designers. I like to build tools for
-          creatives. I hope that what I build can empower people to express
-          their creativity and make their ideas come to life.
+          , a tool for creators to , organize their affiliate links, with a
+          custom bioshop.one link to share with their audience and amplify thier
+          user engagement.
         </Text>
         <br />
       </div>

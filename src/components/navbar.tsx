@@ -19,8 +19,8 @@ const Navbar = () => {
           <Link href="/blog">
             <div className={cn("font-medium")}>blog</div>
           </Link>
-          <Link href="/hire">
-            <div className={cn("font-medium")}>hire</div>
+          <Link href="/about">
+            <div className={cn("font-medium")}>about</div>
           </Link>
         </nav>
         <ModeToggle />

@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
 
-import Container from "./container";
+import Container from "@/components/container";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "./theme-toggle";
+import ShinyButton from "./shiny-button";
 
-const Navbar = () => {
+const HireNavbar = () => {
   return (
     <header className="py-12">
       <Container className="flex justify-between items-center">
@@ -23,10 +23,17 @@ const Navbar = () => {
             <div className={cn("font-medium")}>hire</div>
           </Link>
         </nav>
-        <ModeToggle />
+        <Link
+          href={
+            "https://drive.google.com/file/d/1B053lGgg7T_qAbmpy_k1FB1F9Tj5rGjS/view?usp=sharing"
+          }
+          target="_blank"
+        >
+          <ShinyButton>Resume</ShinyButton>
+        </Link>
       </Container>
     </header>
   );
 };
 
-export default Navbar;
+export default HireNavbar;

@@ -9,7 +9,7 @@ const HireNavbar = () => {
   return (
     <header className="py-12">
       <Container className="flex justify-between items-center">
-        <nav className="flex items-center gap-8">
+        <nav className="flex items-center gap-5">
           <Link href="/" prefetch>
             <div className={cn("font-medium")}>home</div>
           </Link>
@@ -29,7 +29,7 @@ const HireNavbar = () => {
           }
           target="_blank"
         >
-          <ShinyButton>Resume</ShinyButton>
+          <ShinyButton className="p-2">Resume</ShinyButton>
         </Link>
       </Container>
     </header>

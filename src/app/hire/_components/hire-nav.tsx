@@ -29,7 +29,7 @@ const HireNavbar = () => {
           }
           target="_blank"
         >
-          <ShinyButton className="p-2">Resume</ShinyButton>
+          <ShinyButton>Resume</ShinyButton>
         </Link>
       </Container>
     </header>

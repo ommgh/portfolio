@@ -25,7 +25,7 @@ const HireNavbar = () => {
         </nav>
         <Link
           href={
-            "https://drive.google.com/file/d/1B053lGgg7T_qAbmpy_k1FB1F9Tj5rGjS/view?usp=sharing"
+            "https://ggl.link/ommresume"
           }
           target="_blank"
         >

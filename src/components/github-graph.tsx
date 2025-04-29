@@ -119,7 +119,9 @@ GithubGraph.displayName = "GithubGraph";
  */
 async function fetchContributionData(username: string): Promise<Activity[]> {
   try {
-    const response = await fetch(`https://github.vineet.pro/api/${username}`);
+    const response = await fetch(
+      `/api/cg?username=${encodeURIComponent(username)}`
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

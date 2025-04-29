@@ -20,8 +20,8 @@ export default function AboutMe({ className }: AboutMeProps) {
       )}
     >
       <p>
-        I’m a developer with the love for shipping new products. Over the years,
-        I have worked with multiple clients through my agency{" "}
+        I&apos;m a developer with the love for shipping new products. Over the
+        years, I have worked with multiple clients through my agency{" "}
         <Link
           href={"https://agencysynapse.tech"}
           target="_blank"
@@ -32,7 +32,7 @@ export default function AboutMe({ className }: AboutMeProps) {
         >
           Synapse
         </Link>{" "}
-        and have built multiple industry grade applications.I am currently
+        and have built multiple industry grade applications. I am currently
         working on{" "}
         <Link
           href={"https://bioshop.vercel.app"}

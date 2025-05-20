@@ -1,7 +1,7 @@
 import SiteHeader from "@/components/site-header";
 import AboutMe from "@/components/about-me";
 import PostsList from "@/components/posts-list";
-import { GithubGraph } from "@/components/github-graph";
+// import { GithubGraph } from "@/components/github-graph";
 import ProjectsList from "@/components/projects-list";
 import SiteFooter from "@/components/site-footer";
 import { FadeContainer, FadeItem } from "@/components/fade-motion";
@@ -15,9 +15,9 @@ export default async function Home() {
       <FadeItem>
         <AboutMe />
       </FadeItem>
-      <FadeItem>
+      {/* <FadeItem>
         <GithubGraph username="ommgh" blockMargin={3} />
-      </FadeItem>
+      </FadeItem> */}
       <FadeItem>
         <ProjectsList />
       </FadeItem>

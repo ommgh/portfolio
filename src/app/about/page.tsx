@@ -10,7 +10,6 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
-import Image from "next/image";
 
 const ExperienceSection = () => {
   const experiences = [

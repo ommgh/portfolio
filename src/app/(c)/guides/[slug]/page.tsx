@@ -1,4 +1,3 @@
-import type { Post } from "@/types/type";
 import { OpenGraph } from "@/lib/metadata";
 import { getPosts, getPostBySlug } from "@/lib/content";
 import { notFound } from "next/navigation";

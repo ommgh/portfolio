@@ -4,6 +4,7 @@ const GITHUB_ENDPOINT = "https://api.github.com/graphql";
 
 interface GraphqlRequest {
   query: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   variables: Record<string, any>;
 }
 
@@ -29,7 +30,9 @@ interface ContributionResponse {
     message: string;
     locations: { line: number; column: number }[];
     extensions: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       value: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       problems: { path: any[]; explanation: string }[];
     };
   }[];

@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { DesktopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
 
 export default function ThemeSwitcher() {

@@ -1,7 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import { canHandle3D } from "@/lib/deviceSupport";
 import { HyperText } from "@/components/magicui/hyper-text";
 import {
   DraggableCardBody,
@@ -10,7 +9,8 @@ import {
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRightIcon, PlusIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
+import Image from "next/image";
 
 const ExperienceSection = () => {
   const experiences = [
@@ -115,7 +115,6 @@ export function Gallery() {
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697105/ommishra/WhatsApp_Image_2025-05-20_at_4.46.34_AM_ub914o.jpg",
       className: "absolute top-32 left-[55%] rotate-[10deg]",
     },
-
     {
       title: "Bonfire",
       image:
@@ -147,13 +146,14 @@ export function Gallery() {
       className: "absolute top-20 right-[35%] rotate-[2deg]",
     },
   ];
+
   return (
     <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip mt-52">
       <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-2xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800">
         Travel isn&apos;t just about the places you go
       </p>
-      {items.map((item) => (
-        <DraggableCardBody className={item.className}>
+      {items.map((item, index) => (
+        <DraggableCardBody key={item.title || index} className={item.className}>
           <img
             src={item.image}
             alt={item.title}
@@ -168,22 +168,6 @@ export function Gallery() {
   );
 }
 
-const SimpleFallback = () => (
-  <div className="flex h-full w-full flex-col items-center justify-center p-8">
-    <div className="mb-8 text-center">
-      <div className="mx-auto mb-4 h-24 w-24 rounded-full p-4">
-        <div className="h-full w-full rounded-full p-3">
-          <div className="h-full w-full rounded-full"></div>
-        </div>
-      </div>
-      <h2 className="mb-2 text-2xl font-bold">About Me</h2>
-      <p className="text-xl">
-        I&apos;m a developer with the love for shipping new products.
-      </p>
-    </div>
-  </div>
-);
-
 const ID = dynamic(() => import("@/components/ID"), {
   ssr: false,
   loading: () => <LoadingFallback />,
@@ -196,12 +180,10 @@ const LoadingFallback = () => (
 );
 
 export default function AboutPage() {
-  const [can3D, setCan3D] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    setCan3D(canHandle3D());
   }, []);
 
   return (
@@ -210,9 +192,7 @@ export default function AboutPage() {
         <div className="hidden lg:block h-full overflow-y-auto border-r">
           <ExperienceSection />
         </div>
-        <div className="h-full w-full">
-          {isMounted && (can3D ? <ID /> : <SimpleFallback />)}
-        </div>
+        <div className="h-full w-full">{isMounted && <ID />}</div>
         <div className="hidden lg:block h-full overflow-hidden border-l">
           <Gallery />
         </div>

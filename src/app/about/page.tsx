@@ -94,61 +94,61 @@ function Gallery() {
       title: "Diwali",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697199/ommishra/WhatsApp_Image_2025-05-20_at_2.46.50_AM_1_g4f3pa.jpg",
-      className: "absolute top-10 left-[20%] rotate-[-5deg]",
+      className: "absolute top-60 left-[20%] rotate-[-15deg]",
     },
     {
       title: "Hawa Mahal",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697112/ommishra/WhatsApp_Image_2025-05-20_at_4.48.05_AM_db5cip.jpg",
-      className: "absolute top-40 left-[25%] rotate-[-7deg]",
+      className: "absolute top-96 left-[15%] rotate-[-17deg]",
     },
     {
       title: "Sonar Quila",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697093/ommishra/WhatsApp_Image_2025-05-20_at_4.46.18_AM_ujls8w.jpg",
-      className: "absolute top-5 left-[40%] rotate-[8deg]",
+      className: "absolute top-64 left-[40%] rotate-[18deg]",
     },
     {
       title: "Ghanta Ghar",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697105/ommishra/WhatsApp_Image_2025-05-20_at_4.46.34_AM_ub914o.jpg",
-      className: "absolute top-32 left-[55%] rotate-[10deg]",
+      className: "absolute top-80 left-[50%] rotate-[10deg]",
     },
     {
       title: "Bonfire",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697081/ommishra/WhatsApp_Image_2025-05-20_at_4.45.23_AM_hvt8dn.jpg",
-      className: "absolute top-24 left-[45%] rotate-[-7deg]",
+      className: "absolute top-72 left-[45%] rotate-[-17deg]",
     },
     {
       title: "Ghats",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697029/ommishra/WhatsApp_Image_2025-05-20_at_4.41.44_AM_tmc7tt.jpg",
-      className: "absolute top-8 left-[30%] rotate-[4deg]",
+      className: "absolute top-56 left-[30%] rotate-[14deg]",
     },
     {
       title: "Upper Lake",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697178/ommishra/WhatsApp_Image_2025-05-20_at_4.51.41_AM_1_l6kbtp.jpg",
-      className: "absolute top-24 left-[45%] rotate-[-7deg]",
+      className: "absolute top-72 left-[45%] rotate-[-17deg]",
     },
     {
       title: "Light Show",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697131/ommishra/WhatsApp_Image_2025-05-20_at_4.48.50_AM_bkpjzz.jpg",
-      className: "absolute top-8 left-[30%] rotate-[4deg]",
+      className: "absolute top-56 left-[30%] rotate-[14deg]",
     },
     {
       title: "Desert Safari",
       image:
         "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1747697070/ommishra/WhatsApp_Image_2025-05-20_at_4.44.32_AM_xs8bdp.jpg",
-      className: "absolute top-20 right-[35%] rotate-[2deg]",
+      className: "absolute top-72 right-[35%] rotate-[2deg]",
     },
   ];
 
   return (
-    <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip mt-52">
-      <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-2xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800">
+    <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip">
+      <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 top text-center text-2xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800">
         Travel isn&apos;t just about the places you go
       </p>
       {items.map((item, index) => (
@@ -193,6 +193,9 @@ export default function AboutPage() {
         </div>
         <div className="h-full w-full">{isMounted && <ID />}</div>
         <div className="hidden lg:block h-full overflow-hidden border-l">
+          <HyperText className="mb-6 p-6 text-2xl text-black dark:text-white font-bold">
+            TRAVEL DAIRIES
+          </HyperText>
           <Gallery />
         </div>
       </div>

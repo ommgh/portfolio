@@ -56,7 +56,7 @@ export const GithubGraph = memo(
     const [contribution, setContribution] = useState<Activity[]>([]);
     const [loading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const { resolvedTheme } = useTheme(); // Use resolvedTheme
+    const { resolvedTheme } = useTheme();
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
@@ -154,9 +154,7 @@ async function fetchContributionData(username: string): Promise<Activity[]> {
       try {
         const errorText = await response.text();
         errorDetails += `, message: ${errorText}`;
-      } catch {
-        // Ignore error when reading error message
-      }
+      } catch {}
       throw new Error(errorDetails);
     }
 

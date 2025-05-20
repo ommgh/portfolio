@@ -46,7 +46,7 @@ export default function SiteHeader({ className }: SiteHeaderProps) {
             </Button>
           </Link>
           <Link href={"/about"} prefetch>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="mr-3">
               <PersonIcon className="w-3.5 h-3.5" />
             </Button>
           </Link>

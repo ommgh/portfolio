@@ -8,6 +8,7 @@ import { GeistMono } from "geist/font/mono";
 import clsx from "clsx";
 import { ViewTransitions } from "next-view-transitions";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ommishra.tech"),
@@ -83,6 +84,7 @@ export default function RootLayout({
             <TooltipProvider>
               {children}
               <Analytics />
+              <SpeedInsights />
             </TooltipProvider>
           </ThemeProvider>
         </body>

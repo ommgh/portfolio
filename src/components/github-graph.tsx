@@ -56,18 +56,23 @@ export const GithubGraph = memo(
     const [contribution, setContribution] = useState<Activity[]>([]);
     const [loading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme(); // Use resolvedTheme
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
 
     const fetchData = useCallback(async () => {
+      setError(null);
+      setIsLoading(true);
       try {
-        setError(null);
-        setIsLoading(true);
         const contributions = await fetchContributionData(username);
         setContribution(contributions);
-      } catch (error) {
+      } catch (err) {
         setError(
-          error instanceof Error
-            ? error.message
+          err instanceof Error
+            ? err.message
             : "Failed to fetch contribution data"
         );
         setContribution([]);
@@ -77,46 +82,67 @@ export const GithubGraph = memo(
     }, [username]);
 
     useEffect(() => {
-      fetchData();
-    }, [fetchData]);
+      if (isMounted) {
+        fetchData();
+      }
+    }, [fetchData, isMounted]);
 
-    const label = {
+    const labels = {
       totalCount: `{{count}} contributions in the last year`,
     };
 
+    if (!isMounted) {
+      return (
+        <div
+          style={{ height: "130px", width: "100%" }}
+          className="bg-gray-200 dark:bg-gray-800 animate-pulse rounded-md"
+          aria-hidden="true"
+        />
+      );
+    }
+
     if (error) {
-      return <div className="text-red-500 p-4 text-center">Error: {error}</div>;
+      return (
+        <div className="text-red-500 p-4 text-center min-h-[130px] flex items-center justify-center">
+          Error: {error}
+        </div>
+      );
+    }
+
+    if (loading) {
+      return (
+        <div className="relative flex items-center justify-center min-h-[130px]">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-white"></div>
+        </div>
+      );
+    }
+
+    if (contribution.length === 0 && !loading && !error) {
+      return (
+        <div className="p-4 text-center text-gray-500 dark:text-gray-400 min-h-[130px] flex items-center justify-center">
+          No contributions found for this user in the last year.
+        </div>
+      );
     }
 
     return (
-      <div className="relative">
-        {loading && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-white"></div>
-          </div>
-        )}
-        <ActivityCalendar
-          data={contribution}
-          maxLevel={4}
-          blockMargin={blockMargin ?? 2}
-          loading={loading}
-          labels={label}
-          theme={{
-            light: lightColorPalette,
-            dark: darkColorPalette,
-          }}
-          colorScheme={theme === "dark" ? "dark" : "light"}
-        />
-      </div>
+      <ActivityCalendar
+        data={contribution}
+        maxLevel={4}
+        blockMargin={blockMargin ?? 2}
+        labels={labels}
+        theme={{
+          light: lightColorPalette,
+          dark: darkColorPalette,
+        }}
+        colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
+      />
     );
   }
 );
 
 GithubGraph.displayName = "GithubGraph";
 
-/**
- * Fetches GitHub contribution data for a given username
- */
 async function fetchContributionData(username: string): Promise<Activity[]> {
   try {
     const response = await fetch(
@@ -124,31 +150,33 @@ async function fetchContributionData(username: string): Promise<Activity[]> {
     );
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      let errorDetails = `HTTP error! status: ${response.status}`;
+      try {
+        const errorText = await response.text();
+        errorDetails += `, message: ${errorText}`;
+      } catch (e) {}
+      throw new Error(errorDetails);
     }
 
     let responseBody: GithubApiResponse;
     try {
       responseBody = await response.json();
     } catch (parseError) {
-      throw new Error("Failed to parse response data", {
-        cause: parseError as Error,
+      throw new Error("Failed to parse response data.", {
+        cause: parseError instanceof Error ? parseError : undefined,
       });
     }
 
-    if (!responseBody.data) {
-      throw new Error("No contribution data received");
+    if (!responseBody || typeof responseBody.data === "undefined") {
+      throw new Error("Malformed response: 'data' field is missing.");
     }
 
     return responseBody.data;
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error fetching GitHub contributions:", error.message);
-      return [];
-    }
     console.error(
-      "An unexpected error occurred while fetching GitHub contributions"
+      "Error fetching GitHub contributions:",
+      error instanceof Error ? error.message : String(error)
     );
-    return [];
+    throw error;
   }
 }

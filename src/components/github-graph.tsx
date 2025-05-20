@@ -154,7 +154,9 @@ async function fetchContributionData(username: string): Promise<Activity[]> {
       try {
         const errorText = await response.text();
         errorDetails += `, message: ${errorText}`;
-      } catch (e) {}
+      } catch {
+        // Ignore error when reading error message
+      }
       throw new Error(errorDetails);
     }
 

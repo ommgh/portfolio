@@ -88,7 +88,7 @@ const ExperienceSection = () => {
   );
 };
 
-export function Gallery() {
+function Gallery() {
   const items = [
     {
       title: "Diwali",

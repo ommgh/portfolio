@@ -73,7 +73,8 @@ export default function PostsList({
         )}
       </div>
       <Link
-        href="https:/github.com/ommgh"
+        href="/posts"
+        prefetch
         className={cn(
           buttonVariants({
             variant: "outline",
@@ -99,23 +100,26 @@ function PostItem({ title, slug, type, date }: PostItemProps) {
   return (
     <NextViewTransition
       href={`/${type}/${slug}`}
-      className="flex items-center gap-4 px-2 py-3 rounded-md hover:bg-muted dark:hover:bg-neutral-800/60 transition-colors font-light"
+      className="group flex flex-col gap-2 px-4 py-3 rounded-md border border-border/50 hover:border-primary/30"
     >
-      <div className="flex items-center gap-4 whitespace-nowrap">
-        <span className="text-sm text-foreground/80">{title}</span>
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium text-foreground/90 transition-colors">
+          {title}
+        </span>
+        <span className="text-xs text-muted-foreground whitespace-nowrap">
+          {date}
+        </span>
+      </div>
+      <div className="flex items-center gap-2">
         {type && (
           <Badge
             variant="outline"
-            className="text-xs font-normal text-muted-foreground/80 capitalize"
+            className="text-xs font-normal text-muted-foreground capitalize"
           >
             {type}
           </Badge>
         )}
       </div>
-      <div className="flex-grow border-t border-border/50" />
-      <span className="text-xs text-muted-foreground whitespace-nowrap">
-        {date}
-      </span>
     </NextViewTransition>
   );
 }

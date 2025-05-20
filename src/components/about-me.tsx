@@ -1,12 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Newsreader } from "next/font/google";
 import Link from "next/link";
-
-const newsreader = Newsreader({
-  style: "italic",
-  subsets: ["latin"],
-});
-
 interface AboutMeProps {
   className?: string;
 }
@@ -25,24 +18,17 @@ export default function AboutMe({ className }: AboutMeProps) {
         <Link
           href={"https://agencysynapse.tech"}
           target="_blank"
-          className={cn(
-            "font-reader text-[13px] text-foreground/95 font-normal mb-1 mx-1",
-            newsreader.className
-          )}
+          className=" text-[13px] text-[#30a14e] no-underline font-normal mb-1 mx-1"
         >
           Synapse
         </Link>{" "}
-        and have built multiple industry grade applications. I am currently
-        working on{" "}
+        and have built multiple industry grade MVPs. I am currently working on{" "}
         <Link
-          href={"https://bioshop.vercel.app"}
+          href={"https://qrate.site"}
           target="_blank"
-          className={cn(
-            "font-reader text-[13px] text-foreground/95 font-normal mb-1 mx-1",
-            newsreader.className
-          )}
+          className=" text-[13px] text-[#30a14e] no-underline font-normal mb-1 mx-1"
         >
-          BioShop
+          Qrate
         </Link>{" "}
         a tool for creators to , organize their affiliate links with a custom
         storefront.

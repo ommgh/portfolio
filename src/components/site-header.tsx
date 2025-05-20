@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { Link } from "next-view-transitions";
+import { PersonIcon } from "@radix-ui/react-icons";
 
 interface SiteHeaderProps {
   className?: string;
@@ -39,9 +40,14 @@ export default function SiteHeader({ className }: SiteHeaderProps) {
               <Icons.gitHub className="w-3.5 h-3.5" />
             </Button>
           </Link>
-          <Link href={"mailto:hello@ommishra.tech"}>
+          <Link href={"mailto:hi@ommishra.tech"}>
             <Button variant="ghost" size="icon" className="mr-1">
               <Icons.email className="w-3.5 h-3.5" />
+            </Button>
+          </Link>
+          <Link href={"/about"} prefetch>
+            <Button variant="ghost" size="icon">
+              <PersonIcon className="w-3.5 h-3.5" />
             </Button>
           </Link>
         </div>

@@ -3,7 +3,7 @@ import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { ViewTransitions } from "next-view-transitions";
-export default function BlogsLayout({
+export default function LandingLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

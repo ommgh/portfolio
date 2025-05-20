@@ -4,9 +4,9 @@ import Link from "next/link";
 
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { EllipsisIcon, Grid2x2Check } from "lucide-react";
+import { Grid2x2Check } from "lucide-react";
 
 import { projects } from "@/content/projects";
 
@@ -41,7 +41,8 @@ export default function ProjectsList({ className }: ProjectListsProps) {
         ))}
       </div>
       <Link
-        href="https:/github.com/ommgh"
+        href="/projects"
+        prefetch
         className={cn(
           buttonVariants({
             variant: "outline",
@@ -66,23 +67,24 @@ interface ProjectItemProps {
 function ProjectItem({ title, description, date, github }: ProjectItemProps) {
   return (
     <Link
-      className="flex items-center gap-4 px-2 py-3 rounded-md hover:bg-muted dark:hover:bg-neutral-800/60 transition-colors font-light"
+      className="flex flex-col sm:flex-row sm:items-center justify-between px-2 py-3 rounded-md hover:bg-muted dark:hover:bg-neutral-800/60 transition-colors font-light gap-2"
       href={github || ""}
       target="_blank"
     >
-      <div className="flex items-center gap-1 whitespace-nowrap">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2">
         <span className="text-sm text-foreground/80">{title}</span>
-        <span className="mx-2 text-sm text-neutral-500 dark:text-neutral-400">
-          {description}
+        <span className="text-sm text-neutral-500 dark:text-neutral-400">
+          - {description}
         </span>
       </div>
-      <div className="flex-grow border-t border-border/50" />
-      <span className="text-xs text-muted-foreground">{formatDate(date)}</span>
+      <div className="hidden sm:block flex-grow border-t border-border/50 mx-2" />
+      <span className="text-xs text-muted-foreground whitespace-nowrap">
+        {formatDate(date)}
+      </span>
     </Link>
   );
 }
 
-// format date to month, year (e.g. "Jan, 2025")
 function formatDate(date: string) {
   const dateObj = new Date(date);
   return dateObj.toLocaleString("default", { month: "long", year: "numeric" });

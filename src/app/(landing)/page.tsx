@@ -8,7 +8,7 @@ import { FadeContainer, FadeItem } from "@/components/fade-motion";
 
 export default async function Home() {
   return (
-    <FadeContainer className="container items-center space-y-10 md:space-y-12">
+    <FadeContainer className="container items-center space-y-5 md:space-y-8">
       <FadeItem>
         <SiteHeader />
       </FadeItem>

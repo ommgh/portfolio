@@ -15,16 +15,6 @@ export function canHandle3D(): boolean {
       ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)
       : "";
 
-    const isMobile =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
-
-    if (isMobile) {
-      const isHighEnd = /(Apple GPU|Adreno 6|Mali-G7|PowerVR)/i.test(renderer);
-      return isHighEnd;
-    }
-
     return true;
   } catch (e) {
     console.error(e);

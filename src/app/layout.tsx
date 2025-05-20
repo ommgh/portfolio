@@ -4,14 +4,10 @@ import { siteConfig } from "@/config/site";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Inter } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
 import clsx from "clsx";
 import { ViewTransitions } from "next-view-transitions";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ommishra.tech"),
@@ -74,7 +70,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html
         lang="en"
-        className={clsx(inter.className)}
+        className={clsx(GeistMono.className)}
         suppressHydrationWarning
       >
         <body>
@@ -85,9 +81,8 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <TooltipProvider>
-              <main className="mx-auto max-w-screen-sm overflow-x-hidden px-6 py-8 md:py-16 md:overflow-x-visible">
-                {children}
-              </main>
+              {children}
+              <Analytics />
             </TooltipProvider>
           </ThemeProvider>
         </body>

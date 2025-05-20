@@ -1,1 +1,1 @@
-A fast, clean, and lightweight portfolio.
+A minimal, clean, and lightweight portfolio with MDX Blogs.

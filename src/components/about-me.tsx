@@ -24,11 +24,11 @@ export default function AboutMe({ className }: AboutMeProps) {
         </Link>{" "}
         and have built multiple industry grade MVPs. I am currently working on{" "}
         <Link
-          href={"https://qrate.site"}
+          href={"https://qrated.site"}
           target="_blank"
           className=" text-[13px] text-[#30a14e] no-underline font-normal mb-1 mx-1"
         >
-          Qrate
+          Qrated
         </Link>{" "}
         a tool for creators to , organize their affiliate links with a custom
         storefront.

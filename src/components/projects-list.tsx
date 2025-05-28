@@ -30,7 +30,7 @@ export default function ProjectsList({ className }: ProjectListsProps) {
         </Link>
       </div>
       <div className="flex flex-col mt-3 gap-1">
-        {projects.map((project) => (
+        {projects.slice(0, 3).map((project) => (
           <ProjectItem
             key={project.title}
             title={project.title}

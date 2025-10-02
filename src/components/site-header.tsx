@@ -30,7 +30,7 @@ export default function SiteHeader({ className }: SiteHeaderProps) {
         </div>
 
         <div className="flex flex-row">
-          <Link href={"https://x.com/indium114"} target="_blank">
+          <Link href={"https://x.com/ommshx"} target="_blank">
             <Button variant="ghost" size="icon">
               <Icons.twitter className="w-3.5 h-3.5" />
             </Button>
@@ -40,7 +40,7 @@ export default function SiteHeader({ className }: SiteHeaderProps) {
               <Icons.gitHub className="w-3.5 h-3.5" />
             </Button>
           </Link>
-          <Link href={"mailto:hi@ommishra.tech"}>
+          <Link href={"mailto:hey@ommishra.me"}>
             <Button variant="ghost" size="icon" className="mr-1">
               <Icons.email className="w-3.5 h-3.5" />
             </Button>

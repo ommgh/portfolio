@@ -13,10 +13,10 @@ export const projects: Project[] = [
     github: "https://quickboarder.shop",
   },
   {
-    title: "SuperDocs",
-    description: "Turn websites into LLM-ready data",
-    date: "2025-01-25",
-    github: "https://superdocs.xyz",
+    title: "NexMCF",
+    description: "Central Hub To Manage All E-Commerce Channels",
+    date: "2024-07-20",
+    github: "https://nexmcf.vercel.app",
   },
   {
     title: "Qrated",
@@ -25,10 +25,10 @@ export const projects: Project[] = [
     github: "https://qrated.site",
   },
   {
-    title: "QuickBoarder",
-    description: "Catalogue Digitization For Local Businesses",
-    date: "2024-07-01",
-    github: "https://quickboarder.shop",
+    title: "SuperDocs",
+    description: "Turn websites into LLM-ready data",
+    date: "2025-01-25",
+    github: "https://superdocs.xyz",
   },
   {
     title: "DevTown",
@@ -36,12 +36,7 @@ export const projects: Project[] = [
     date: "2023-03-01",
     github: "https://github.com/ommgh/devtown",
   },
-  {
-    title: "NEXMCF",
-    description: "Central Hub To Manage All E-Commerce Channels",
-    date: "2024-07-20",
-    github: "https://nexmcf.vercel.app",
-  },
+
   {
     title: "BashCraft",
     description: "A Community for Linux enthusiasts",
@@ -77,5 +72,11 @@ export const projects: Project[] = [
     description: "Mini Games With Real Crypto Rewards",
     date: "2024-11-10",
     github: "https://nexabetx.vercel.app",
+  },
+  {
+    title: "Connect4",
+    description: "Connect 4 on serverless websockets",
+    date: "2024-07-20",
+    github: "https://connectfour-chi.vercel.app/",
   },
 ];

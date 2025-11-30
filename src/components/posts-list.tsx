@@ -80,7 +80,7 @@ export default function PostsList({
             variant: "outline",
             size: "sm",
           }),
-          "w-full text-xs text-muted-foreground mt-5 gap-2"
+          "w-full text-xs text-muted-foreground mt-5 gap-2",
         )}
       >
         <span>View All</span> <ArrowRightIcon className="w-3.5 h-3.5" />
@@ -114,7 +114,7 @@ function PostItem({ title, slug, type, date }: PostItemProps) {
         {type && (
           <Badge
             variant="outline"
-            className="text-xs font-normal text-muted-foreground capitalize"
+            className="text-xs font-normal text-muted-foreground"
           >
             {type}
           </Badge>

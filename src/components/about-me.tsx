@@ -9,30 +9,30 @@ export default function AboutMe({ className }: AboutMeProps) {
     <div
       className={cn(
         "prose prose-zinc dark:prose-invert max-w-none w-full text-sm text-foreground/80 font-normal text-pretty leading-loose mx-1",
-        className
+        className,
       )}
     >
       <p>
-        I&apos;m a developer passionate about building and shipping new
-        products. Through my agency{" "}
+        I&apos;m a full stack developer driven by shipping software that solves
+        real problems. Through my agency,
         <Link
-          href={"https://agencysynapse.tech"}
+          href="https://launchit.today"
           target="_blank"
-          className="text-[13px] text-[#30a14e] no-underline font-normal mb-1 mx-1"
+          className="text-[13px] text-[#30a14e] no-underline font-medium mx-1 hover:underline"
         >
-          Synapse
+          Lit Labs
         </Link>
-        , I&apos;ve collaborated with multiple clients to deliver industry-grade
-        MVPs across different domains. Currently, I&apos;m working on{" "}
+        , I partner with startups to architect and deliver industry-grade MVPs.
+        Currently, I&apos;m building{" "}
         <Link
-          href={"https://qrated.site"}
+          href="https://quickboarder.shop"
           target="_blank"
-          className="text-[13px] text-[#30a14e] no-underline font-normal mb-1 mx-1"
+          className="text-[13px] text-[#30a14e] no-underline font-medium mx-1 hover:underline"
         >
-          Qrated
+          Quickboarder
         </Link>
-        — a tool that helps creators organize their affiliate links into a
-        personalized storefront.
+        — a platform enabling local merchants to make their products e-commerce
+        ready in minutes.
       </p>
     </div>
   );

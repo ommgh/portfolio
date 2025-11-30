@@ -21,7 +21,7 @@ export default function PostPage() {
 
   const posts = getPosts(category).sort(
     (a, b) =>
-      new Date(b.time.created).getTime() - new Date(a.time.created).getTime()
+      new Date(b.time.created).getTime() - new Date(a.time.created).getTime(),
   );
 
   const limitedPosts = limit == null ? posts : posts.slice(0, limit);

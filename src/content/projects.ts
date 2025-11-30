@@ -13,22 +13,22 @@ export const projects: Project[] = [
     github: "https://quickboarder.shop",
   },
   {
-    title: "NexMCF",
+    title: "NEX-MCF",
     description: "Central Hub To Manage All E-Commerce Channels",
     date: "2024-07-20",
     github: "https://nexmcf.vercel.app",
-  },
-  {
-    title: "Qrated",
-    description: "Organised Store for Affiliate Products",
-    date: "2025-05-01",
-    github: "https://qrated.site",
   },
   {
     title: "SuperDocs",
     description: "Turn websites into LLM-ready data",
     date: "2025-01-25",
     github: "https://superdocs.xyz",
+  },
+  {
+    title: "Qrated",
+    description: "Organised Store for Affiliate Products",
+    date: "2025-05-01",
+    github: "https://qrated.site",
   },
   {
     title: "DevTown",

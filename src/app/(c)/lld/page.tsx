@@ -3,7 +3,7 @@ import { OpenGraph } from "@/lib/metadata";
 import PostsList from "@/components/posts-list";
 import { FadeItem } from "@/components/fade-motion";
 
-const category = "examples";
+const category = "lld";
 
 export function generateMetadata() {
   const image = `${

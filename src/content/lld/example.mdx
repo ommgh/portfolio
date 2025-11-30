@@ -1,0 +1,169 @@
+---
+title: Designing Secure API Keys in Node & TypeScript
+time:
+  created: "2025-09-28"
+  updated: "2025-10-21"
+category: "System Design"
+tags: ["LLD", "Security", "TypeScript", "Node.js", "Backend"]
+description: "A deep dive into the low-level design of building a secure API key system using hashing and constant-time validation."
+---
+
+# Designing Secure API Keys in Node & TypeScript
+
+If you are building a developer platform, eventually you need programmatic authentication. You need API Keys.
+
+A common anti-pattern is treating an API Key like a database ID. Tutorials often suggest generating a UUID, saving it in a `text` column, and emailing it to the user.
+
+**Do not do this.**
+
+If your database leaks, every user integration is compromised instantly.
+
+An API Key is a password. It demands the same rigor as a login. We never store them in plain text; we store a **hash**.
+
+Let's look at the Low-Level Design (LLD) for a production-grade key system using TypeScript and Node's native `crypto`.
+
+## The LLD: Anatomy of a Key
+
+We want keys that are secure by default but also usable. A standard format (like Stripe's) looks like this:
+
+`sk_live_4a8b9c0d...xyz`
+
+It has three components:
+
+1.  **Prefix (`sk_live_`)**: Tells developers and secret-scanning bots exactly what the string is.
+2.  **High Entropy**: A random string impossible to guess.
+3.  **Checksum (Optional)**: Allows valid format verification without a database hit.
+
+### The Schema
+
+The user sees the raw key **once**. Never again.
+
+Here is the conceptual Schema. Notice what we actually store:
+
+```prisma
+model ApiKey {
+  id         String   @id @default(cuid())
+  userId     String
+  prefix     String   // e.g., "sk_live"
+  keyHash    String   // The hashed secret
+  mask       String   // e.g., "xxxx...4f2a" for UI identification
+  scopes     String[] // e.g. ["read:data", "write:logs"]
+  createdAt  DateTime @default(now())
+}
+````
+
+-----
+
+## Implementation: Generation
+
+We use Node's native `crypto` module. No external dependencies required.
+
+### The Goal
+
+We need a function returning two artifacts:
+
+1.  The **Secret Key** (returned to the user).
+2.  The **Database Record** (hashed and safe to store).
+
+### The Code
+
+We use `scrypt` for hashing. It is computationally expensive, making brute-force attacks unfeasible.
+
+```typescript
+import { randomBytes, scryptSync, timingSafeEqual } from 'crypto';
+
+const KEY_PREFIX = 'sk_live';
+const KEY_LENGTH_BYTES = 32; 
+
+interface GeneratedKeyResult {
+  secretKeyRaw: string; 
+  dbRecord: {
+    prefix: string;
+    keyHash: string; 
+    mask: string;
+  };
+}
+
+export function generateApiKey(): GeneratedKeyResult {
+  // 1. Generate high entropy random bytes
+  const buffer = randomBytes(KEY_LENGTH_BYTES);
+  const secretPart = buffer.toString('hex');
+
+  // 2. Construct the full key to present to the user
+  const secretKeyRaw = `${KEY_PREFIX}_${secretPart}`;
+
+  // 3. Create a hash for storage using scrypt
+  const salt = secretPart.substring(0, 16);
+  const derivedKey = scryptSync(secretPart, salt, 64);
+  const keyHash = derivedKey.toString('hex');
+
+  // 4. Create a mask for UI display
+  const mask = `xxxxxxxx${secretPart.slice(-4)}`;
+
+  return {
+    secretKeyRaw,
+    dbRecord: {
+      prefix: KEY_PREFIX,
+      keyHash,
+      mask,
+    },
+  };
+}
+```
+
+**Usage:**
+
+```typescript
+const { secretKeyRaw, dbRecord } = generateApiKey();
+// Present 'secretKeyRaw' to UI. Save 'dbRecord' to Prisma.
+```
+
+-----
+
+## Security Critical: Validation
+
+When a request hits your middleware with `Authorization: Bearer sk_live_abc...`, how do you validate it?
+
+### The Trap: Timing Attacks
+
+If you compare the incoming key against the database hash using standard equality:
+
+```typescript
+// ❌ DANGEROUS
+if (incomingKeyHash === storedKeyHash) { ... }
+```
+
+V8 (and most engines) will return `false` as soon as the first character mismatches. An attacker can measure the microseconds your server takes to respond, slowly guessing the key character by character.
+
+### The Solution: Constant Time Comparison
+
+We use `crypto.timingSafeEqual`. It executes in the exact same time regardless of whether the strings match.
+
+```typescript
+export function validateApiKey(incomingRawKey: string, storedHash: string): boolean {
+  const [prefix, secretPart] = incomingRawKey.split('_');
+
+  // Fast fail on format
+  if (prefix !== KEY_PREFIX || !secretPart) return false;
+
+  const salt = secretPart.substring(0, 16);
+  const derivedKeyBuffer = scryptSync(secretPart, salt, 64);
+  const storedHashBuffer = Buffer.from(storedHash, 'hex');
+
+  try {
+    // Secure comparison
+    return timingSafeEqual(derivedKeyBuffer, storedHashBuffer);
+  } catch (e) {
+    // Throws if lengths differ
+    return false;
+  }
+}
+```
+
+
+
+## The Next Iteration
+
+This implementation solves the storage and transport security. You now have a system resistant to database leaks and timing attacks.
+
+From here, the system design expands into **permissions**. Since we store `scopes` in the schema, the next logical step is writing a middleware that not only validates the key but ensures the key holder has the right to `write:database` before passing the request context to your controllers.

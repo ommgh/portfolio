@@ -332,9 +332,10 @@
       margin-right: 2px;
       margin-left: 2px;
       text-align: center;
-      background-color: hsl(var(--kbd-background)) !important;
+      background-color: hsl(var(--muted)) !important;
+      color: hsl(var(--foreground)) !important;
       border-radius: 4px;
-      box-shadow: 0 0 0 1px hsl(var(--kbd-border)) !important;
+      box-shadow: 0 0 0 1px hsl(var(--border)) !important;
     }
   }
 

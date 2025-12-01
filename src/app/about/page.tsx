@@ -14,11 +14,11 @@ import { ArrowRightIcon } from "lucide-react";
 const ExperienceSection = () => {
   const experiences = [
     {
-      company: "Synapse",
+      company: "Lit Labs",
       type: "Full-time",
       location: "Remote",
-      role: "Founder",
-      period: "June 2024 – Continuing",
+      role: "Full Stack Developer",
+      period: "July 2023 – November 2024",
       points: [
         "Built YardsToAcres, a platform for real estate agents",
         "Engineered NEXA, a crypto gaming platform",

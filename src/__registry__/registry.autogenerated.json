@@ -1,0 +1,96 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "omm",
+  "homepage": "https://ommishra.me/components",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utility Functions",
+      "author": "ommishra <om@ommishra.me>",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-controllable-state",
+      "type": "registry:hook",
+      "title": "Controllable State Hook",
+      "files": [
+        {
+          "path": "src/hooks/use-layout-effect.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/hooks/use-controllable-state.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-sound",
+      "type": "registry:hook",
+      "title": "Sound Hook",
+      "description": "Custom React hook to load and play a sound from a given URL using the Web Audio API.",
+      "files": [
+        {
+          "path": "src/hooks/use-sound.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "book-call",
+      "type": "registry:component",
+      "title": "Book Call",
+      "author": "ommishra <om@ommishra.me>",
+      "description": "A simple call-to-action button for booking meetings with a subtle hover animation.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@omm/utils"
+      ],
+      "files": [
+        {
+          "path": "src/registry/book-call/book-call.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "https://ommishra.me/components/book-call"
+    },
+    {
+      "name": "book-call-block-01",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@omm/book-call"
+      ],
+      "files": [
+        {
+          "path": "src/registry/examples/book-call-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "book-call-block-02",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@omm/book-call"
+      ],
+      "files": [
+        {
+          "path": "src/registry/examples/book-call-demo-02.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}

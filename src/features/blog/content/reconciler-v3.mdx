@@ -1,0 +1,103 @@
+---
+title: Reconciliation
+description: 
+image: https://assets.ommishra.me/images/blog/reconciler.png
+category: basics
+unlisted: true
+icon: fiber-reconciler
+createdAt: 2025-12-09
+updatedAt: 2025-12-09
+---
+
+## The Logic Behind Tree Comparison
+
+It is called Reconciliation and this is where most complexity lives.
+
+Rendering just builds trees. Reconciliation decides how trees relate.
+
+---
+
+## What reconciliation actually does
+
+For each new element, the reconciler answers:
+- Can this reuse an old fiber?
+- Does the type match?
+- Is this an update, placement, or deletion?
+
+No DOM mutations happen here. Only decisions.
+
+---
+
+## Keys stopped feeling optional
+
+Without keys, reconciliation is positional.
+
+Reordering lists immediately caused:
+- state jumping
+- unnecessary deletions
+- broken effects
+
+Keys make identity explicit.
+
+  
+```mermaid
+flowchart TB
+    %% Old render
+    subgraph OLD["Previous Render"]
+        O1[A]
+        O2[B]
+        O3[C]
+    end
+
+    
+    subgraph NOK["Next Render (no keys)"]
+        N1[B]
+        N2[A]
+        N3[C]
+    end
+    %% New render without keys
+
+    %% Identity mismatch
+    O1 --> N1
+    O2 --> N2
+    O3 --> N3
+
+    %% Spacer
+    S[ ]
+    style S opacity:0
+
+    
+    subgraph KEY["Next Render (with keys)"]
+        K1[A]
+        K2[B]
+        K3[C]
+    end
+    %% New render with keys
+
+    %% Identity preserved
+    O1 -.-> K1
+    O2 -.-> K2
+    O3 -.-> K3
+
+```
+
+---
+
+## Hooks and fiber identity
+
+Hooks only work because:
+- state is stored on the fiber
+- hooks are read in order
+- the same component maps to the same fiber
+
+There is no name-based lookup. Just order and identity.
+
+That’s why hooks feel strict — because they are.
+
+---
+
+## Building the Helpers
+
+This was the point where React’s rules stopped feeling arbitrary.
+
+After implementing the reconciliation and hooks yourself, the constraints feel inevitable.

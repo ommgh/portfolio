@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "book-call-block-01",
+  "type": "registry:block",
+  "registryDependencies": [
+    "@omm/book-call"
+  ],
+  "files": [
+    {
+      "path": "src/registry/examples/book-call-demo.tsx",
+      "content": "import { BookCall } from \"@/registry/book-call\";\n\nexport default function BookCallDemo() {\n  return (\n    <BookCall\n      meetingLink=\"https://cal.com/your-username/15min\"\n      profileImage=\"https://assets.ommishra.me/images/om-avatar.jpg\"\n      text=\"Book a Call\"\n    />\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

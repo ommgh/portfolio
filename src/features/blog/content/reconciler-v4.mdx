@@ -1,0 +1,110 @@
+---
+title: Effects
+description: 
+image: https://assets.ommishra.me/images/blog/reconciler.png
+category: basics
+unlisted: true
+icon: fiber-reconciler
+createdAt: 2025-12-08
+updatedAt: 2025-12-08
+---
+
+## Building & Undestading Effects
+
+By the time commit runs, all decisions are already made.
+
+That’s intentional.
+
+---
+
+## The commit phase
+
+The commit phase:
+- applies placements
+- applies updates
+- removes deletions
+- runs effect cleanups
+- runs new effects
+
+It cannot yield. It cannot be interrupted.
+
+  
+```mermaid
+flowchart TB
+    %% Render phase
+    subgraph LR RENDER["Render"]
+        R1[Build fibers]
+        R2[Reconcile]
+        R3[Mark effects]
+        R1 --> R2 --> R3
+    end
+
+    %% Commit phase
+    subgraph LR COMMIT["Commit"]
+        C1[Place]
+        C2[Update]
+        C3[Delete]
+        C1 --> C2 --> C3
+    end
+
+    %% Effects phase
+    subgraph LR EFFECTS["Effects"]
+        E1[Cleanup]
+        E2[Run]
+        E1 --> E2
+    end
+
+    %% Phase flow
+    R3 --> C1
+    C3 --> E1
+
+    %% Interruptible render
+    R3 -.-> R1
+```
+
+---
+
+## Effects only make sense after commit
+
+Running effects during render caused:
+- inconsistent DOM access
+- broken cleanup logic
+- unpredictable ordering
+
+Deferring effects until after commit fixed all of it.
+
+---
+
+## How this changed my thinking about UI
+
+This project didn’t make me faster at writing components.
+
+It changed how I think about systems.
+
+I now see:
+- rendering as planning
+- commits as execution
+- hooks as ordered state machines
+- keys as identity, not hints
+
+---
+
+## Trying it yourself
+
+I packaged this reconciler as a small framework and published it to npm called [Sense](https://www.npmjs.com/package/@ommishra/sense).
+
+If you want to explore and read through the renderer end-to-end go through the codebase [GitHub](https://github.com/ommgh/sense).
+
+Want to test this renderer and play along with it, you can spin up a minimal app using the provided CLI and read through the renderer end-to-end.
+
+```bash
+npx create-sense-app
+```
+
+---
+
+## Final thoughts
+
+Frameworks aren’t magic.
+
+They’re carefully constrained systems built around very real limitations. Rebuilding one forces those constraints into the open — and that understanding carries far beyond UI code.

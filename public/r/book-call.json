@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "book-call",
+  "type": "registry:component",
+  "title": "Book Call",
+  "author": "ommishra <om@ommishra.me>",
+  "description": "A simple call-to-action button for booking meetings with a subtle hover animation.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@omm/utils"
+  ],
+  "files": [
+    {
+      "path": "src/registry/book-call/book-call.tsx",
+      "content": "\"use client\";\n\nimport { Plus } from \"lucide-react\";\nimport Image from \"next/image\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface BookCallProps {\n  /** URL to the meeting/booking link */\n  meetingLink: string;\n  /** URL or path to the profile image */\n  profileImage: string;\n  /** Text to display on the button */\n  text?: string;\n  /** Alt text for the profile image */\n  profileAlt?: string;\n  /** Additional class names */\n  className?: string;\n}\n\nexport function BookCall({\n  meetingLink,\n  profileImage,\n  text = \"Book a Call\",\n  profileAlt = \"You\",\n  className,\n}: BookCallProps) {\n  return (\n    <a\n      href={meetingLink}\n      target=\"_blank\"\n      rel=\"noopener noreferrer\"\n      className={cn(\n        \"group inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm text-primary-foreground transition-all duration-300 ease-out hover:gap-3 hover:bg-primary/90\",\n        className\n      )}\n    >\n      <div className=\"relative flex items-center\">\n        <div className=\"h-6 w-6 shrink-0 overflow-hidden rounded-full\">\n          <Image\n            alt=\"Profile\"\n            width={24}\n            height={24}\n            className=\"h-full w-full object-cover\"\n            src={profileImage}\n          />\n        </div>\n\n        <div className=\"flex w-0 items-center overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:w-12 group-hover:opacity-100\">\n          <Plus className=\"mx-0.5 h-3 w-3 shrink-0\" />\n          <span className=\"flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-foreground/20 text-[10px] font-medium\">\n            {profileAlt}\n          </span>\n        </div>\n      </div>\n\n      <span className=\"whitespace-nowrap\">{text}</span>\n    </a>\n  );\n}\n\nexport default BookCall;\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "https://ommishra.me/components/book-call"
+}

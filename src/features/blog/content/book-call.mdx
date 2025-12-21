@@ -1,0 +1,95 @@
+---
+title: Book Call
+description: A simple call-to-action button for booking meetings with a subtle hover animation.
+image: https://assets.ommishra.me/images/blog/book-call.png
+category: components
+icon: book-call
+createdAt: 2025-01-20
+updatedAt: 2025-01-20
+---
+
+<ComponentPreview
+  className="**:data-[slot=component-preview]:min-h-40"
+  name="book-call-demo"
+  openInV0Url="https://ommishra.me/r/book-call.json"
+/>
+
+## Features
+
+- Clean, minimal button design for booking calls or meetings.
+- Smooth hover animation revealing a "You" badge with a plus icon.
+- Customizable profile image, button text, and meeting link.
+- Theme-aware styling using primary colors.
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn add @omm/book-call
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project</Step>
+
+<ComponentSource
+  name="book-call"
+  title="components/omm/book-call.tsx"
+  showLineNumbers
+/>
+
+<Step>Update the import paths to match your project setup</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { BookCall } from "@/components/omm/book-call";
+```
+
+```tsx
+<BookCall
+  meetingLink="https://cal.com/your-username/15min"
+  profileImage="/your-profile.jpg"
+  text="Book a Call"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `meetingLink` | `string` | Required | URL to the meeting/booking link |
+| `profileImage` | `string` | Required | URL or path to the profile image |
+| `text` | `string` | `"Book a Call"` | Text to display on the button |
+| `profileAlt` | `string` | `"You"` | Alt text shown in the hover badge |
+| `className` | `string` | - | Additional class names |
+
+## Examples
+
+### Custom Text
+
+<ComponentPreview
+  className="**:data-[slot=component-preview]:min-h-40"
+  name="book-call-demo-02"
+/>

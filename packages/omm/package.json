@@ -1,0 +1,49 @@
+{
+  "name": "omm",
+  "version": "0.0.3",
+  "description": "A simple CLI wrapper for adding components from ommishra.me component registry using shadcn.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "start:dev": "node dist/index.js",
+    "publish:release": "pnpm build && pnpm publish --access public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "omm",
+    "cli",
+    "shadcn",
+    "components",
+    "registry"
+  ],
+  "author": "Om Mishra <om@ommishra.me>",
+  "license": "MIT",
+  "homepage": "https://ommishra.me",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ommgh/portfolio.git",
+    "directory": "packages/omm"
+  },
+  "funding": "https://github.com/sponsors/ommgh",
+  "bugs": {
+    "url": "https://github.com/ommgh/portfolio/issues"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0"
+  },
+  "packageManager": "pnpm@10.10.0"
+}

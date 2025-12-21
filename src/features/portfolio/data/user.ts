@@ -28,7 +28,7 @@ export const USER = {
 
   about: `
   - **Full Stack Engineer** focused on shipping production-grade software that solves real-world problems, with hands-on experience building and scaling MVPs from zero to launch.
-  - Founder & Lead Engineer at [Lit Labs](https://lauchit.today), partnering with early-stage startups to architect, build, and deploy industry-ready products with speed and technical rigor.
+  - Founder & Lead Engineer at [Lit Labs](https://launchit.today), partnering with early-stage startups to architect, build, and deploy industry-ready products with speed and technical rigor.
   - **Open source contributor** to [Firecrawl](https://github.com/firecrawl/fire-enrich/pull/16)
     - Earned a **$125 bounty** for a production-impacting PR
   - **National Finalist — Amazon Sambhav Hackathon 2024**
@@ -36,8 +36,7 @@ export const USER = {
   - Currently building [Quickboarder](https://quickboarder.shop) — a platform that enables local merchants to make their products e-commerce ready in minutes, bridging offline businesses to online distribution.
   `,
   avatar: "https://assets.ommishra.me/images/om-avatar.jpg",
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-light.png?t=1764345394",
+  ogImage: "https://assets.ommishra.me/images/screenshot-og-dark.png",
   namePronunciationUrl: "/audio/chanhdai.mp3",
   timeZone: "Asia/Calcutta",
   keywords: [

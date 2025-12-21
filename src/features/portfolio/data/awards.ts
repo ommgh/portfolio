@@ -8,7 +8,7 @@ export const AWARDS: Award[] = [
     grade: "Firecrawl",
     date: "2025-09",
     description:
-      "- Actively contributing to oss projects, rewarded with a $125 bounty for completing the design system migration in Firecrawl",
+      "Actively contributing to oss projects, rewarded with a $125 bounty for completing the design system migration in Firecrawl",
     referenceLink: "https://github.com/firecrawl/fire-enrich/pull/16",
   },
   {
@@ -18,7 +18,7 @@ export const AWARDS: Award[] = [
     date: "2024-11",
     grade: "Hackathon",
     description:
-      "-Ranked Top 10 nationally among 100,000+ teams for AI-powered multi-channel fulfillment platform for small business owners.",
+      "Ranked Top 10 nationally among 100,000+ teams for AI-powered multi-channel fulfillment platform for small business owners.",
     referenceLink: "https://amazonsmbhav2024.hackerearth.com/",
   },
 ];

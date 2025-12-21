@@ -1,6 +1,6 @@
 ---
 title: Effects
-description: 
+description:
 image: https://assets.ommishra.me/images/blog/reconciler.png
 category: basics
 unlisted: true
@@ -20,6 +20,7 @@ That’s intentional.
 ## The commit phase
 
 The commit phase:
+
 - applies placements
 - applies updates
 - removes deletions
@@ -28,45 +29,12 @@ The commit phase:
 
 It cannot yield. It cannot be interrupted.
 
-  
-```mermaid
-flowchart TB
-    %% Render phase
-    subgraph LR RENDER["Render"]
-        R1[Build fibers]
-        R2[Reconcile]
-        R3[Mark effects]
-        R1 --> R2 --> R3
-    end
-
-    %% Commit phase
-    subgraph LR COMMIT["Commit"]
-        C1[Place]
-        C2[Update]
-        C3[Delete]
-        C1 --> C2 --> C3
-    end
-
-    %% Effects phase
-    subgraph LR EFFECTS["Effects"]
-        E1[Cleanup]
-        E2[Run]
-        E1 --> E2
-    end
-
-    %% Phase flow
-    R3 --> C1
-    C3 --> E1
-
-    %% Interruptible render
-    R3 -.-> R1
-```
-
 ---
 
 ## Effects only make sense after commit
 
 Running effects during render caused:
+
 - inconsistent DOM access
 - broken cleanup logic
 - unpredictable ordering
@@ -82,6 +50,7 @@ This project didn’t make me faster at writing components.
 It changed how I think about systems.
 
 I now see:
+
 - rendering as planning
 - commits as execution
 - hooks as ordered state machines

@@ -13,7 +13,7 @@ export function Blog() {
   return (
     <Panel id="blog">
       <PanelHeader>
-        <PanelTitle>Blog</PanelTitle>
+        <PanelTitle>Blogs</PanelTitle>
       </PanelHeader>
 
       <div className="relative py-4">

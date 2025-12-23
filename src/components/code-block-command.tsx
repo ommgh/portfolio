@@ -28,10 +28,10 @@ export function CodeBlockCommand({
 
   const tabs = useMemo(() => {
     return {
-      pnpm: __pnpm__,
-      yarn: __yarn__,
       npm: __npm__,
       bun: __bun__,
+      pnpm: __pnpm__,
+      yarn: __yarn__,
     };
   }, [__pnpm__, __yarn__, __npm__, __bun__]);
 

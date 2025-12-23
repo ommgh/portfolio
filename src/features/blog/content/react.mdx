@@ -1,0 +1,95 @@
+---
+title: React from Scratch
+description: Building a React-like fiber reconciler to understand how modern UI frameworks actually work.
+image: https://assets.ommishra.me/images/blog/reconciler.png
+category: basics
+icon: fiber-reconciler
+createdAt: 2025-12-12
+updatedAt: 2025-12-12
+---
+
+## What is a element in React?
+
+A element is the representation of a DOM element inside javascript memory.
+
+```javascript
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+};
+```
+
+Now, without react will be Rendering this element directly to the DOM like this:
+
+```javascript
+container = document.getElementById("root");
+
+const node = document.createElement(element.type);
+node["title"] = element.props.title;
+
+const text = document.createTextNode("");
+text["nodeValue"] = element.props.children;
+
+node.appendChild(text);
+container.appendChild(node);
+```
+
+---
+
+## Getting Started : createElement
+
+To make creating elements easier, we can create a helper function called `createElement` that will create these element objects for us.
+
+```javascript
+function createElement(type, props, ...children) {
+  return {
+    type,
+    props: {
+      ...props,
+      children: children.map((child) => {
+        typeof child === "object" ? child : createTextElement(child);
+      }),
+    },
+  };
+}
+
+function createTextElement(text) {
+  return {
+    type: "TEXT_ELEMENT",
+    props: {
+      nodeValue: text,
+      children: [],
+    },
+  };
+}
+```
+
+### Rendering with Recursion
+
+Now we can use this `createElement` function to create elements and render them recursively.
+
+```javascript
+function render(element, container) {
+  const dom =
+    element.type == "TEXT_ELEMENT"
+      ? document.createTextNode("")
+      : document.createElement(element.type);
+  const isProperty = (key) => key !== "children";
+  Object.keys(element.props)
+    .filter(isProperty)
+    .forEach((name) => {
+      dom[name] = element.props[name];
+    });
+  element.props.children.forEach((child) => render(child, dom));
+  container.appendChild(dom);
+}
+```
+
+## The Problem
+
+There’s a problem with this approach as once we start rendering, we won’t stop until we have rendered the complete element tree. If the element tree is big, it may block the main thread for too long.
+
+We will solve this problem in the next section.

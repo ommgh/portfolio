@@ -1,46 +1,12 @@
 ---
-title: Effects
-description:
+title: Sense.js - A Fiber Reconciler
+description: Sense is a custom UI reconciler built from scratch using the Fiber architecture principles.
 image: https://assets.ommishra.me/images/blog/reconciler.png
 category: basics
 unlisted: true
 icon: fiber-reconciler
 createdAt: 2025-12-08
 updatedAt: 2025-12-08
----
-
-## Building & Undestading Effects
-
-By the time commit runs, all decisions are already made.
-
-That’s intentional.
-
----
-
-## The commit phase
-
-The commit phase:
-
-- applies placements
-- applies updates
-- removes deletions
-- runs effect cleanups
-- runs new effects
-
-It cannot yield. It cannot be interrupted.
-
----
-
-## Effects only make sense after commit
-
-Running effects during render caused:
-
-- inconsistent DOM access
-- broken cleanup logic
-- unpredictable ordering
-
-Deferring effects until after commit fixed all of it.
-
 ---
 
 ## How this changed my thinking about UI
@@ -77,3 +43,5 @@ npx create-sense-app
 Frameworks aren’t magic.
 
 They’re carefully constrained systems built around very real limitations. Rebuilding one forces those constraints into the open — and that understanding carries far beyond UI code.
+
+I will keep playing around and might add adding more features to this reconciler in the future like effects, context and more.

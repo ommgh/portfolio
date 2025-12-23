@@ -1,0 +1,100 @@
+---
+title: Reconciliation In React
+description: A deep dive into building a custom reconciler using Fiber architecture principles.
+image: https://assets.ommishra.me/images/blog/reconciler.png
+category: basics
+unlisted: true
+icon: fiber-reconciler
+createdAt: 2025-12-10
+updatedAt: 2025-12-10
+---
+
+## Solving Commitment Issues
+
+Once rendering became incremental, the next problem was **state**.
+
+If rendering can pause or restart, we can’t mutate the current tree directly so we’ll keep track of the root of the fiber tree. We call it the work in progress root or **wipRoot**
+
+---
+
+## Work-in-progress (WIP) trees
+
+Every update builds a **new tree**.
+
+- The current tree represents what’s `on the screen now`
+- The WIP tree represents what `will be on the screen`
+
+Once we finish all the work i.e (when there isn’t a next unit of work) we commit the whole fiber tree to the DOM with a _commitRoot_ function.
+
+In this way nothing touches the DOM while this tree is being built.
+
+```javascript
+function commitRoot() {
+  commitWork(wipRoot.child);
+  wipRoot = null;
+}
+
+function commitWork(fiber) {
+  if (!fiber) {
+    return;
+  }
+  const domParent = fiber.parent.dom;
+  domParent.appendChild(fiber.dom);
+  commitWork(fiber.child);
+  commitWork(fiber.sibling);
+}
+```
+
+---
+
+## Reconciliation
+
+As of now we only added stuff to the DOM, but when we want to update or delete something we need to be able to compare the current and WIP trees.
+
+For this we add the **alternate** property to every fiber. This property is a link to the old fiber, the fiber that we committed to the DOM in the previous commit phase.
+
+We create a function called reconcileChildren whose job is to compare the old fiber tree with the new elements and decide:
+
+- Which nodes can be updated
+
+- Which need to be inserted
+
+- Which should be deleted
+
+```javascript
+// same type - update
+if (sameType) {
+  newFiber = {
+    type: matchingOldFiber.type,
+    props: element.props,
+    dom: matchingOldFiber.dom,
+    effectTag: "UPDATE",
+  };
+}
+// different type - add
+if (element && !sameType) {
+  newFiber = {
+    type: element.type,
+    dom: null,
+    effectTag: "PLACEMENT",
+  };
+}
+// different type not in use - delete
+if (matchingOldFiber && !sameType) {
+  matchingOldFiber.effectTag = "DELETION";
+  deletions.push(matchingOldFiber);
+}
+//finally deleting the leftover old fibers
+oldFiberMap.forEach((fiber) => {
+  fiber.effectTag = "DELETION";
+  deletions.push(fiber);
+});
+```
+
+---
+
+## Functional Components
+
+So far we only handled host components (like div, h1, etc). But React also has function and class components.
+
+We will handle this in the next section.

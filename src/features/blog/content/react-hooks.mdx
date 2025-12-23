@@ -1,0 +1,105 @@
+---
+title: Functional Components and Hooks
+description: Understanding implementation of functional components and hooks in a custom reconciler.
+image: https://assets.ommishra.me/images/blog/reconciler.png
+category: basics
+unlisted: true
+icon: fiber-reconciler
+createdAt: 2025-12-09
+updatedAt: 2025-12-09
+---
+
+## Introducing Functional Components
+
+In React, components can be defined as functions that return elements. These are called **functional components**.
+
+Function components are differents in two ways:
+
+- The fiber from a function component doesn’t have a DOM node
+- The children come from running the function instead of getting them directly from the props
+
+To update Functional Components, we add a new _updateFunctionComponent_ function that will call the component function to get the children.
+
+```javascript
+function updateFunctionComponent(fiber) {
+  const children = [fiber.type(fiber.props)];
+  reconcileChildren(fiber, children);
+}
+```
+
+## Implementing Hooks
+
+To implement hooks, we need to keep track of the currently rendering fiber and the hook index. We can do this by adding two variables: _wipFiber_ and _hookIndex_.
+
+```javascript
+let wipFiber = null;
+let hookIndex = null;
+function updateFunctionComponent(fiber) {
+  wipFiber = fiber;
+  hookIndex = 0;
+  wipFiber.hooks = [];
+  const children = [fiber.type(fiber.props)];
+  reconcileChildren(fiber, children);
+}
+```
+
+Now we can implement the _useState_ hook. This hook will use the _wipFiber_ and _hookIndex_ to store and retrieve state.
+
+```javascript
+function useState(initial) {
+  const oldHook =
+    wipFiber.alternate &&
+    wipFiber.alternate.hooks &&
+    wipFiber.alternate.hooks[hookIndex];
+  const hook = {
+    state: oldHook ? oldHook.state : initial,
+  };
+
+  wipFiber.hooks.push(hook);
+  hookIndex++;
+  return [hook.state];
+}
+```
+
+useState should also return a function to update the state, so we define a setState function that receives an action and updates the state accordingly.
+
+So, the complete useState implementation looks like this:
+
+```javascript
+function useState(initial) {
+  const oldHook =
+    wipFiber.alternate &&
+    wipFiber.alternate.hooks &&
+    wipFiber.alternate.hooks[hookIndex];
+  const hook = {
+    state: oldHook ? oldHook.state : initial,
+    queue: [],
+  };
+
+  const actions = oldHook ? oldHook.queue : [];
+  actions.forEach((action) => {
+    hook.state = action(hook.state);
+  });
+
+  const setState = (action) => {
+    hook.queue.push(action);
+    wipRoot = {
+      dom: currentRoot.dom,
+      props: currentRoot.props,
+      alternate: currentRoot,
+    };
+    nextUnitOfWork = wipRoot;
+    deletions = [];
+  };
+
+  wipFiber.hooks.push(hook);
+  hookIndex++;
+  return [hook.state, setState];
+}
+```
+
+## Polishing
+
+With this, we have a basic implementation of functional components and the useState hook in our reconciler. We can now create components as functions and manage state within them using hooks.
+
+Next we will see how can we use this custom reconciler in real life and play around with it.

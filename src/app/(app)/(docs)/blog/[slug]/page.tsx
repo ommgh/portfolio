@@ -147,50 +147,6 @@ export default async function Page({
           />
 
           <PostShareMenu url={getPostUrl(post)} />
-
-          {previous && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="secondary" size="icon-sm" asChild>
-                  <Link href={`/blog/${previous.slug}`}>
-                    <ArrowLeftIcon />
-                    <span className="sr-only">Previous</span>
-                  </Link>
-                </Button>
-              </TooltipTrigger>
-
-              <TooltipContent className="pr-2 pl-3">
-                <div className="flex items-center gap-3">
-                  Previous Post
-                  <Kbd>
-                    <ArrowLeftIcon />
-                  </Kbd>
-                </div>
-              </TooltipContent>
-            </Tooltip>
-          )}
-
-          {next && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="secondary" size="icon-sm" asChild>
-                  <Link href={`/blog/${next.slug}`}>
-                    <span className="sr-only">Next</span>
-                    <ArrowRightIcon />
-                  </Link>
-                </Button>
-              </TooltipTrigger>
-
-              <TooltipContent className="pr-2 pl-3">
-                <div className="flex items-center gap-3">
-                  Next Post
-                  <Kbd>
-                    <ArrowRightIcon />
-                  </Kbd>
-                </div>
-              </TooltipContent>
-            </Tooltip>
-          )}
         </div>
       </div>
 
@@ -218,7 +174,62 @@ export default async function Page({
         </div>
       </Prose>
 
-      <div className="screen-line-before h-4 w-full" />
+      <div className="screen-line-before w-full" />
+
+      <div
+        className={cn(
+          "flex items-center p-2",
+          previous && next
+            ? "justify-between"
+            : next
+              ? "justify-end"
+              : "justify-start"
+        )}
+      >
+        {previous && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="secondary" size="icon-sm" asChild>
+                <Link href={`/blog/${previous.slug}`}>
+                  <ArrowLeftIcon />
+                  <span className="sr-only">Previous</span>
+                </Link>
+              </Button>
+            </TooltipTrigger>
+
+            <TooltipContent className="pr-2 pl-3">
+              <div className="flex items-center gap-3">
+                Previous Post
+                <Kbd>
+                  <ArrowLeftIcon />
+                </Kbd>
+              </div>
+            </TooltipContent>
+          </Tooltip>
+        )}
+
+        {next && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="secondary" size="icon-sm" asChild>
+                <Link href={`/blog/${next.slug}`}>
+                  <span className="sr-only">Next</span>
+                  <ArrowRightIcon />
+                </Link>
+              </Button>
+            </TooltipTrigger>
+
+            <TooltipContent className="pr-2 pl-3">
+              <div className="flex items-center gap-3">
+                Next Post
+                <Kbd>
+                  <ArrowRightIcon />
+                </Kbd>
+              </div>
+            </TooltipContent>
+          </Tooltip>
+        )}
+      </div>
     </>
   );
 }

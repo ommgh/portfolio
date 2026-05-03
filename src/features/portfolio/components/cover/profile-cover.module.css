@@ -5,19 +5,7 @@
   aspect-ratio: 2 / 1;
   overflow: hidden;
   color: var(--foreground);
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      color-mix(in oklab, var(--accent) 68%, transparent) 0 18%,
-      transparent 56%
-    ),
-    linear-gradient(
-      to bottom,
-      transparent,
-      color-mix(in oklab, var(--accent) 44%, transparent) 52%,
-      transparent
-    ),
-    var(--background);
+  background: var(--background);
   user-select: none;
 }
 
@@ -105,4 +93,8 @@
   .canvas {
     opacity: 0.68;
   }
+}
+
+:global(html[data-reduced-effects="true"]) .canvas {
+  opacity: 0.68;
 }

@@ -1,6 +1,8 @@
 "use client"
 
-import { type ReactNode, useEffect, useRef, useState } from "react"
+import { type ReactNode, useEffect, useRef } from "react"
+
+import { useEffectsPreference } from "@/hooks/use-effects-preference"
 
 import styles from "./profile-cover.module.css"
 
@@ -252,21 +254,6 @@ function drawCover(
   context.globalAlpha = 1
 }
 
-function usePrefersReducedMotion() {
-  const [reducedMotion, setReducedMotion] = useState(false)
-
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const update = () => setReducedMotion(media.matches)
-
-    update()
-    media.addEventListener("change", update)
-    return () => media.removeEventListener("change", update)
-  }, [])
-
-  return reducedMotion
-}
-
 function useProfileCoverCanvas(
   containerRef: React.RefObject<HTMLDivElement | null>,
   canvasRef: React.RefObject<HTMLCanvasElement | null>,
@@ -445,14 +432,14 @@ export function ProfileCover({
 }: ProfileCoverProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const reducedMotion = usePrefersReducedMotion()
+  const { reducedEffects } = useEffectsPreference()
 
   useProfileCoverCanvas(containerRef, canvasRef, {
     cellSize,
     color,
     cycleMs,
     dotSize,
-    reducedMotion,
+    reducedMotion: reducedEffects,
     speed,
   })
 

@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic"
 
 import { DesktopNav } from "@/components/desktop-nav"
+import { EffectsToggle } from "@/components/effects-toggle"
 import { MAIN_NAV } from "@/config/site"
 import { cn } from "@/lib/utils"
 
@@ -30,6 +31,7 @@ export function SiteHeader() {
 
         <div className="flex items-center *:first:mr-2">
           <span className="mx-2 hidden h-4 w-px bg-border md:flex" />
+          <EffectsToggle />
           <ThemeToggle />
         </div>
       </div>

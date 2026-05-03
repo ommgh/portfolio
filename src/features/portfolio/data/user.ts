@@ -1,4 +1,4 @@
-import type { User } from "@/features/portfolio/types/user";
+import type { User } from "@/features/portfolio/types/user"
 
 export const USER = {
   firstName: "Om Kumar",
@@ -27,13 +27,10 @@ export const USER = {
   ],
 
   about: `
-  - **Full Stack Engineer** focused on shipping production-grade software that solves real-world problems, with hands-on experience building and scaling MVPs from zero to launch.
-  - Founder & Lead Engineer at [Lit Labs](https://launchit.today), partnering with early-stage startups to architect, build, and deploy industry-ready products with speed and technical rigor.
-  - **Open source contributor** to [Firecrawl](https://github.com/firecrawl/fire-enrich/pull/16)
-    - Earned a **$125 bounty** for a production-impacting PR
-  - **National Finalist — Amazon Sambhav Hackathon 2024**
-    - Selected among **100,000+ teams** nationwide for problem-solving and execution excellence
-  - Currently building [Quickboarder](https://quickboarder.shop) — a platform that enables local merchants to make their products e-commerce ready in minutes, bridging offline businesses to online distribution.
+  Hey, I’m a full stack engineer who likes building things from scratch and getting them into people’s hands. I focus on clean code, solid products, and details that actually matter.
+
+  I run Lit Labs, where I help startups go from idea to real product, fast.
+  Currently building Quickboarder — helping local merchants get online in minutes.
   `,
   avatar: "https://assets.ommishra.me/images/om-avatar.jpg",
   ogImage: "https://assets.ommishra.me/images/screenshot-og-dark.png",
@@ -52,4 +49,4 @@ export const USER = {
     "ommshx",
   ],
   dateCreated: "2025-12-20", // YYYY-MM-DD
-} satisfies User;
+} satisfies User

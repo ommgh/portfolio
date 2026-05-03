@@ -1,6 +1,6 @@
-import { RssIcon } from "lucide-react";
+import { RssIcon } from "lucide-react"
 
-import { SITE_INFO } from "@/config/site";
+import { SITE_INFO } from "@/config/site"
 
 export function SiteFooter() {
   return (
@@ -35,9 +35,9 @@ export function SiteFooter() {
         <div className="flex h-2" />
       </div>
     </footer>
-  );
+  )
 }
 
 function Separator() {
-  return <div className="flex h-11 w-px bg-edge" />;
+  return <div className="flex h-11 w-px bg-edge" />
 }

@@ -1,29 +1,23 @@
-import type { Metadata } from "next";
-import { Suspense } from "react";
+import type { Metadata } from "next"
+import { Suspense } from "react"
 
-import { PostList } from "@/features/blog/components/post-list";
-import { PostListWithSearch } from "@/features/blog/components/post-list-with-search";
-import { PostSearchInput } from "@/features/blog/components/post-search-input";
-import { getListedPosts } from "@/features/blog/data/posts";
+import { PostList } from "@/features/blog/components/post-list"
+import { PostListWithSearch } from "@/features/blog/components/post-list-with-search"
+import { PostSearchInput } from "@/features/blog/components/post-search-input"
+import { getListedPosts } from "@/features/blog/data/posts"
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "A collection of articles on development, design, and ideas.",
-};
+}
 
 export default function Page() {
-  const allPosts = getListedPosts();
+  const allPosts = getListedPosts()
 
   return (
     <div className="min-h-svh">
-      <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Blog</h1>
-      </div>
-
-      <div className="p-4">
-        <p className="font-mono text-sm text-balance text-muted-foreground">
-          {metadata.description}
-        </p>
+      <div className="screen-line-after p-2">
+        <h1 className="text-xl font-semibold">Blogs</h1>
       </div>
 
       <div className="screen-line-before screen-line-after p-2">
@@ -42,5 +36,5 @@ export default function Page() {
 
       <div className="h-4" />
     </div>
-  );
+  )
 }

@@ -1,19 +1,15 @@
-import type { NextConfig } from "next";
-import path from "path";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
-  allowedDevOrigins: ["chanhdai-macbook.local"],
-  turbopack: {
-    root: path.join(__dirname, "."),
-  },
+  allowedDevOrigins: ["ncdai.localhost", "ncdai.local"],
   devIndicators: false,
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "assets.ommishra.me",
+        hostname: "assets.chanhdai.com",
         port: "",
       },
       {
@@ -24,25 +20,54 @@ const nextConfig: NextConfig = {
     ],
     qualities: [75, 100],
   },
+  compiler:
+    process.env.NODE_ENV === "production"
+      ? {
+          removeConsole: {
+            exclude: ["error"],
+          },
+        }
+      : undefined,
   async redirects() {
     return [
       {
-        source:
-          "/:section(blog|components)/writing-effect-inspired-by-apple:extension(.mdx)?",
-        destination: "/:section/apple-hello-effect:extension",
+        source: "/:section(blog|components)/writing-effect-inspired-by-apple",
+        destination: "/:section/apple-hello-effect",
         permanent: true,
       },
-    ];
+      {
+        source: "/:section(blog|components)/work-experience",
+        destination: "/:section/work-experience-component",
+        permanent: true,
+      },
+      {
+        source: "/:section(blog|components)/theme-switcher-component",
+        destination: "/:section/theme-switcher",
+        permanent: true,
+      },
+      {
+        source: "/wall-of-love",
+        destination: "/testimonials",
+        permanent: true,
+      },
+    ]
   },
   async rewrites() {
     return [
       {
-        source: "/blog/:slug.mdx",
-        destination: "/blog.mdx/:slug",
+        source: "/:section(blog|components)/:slug.mdx",
+        destination: "/doc.mdx/:slug",
       },
       {
-        source: "/components/:slug.mdx",
-        destination: "/blog.mdx/:slug",
+        source: "/:section(blog|components)/:slug",
+        destination: "/doc.mdx/:slug",
+        has: [
+          {
+            type: "header",
+            key: "accept",
+            value: "(?<accept>.*text/markdown.*)",
+          },
+        ],
       },
       {
         source: "/rss",
@@ -52,32 +77,8 @@ const nextConfig: NextConfig = {
         source: "/registry/rss",
         destination: "/components/rss",
       },
-    ];
+    ]
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/(.*)",
-  //       headers: [
-  //         {
-  //           // Prevents MIME type sniffing, reducing the risk of malicious file uploads
-  //           key: "X-Content-Type-Options",
-  //           value: "nosniff",
-  //         },
-  //         {
-  //           // Protects against clickjacking attacks by preventing your site from being embedded in iframes.
-  //           key: "X-Frame-Options",
-  //           value: "DENY",
-  //         },
-  //         {
-  //           // Controls how much referrer information is included with requests, balancing security and functionality.
-  //           key: "Referrer-Policy",
-  //           value: "strict-origin-when-cross-origin",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
-};
+}
 
-export default nextConfig;
+export default nextConfig

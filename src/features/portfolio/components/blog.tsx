@@ -1,27 +1,25 @@
-import { ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
+import { ArrowRightIcon } from "lucide-react"
+import Link from "next/link"
 
-import { Button } from "@/components/ui/button";
-import { PostItem } from "@/features/blog/components/post-item";
-import { getListedPosts } from "@/features/blog/data/posts";
+import { Button } from "@/components/ui/button"
+import { PostItem } from "@/features/blog/components/post-item"
+import { getListedPosts } from "@/features/blog/data/posts"
 
-import { Panel, PanelHeader, PanelTitle } from "./panel";
+import { Panel, PanelHeader, PanelTitle } from "./panel"
 
 export function Blog() {
-  const allPosts = getListedPosts();
+  const allPosts = getListedPosts()
 
   return (
     <Panel id="blog">
       <PanelHeader>
         <PanelTitle>Blogs</PanelTitle>
       </PanelHeader>
+      <div className="absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2">
+        <div className="border-r border-edge" />
+      </div>
 
-      <div className="relative py-4">
-        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
-          <div className="border-r border-edge"></div>
-          <div className="border-l border-edge"></div>
-        </div>
-
+      <div className="relative">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {allPosts.slice(0, 2).map((post) => (
             <PostItem key={post.slug} post={post} />
@@ -38,5 +36,5 @@ export function Blog() {
         </Button>
       </div>
     </Panel>
-  );
+  )
 }

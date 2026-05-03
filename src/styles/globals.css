@@ -101,11 +101,74 @@
 }
 
 @utility screen-line-before {
-  @apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-edge;
+  @apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw];
+  @apply before:bg-[repeating-linear-gradient(to_right,var(--color-edge)_0_10px,transparent_10px_20px)];
 }
 
 @utility screen-line-after {
-  @apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-edge;
+  @apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw];
+  @apply after:bg-[repeating-linear-gradient(to_right,var(--color-edge)_0_10px,transparent_10px_20px)];
+}
+
+.border-edge {
+  --edge-border-horizontal: repeating-linear-gradient(
+    to right,
+    var(--color-edge) 0 10px,
+    transparent 10px 20px
+  );
+  --edge-border-vertical: repeating-linear-gradient(
+    to bottom,
+    var(--color-edge) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+.border-edge:is(.border, .border-x, .border-y, .border-t, .border-r, .border-b, .border-l) {
+  border-color: transparent;
+  background-repeat: no-repeat;
+}
+
+.border-edge.border {
+  background-image: var(--edge-border-horizontal), var(--edge-border-vertical),
+    var(--edge-border-horizontal), var(--edge-border-vertical);
+  background-position: top left, top right, bottom left, top left;
+  background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+}
+
+.border-edge.border-x {
+  background-image: var(--edge-border-vertical), var(--edge-border-vertical);
+  background-position: top left, top right;
+  background-size: 1px 100%, 1px 100%;
+}
+
+.border-edge.border-y {
+  background-image: var(--edge-border-horizontal), var(--edge-border-horizontal);
+  background-position: top left, bottom left;
+  background-size: 100% 1px, 100% 1px;
+}
+
+.border-edge.border-t {
+  background-image: var(--edge-border-horizontal);
+  background-position: top left;
+  background-size: 100% 1px;
+}
+
+.border-edge.border-r {
+  background-image: var(--edge-border-vertical);
+  background-position: top right;
+  background-size: 1px 100%;
+}
+
+.border-edge.border-b {
+  background-image: var(--edge-border-horizontal);
+  background-position: bottom left;
+  background-size: 100% 1px;
+}
+
+.border-edge.border-l {
+  background-image: var(--edge-border-vertical);
+  background-position: top left;
+  background-size: 1px 100%;
 }
 
 @utility step {

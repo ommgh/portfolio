@@ -1,16 +1,16 @@
-import { Mail, PhoneIcon } from "lucide-react";
-import Link from "next/link";
+import { Mail, PhoneIcon } from "lucide-react"
+import Link from "next/link"
 
-import { FlipSentences } from "@/components/flip-sentences";
-import { GitHub } from "@/components/icons/github";
-import { LinkedIn } from "@/components/icons/linkedin";
-import { XformerlyTwitter } from "@/components/icons/x";
-import { Button } from "@/components/ui/button";
-import { USER } from "@/features/portfolio/data/user";
+import { FlipSentences } from "@/components/flip-sentences"
+import { GitHub } from "@/components/icons/github"
+import { LinkedIn } from "@/components/icons/linkedin"
+import { XformerlyTwitter } from "@/components/icons/x"
+import { Button } from "@/components/ui/button"
+import { USER } from "@/features/portfolio/data/user"
 
 export function ProfileHeader() {
   return (
-    <div className="screen-line-after flex border-x border-edge">
+    <div className="flex border-x border-edge">
       <div className="shrink-0 border-r border-edge">
         <div className="mx-0.5 my-[3px]">
           <img
@@ -71,5 +71,5 @@ export function ProfileHeader() {
         </div>
       </div>
     </div>
-  );
+  )
 }

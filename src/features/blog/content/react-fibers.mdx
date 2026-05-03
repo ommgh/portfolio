@@ -3,7 +3,7 @@ title: React Fibers
 description: Understanding the core concept of React Fibers
 image: https://assets.ommishra.me/images/blog/reconciler.png
 category: basics
-unlisted: true
+unlisted: false
 icon: fiber-reconciler
 createdAt: 2025-12-11
 updatedAt: 2025-12-11
@@ -30,7 +30,7 @@ Each node in the tree becomes something that can be:
 
 This single change explains most of React’s modern architecture.
 
-You don’t render _a tree_.  
+You don’t render _a tree_.
 You process **work units**.
 
 ---
@@ -79,15 +79,15 @@ Now to put this into action we need a loop that keeps performing work until ther
 
 ```javascript
 function workLoop(deadline) {
-  let shouldYield = false;
+  let shouldYield = false
   while (nextUnitOfWork && !shouldYield) {
-    nextUnitOfWork = performUnitOfWork(nextUnitOfWork);
-    shouldYield = deadline.timeRemaining() < 1;
+    nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
+    shouldYield = deadline.timeRemaining() < 1
   }
   if (!nextUnitOfWork && wipRoot) {
-    commitRoot();
+    commitRoot()
   }
-  requestIdleCallback(workLoop);
+  requestIdleCallback(workLoop)
 }
 ```
 

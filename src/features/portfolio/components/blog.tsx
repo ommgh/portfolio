@@ -2,9 +2,9 @@ import { ArrowRightIcon } from "lucide-react"
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
-import { PostItem } from "@/features/blog/components/post-item"
 import { getListedPosts } from "@/features/blog/data/posts"
 
+import { BlogList } from "./blog-list"
 import { Panel, PanelHeader, PanelTitle } from "./panel"
 
 export function Blog() {
@@ -15,19 +15,10 @@ export function Blog() {
       <PanelHeader>
         <PanelTitle>Blogs</PanelTitle>
       </PanelHeader>
-      <div className="absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2">
-        <div className="border-r border-edge" />
-      </div>
 
-      <div className="relative">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {allPosts.slice(0, 2).map((post) => (
-            <PostItem key={post.slug} post={post} />
-          ))}
-        </div>
-      </div>
+      <BlogList posts={allPosts.slice(0, 4)} />
 
-      <div className="screen-line-before flex justify-center py-2">
+      <div className="flex justify-center py-2">
         <Button variant="default" asChild>
           <Link href="/blog">
             All Posts

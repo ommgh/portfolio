@@ -1,56 +1,56 @@
-import { getTableOfContents } from "fumadocs-core/content/toc";
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
+import { getTableOfContents } from "fumadocs-core/content/toc"
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
+import type { Metadata } from "next"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import type { BlogPosting as PageSchema, WithContext } from "schema-dts"
 
-import { InlineTOC } from "@/components/inline-toc";
-import { MDX } from "@/components/mdx";
-import { Button } from "@/components/ui/button";
-import { Kbd } from "@/components/ui/kbd";
+import { InlineTOC } from "@/components/inline-toc"
+import { MDX } from "@/components/mdx"
+import { Button } from "@/components/ui/button"
+import { Kbd } from "@/components/ui/kbd"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Prose } from "@/components/ui/typography";
-import { SITE_INFO } from "@/config/site";
-import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts";
-import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions";
-import { PostShareMenu } from "@/features/blog/components/post-share-menu";
+} from "@/components/ui/tooltip"
+import { Prose } from "@/components/ui/typography"
+import { SITE_INFO } from "@/config/site"
+import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts"
+import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions"
+import { PostShareMenu } from "@/features/blog/components/post-share-menu"
 import {
   findNeighbour,
   getAllPosts,
   getPostBySlug,
-} from "@/features/blog/data/posts";
-import type { Post } from "@/features/blog/types/post";
-import { USER } from "@/features/portfolio/data/user";
-import { cn } from "@/lib/utils";
+} from "@/features/blog/data/posts"
+import type { Post } from "@/features/blog/types/post"
+import { USER } from "@/features/portfolio/data/user"
+import { cn } from "@/lib/utils"
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = getAllPosts()
   return posts.map((post) => ({
     slug: post.slug,
-  }));
+  }))
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const slug = (await params).slug
+  const post = getPostBySlug(slug)
 
   if (!post) {
-    return notFound();
+    return notFound()
   }
 
-  const { title, description, image, createdAt, updatedAt } = post.metadata;
+  const { title, description, image, createdAt, updatedAt } = post.metadata
 
-  const postUrl = getPostUrl(post);
-  const ogImage = image || `/og/simple?title=${encodeURIComponent(title)}`;
+  const postUrl = getPostUrl(post)
+  const ogImage = image || `/og/simple?title=${encodeURIComponent(title)}`
 
   return {
     title,
@@ -74,7 +74,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       images: [ogImage],
     },
-  };
+  }
 }
 
 function getPageJsonLd(post: Post): WithContext<PageSchema> {
@@ -95,27 +95,27 @@ function getPageJsonLd(post: Post): WithContext<PageSchema> {
       identifier: USER.username,
       image: USER.avatar,
     },
-  };
+  }
 }
 
 export default async function Page({
   params,
 }: {
   params: Promise<{
-    slug: string;
-  }>;
+    slug: string
+  }>
 }) {
-  const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const slug = (await params).slug
+  const post = getPostBySlug(slug)
 
   if (!post) {
-    notFound();
+    notFound()
   }
 
-  const toc = getTableOfContents(post.content);
+  const toc = getTableOfContents(post.content)
 
-  const allPosts = getAllPosts();
-  const { previous, next } = findNeighbour(allPosts, slug);
+  const allPosts = getAllPosts()
+  const { previous, next } = findNeighbour(allPosts, slug)
 
   return (
     <>
@@ -150,20 +150,12 @@ export default async function Page({
         </div>
       </div>
 
-      <div className="screen-line-before screen-line-after">
-        <div
-          className={cn(
-            "h-8",
-            "before:absolute before:-left-[100vw] before:-z-1 before:h-full before:w-[200vw]",
-            "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56"
-          )}
-        />
-      </div>
+      <div className="screen-line-before screen-line-after"></div>
 
       <Prose className="px-4">
-        <h1 className="screen-line-after text-3xl font-semibold">
+        <h3 className="screen-line-after py-2 text-2xl font-semibold">
           {post.metadata.title}
-        </h1>
+        </h3>
 
         <p className="text-muted-foreground">{post.metadata.description}</p>
 
@@ -231,10 +223,10 @@ export default async function Page({
         )}
       </div>
     </>
-  );
+  )
 }
 
 function getPostUrl(post: Post) {
-  const isComponent = post.metadata.category === "components";
-  return isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`;
+  const isComponent = post.metadata.category === "components"
+  return isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`
 }

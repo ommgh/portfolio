@@ -22,17 +22,18 @@ export default function Page() {
 
       <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
         <ProfileCover />
+
         <ProfileHeader />
 
         <About />
 
         <GitHubContributions />
 
-        <TeckStack />
-
         <Projects />
 
         <Blog />
+
+        <TeckStack />
 
         <Awards />
       </div>

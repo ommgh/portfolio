@@ -1,25 +1,31 @@
 export type Project = {
   /** Stable unique identifier (used as list key/anchor). */
-  id: string;
-  title: string;
+  id: string
+  title: string
   /**
    * Project period for display and sorting.
    * Use "MM.YYYY" format. Omit `end` for ongoing projects.
    */
   period: {
     /** Start date (e.g., "05.2025"). */
-    start: string;
+    start: string
     /** End date; leave undefined for "Present". */
-    end?: string;
-  };
+    end?: string
+  }
   /** Public URL (site, repository, demo, or video). */
-  link: string;
+  link: string
+  /** Source Code URL (repository, github, gitlab). */
+  code?: string
   /** Tags/technologies for chips or filtering. */
-  skills: string[];
+  skills: string[]
+  /** Social Media Post (x, linkedin, youtube). */
+  post?: string
   /** Optional rich description; Markdown and line breaks supported. */
-  description?: string;
+  description?: string
   /** Logo image URL (absolute or path under /public). */
-  logo?: string;
+  logo?: string
+  /** Display image URL for grid cards (absolute or path under /public). */
+  displayImage?: string
   /** Whether the project card is expanded by default in the UI. */
-  isExpanded?: boolean;
-};
+  isExpanded?: boolean
+}

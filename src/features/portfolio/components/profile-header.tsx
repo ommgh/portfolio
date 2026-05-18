@@ -1,18 +1,20 @@
 import { Mail, PhoneIcon } from "lucide-react"
 import Link from "next/link"
 
+import { EffectsToggle } from "@/components/effects-toggle"
 import { FlipSentences } from "@/components/flip-sentences"
 import { GitHub } from "@/components/icons/github"
 import { LinkedIn } from "@/components/icons/linkedin"
 import { XformerlyTwitter } from "@/components/icons/x"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { USER } from "@/features/portfolio/data/user"
 
 export function ProfileHeader() {
   return (
-    <div className="flex border-x border-edge">
-      <div className="shrink-0 border-r border-edge">
-        <div className="mx-0.5 my-[3px]">
+    <div className="relative flex border-x border-edge">
+      <div className="shrink-0 border-edge p-4">
+        <div>
           <img
             className="size-32 ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
             alt={`${USER.displayName}'s avatar`}
@@ -23,7 +25,12 @@ export function ProfileHeader() {
       </div>
 
       <div className="flex flex-1 flex-col">
-        <div className="flex grow items-center pl-4">
+        <div className="absolute top-2 right-2 flex items-center *:first:mr-2">
+          <EffectsToggle />
+          <ThemeToggle />
+        </div>
+
+        <div className="flex grow items-center pr-24 pl-4">
           <h1 className="text-3xl font-semibold">{USER.displayName}</h1>
         </div>
 

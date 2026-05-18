@@ -1,13 +1,15 @@
-import type { Project } from "../types/projects";
+import type { Project } from "../types/projects"
 
 export const PROJECTS: Project[] = [
   {
-    id: "quickboarder",
-    title: "QuickBoarder",
+    id: "onboarder",
+    title: "Onboarder",
     period: {
       start: "09.2025",
     },
-    link: "https://quickboarder.shop",
+    link: "https://onboarder.store",
+    code: "https://github.com/ommgh/quickboarder",
+    post: "https://x.com/ommshx/status/2006055077463875630",
     skills: [
       "Startup Project",
       "Next.js",
@@ -17,8 +19,54 @@ export const PROJECTS: Project[] = [
       "Local Commerce",
     ],
     description:
-      "A platform that helps local businesses digitize their product catalogue and become e-commerce ready within minutes.",
+      "A platform that helps local businesses become e-commerce ready",
     logo: "https://assets.ommishra.me/images/QL-DARK.svg",
+    displayImage: "https://www.onboarder.store/og-image.png",
+  },
+  {
+    id: "audx",
+    title: "audx",
+    code: "https://github.com/ommgh/audx",
+    post: "https://x.com/ommshx/status/2047337161016725590",
+    period: {
+      start: "05.2026",
+    },
+    link: "https://audx.site",
+    skills: ["Developer Tools", "Sound", "UI", "Web Audio"],
+    description: "Customisable UI Audio for Modern Web Apps",
+    logo: "https://assets.ommishra.me/images/audx-logo.svg",
+    displayImage: "https://www.audx.site/hero-light.png",
+  },
+  {
+    id: "superdocs",
+    title: "SuperDocs",
+    code: "https://github.com/ommgh/superdocs",
+    post: "https://x.com/ommshx/status/2047337161016725590",
+    period: {
+      start: "12.2025",
+    },
+    link: "https://superdocs.xyz",
+    skills: ["AI", "LLMs", "Web Scraping", "Data Pipelines"],
+    description:
+      "Transforms websites into structured, LLM-ready data for AI agents and downstream applications",
+    logo: "https://assets.ommishra.me/images/superdocs.png",
+    displayImage: "https://assets.ommishra.me/images/superdocs-display.png",
+  },
+  {
+    id: "devtown",
+    title: "Devtown",
+    code: "https://github.com/ommgh/devtown",
+    post: "https://x.com/appwrite/status/1696154396013293906",
+    period: {
+      start: "06.2023",
+      end: "07.2023",
+    },
+    link: "https://devtown.ommishra.me",
+    skills: ["Open Source", "Social Network", "Full Stack"],
+    description:
+      "A social networking platform built specifically for developers to connect and collaborate",
+    logo: "https://assets.ommishra.me/images/devtown-logo.svg",
+    displayImage: "https://assets.ommishra.me/images/devtown-display.png",
   },
   {
     id: "nex-mcf",
@@ -38,44 +86,8 @@ export const PROJECTS: Project[] = [
     description:
       "A central hub to manage multiple e-commerce sales channels and fulfillment workflows from a single dashboard.",
     logo: "https://assets.ommishra.me/images/nex-mcf.png",
+    displayImage: "https://assets.ommishra.me/images/mcf-display.png",
   },
-  {
-    id: "superdocs",
-    title: "SuperDocs",
-    period: {
-      start: "12.2025",
-    },
-    link: "https://superdocs.xyz",
-    skills: ["AI", "LLMs", "Web Scraping", "Data Pipelines"],
-    description:
-      "Transforms websites into structured, LLM-ready data for AI agents and downstream applications.",
-    logo: "https://assets.ommishra.me/images/superdocs.png",
-  },
-  {
-    id: "devtown",
-    title: "Devtown",
-    period: {
-      start: "06.2023",
-      end: "07.2023",
-    },
-    link: "https://devtown.ommishra.me",
-    skills: ["Open Source", "Social Network", "Full Stack"],
-    description:
-      "A social networking platform built specifically for developers to connect and collaborate.",
-    logo: "https://assets.ommishra.me/images/devtown-logo.svg",
-  },
-  {
-    id: "qrated",
-    title: "Qrated",
-    period: {
-      start: "05.2025",
-    },
-    link: "https://qrated.site",
-    skills: ["Creator Tools", "Affiliate Marketing", "Next.js", "Payments"],
-    description:
-      "An organized storefront for creators to curate and share affiliate products through a single link.",
-  },
-
   {
     id: "bashcraft",
     title: "BashCraft",
@@ -86,6 +98,7 @@ export const PROJECTS: Project[] = [
     skills: ["Community", "Linux", "Open Source"],
     description:
       "A community platform for Linux enthusiasts featuring content, discussions, and a weekly newsletter.",
+    displayImage: "https://assets.ommishra.me/images/superdocs.png",
   },
   {
     id: "auth-template",
@@ -97,6 +110,7 @@ export const PROJECTS: Project[] = [
     skills: ["Auth.js", "Next.js", "Authentication"],
     description:
       "A production-ready authentication starter template built with Auth.js.",
+    displayImage: "https://assets.ommishra.me/images/devtown-logo.svg",
   },
   {
     id: "easeecom",
@@ -108,6 +122,7 @@ export const PROJECTS: Project[] = [
     skills: ["SaaS", "E-commerce", "Dashboards"],
     description:
       "An e-commerce management platform to streamline operations and analytics.",
+    displayImage: "https://assets.ommishra.me/images/nex-mcf.png",
   },
   {
     id: "dermai",
@@ -119,6 +134,7 @@ export const PROJECTS: Project[] = [
     skills: ["AI", "Healthcare", "Recommendations"],
     description:
       "An AI-powered platform delivering personalized skincare recommendations.",
+    displayImage: "https://assets.ommishra.me/images/superdocs.png",
   },
   {
     id: "yardstoacres",
@@ -130,6 +146,7 @@ export const PROJECTS: Project[] = [
     skills: ["PropTech", "Marketplace", "Full Stack"],
     description:
       "A real estate platform for buying, selling, and renting properties.",
+    displayImage: "https://assets.ommishra.me/images/devtown-logo.svg",
   },
   {
     id: "nexa",
@@ -141,6 +158,7 @@ export const PROJECTS: Project[] = [
     skills: ["Web3", "Gaming", "Crypto", "WebSockets"],
     description:
       "A mini-games platform offering real crypto rewards with low-latency gameplay.",
+    displayImage: "https://assets.ommishra.me/images/QL-DARK.svg",
   },
   {
     id: "connect4",
@@ -152,5 +170,6 @@ export const PROJECTS: Project[] = [
     skills: ["WebSockets", "Serverless", "Game Dev"],
     description:
       "A real-time Connect 4 game built using serverless WebSocket architecture.",
+    displayImage: "https://assets.ommishra.me/images/nex-mcf.png",
   },
-];
+]

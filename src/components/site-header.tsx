@@ -1,12 +1,10 @@
 import dynamic from "next/dynamic"
 
 import { DesktopNav } from "@/components/desktop-nav"
-import { EffectsToggle } from "@/components/effects-toggle"
 import { MAIN_NAV } from "@/config/site"
 import { cn } from "@/lib/utils"
 
 import { SiteHeaderWrapper } from "./site-header-wrapper"
-import { ThemeToggle } from "./theme-toggle"
 
 const MobileNav = dynamic(() =>
   import("@/components/mobile-nav").then((mod) => mod.MobileNav)
@@ -28,12 +26,6 @@ export function SiteHeader() {
         <div className="flex-1" />
 
         <DesktopNav items={MAIN_NAV} />
-
-        <div className="flex items-center *:first:mr-2">
-          <span className="mx-2 hidden h-4 w-px bg-border md:flex" />
-          <EffectsToggle />
-          <ThemeToggle />
-        </div>
       </div>
     </SiteHeaderWrapper>
   )

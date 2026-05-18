@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
       start: "05.2026",
     },
     link: "https://audx.site",
-    skills: ["Developer Tools", "Sound", "UI", "Web Audio"],
+    skills: ["Developer Tools", "Sound", "Interface", "Web Audio", "Semantic"],
     description: "Customisable UI Audio for Modern Web Apps",
     logo: "https://assets.ommishra.me/images/audx-logo.svg",
     displayImage: "https://www.audx.site/hero-light.png",

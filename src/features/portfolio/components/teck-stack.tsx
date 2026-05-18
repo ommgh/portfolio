@@ -1,82 +1,63 @@
-import Image from "next/image";
+import Image from "next/image"
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-
-import { TECH_STACK } from "../data/tech-stack";
-import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel";
+import { TECH_STACK } from "../data/tech-stack"
+import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel"
 
 export function TeckStack() {
   return (
     <Panel id="stack">
       <PanelHeader>
-        <PanelTitle>Stack</PanelTitle>
+        <PanelTitle>Skills & Technologies</PanelTitle>
       </PanelHeader>
 
-      <PanelContent
-        className={cn(
-          "[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5",
-          "bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center",
-          "bg-zinc-950/0.75 dark:bg-white/0.75"
-        )}
-      >
-        <ul className="flex flex-wrap gap-4 select-none">
+      <PanelContent>
+        <ul className="flex flex-wrap gap-2">
           {TECH_STACK.map((tech) => {
             return (
               <li key={tech.key} className="flex">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <a
-                      href={tech.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={tech.title}
-                    >
-                      {tech.theme ? (
-                        <>
-                          <Image
-                            src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-light.svg`}
-                            alt={`${tech.title} light icon`}
-                            width={32}
-                            height={32}
-                            className="hidden [html.light_&]:block"
-                            unoptimized
-                          />
-                          <Image
-                            src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-dark.svg`}
-                            alt={`${tech.title} dark icon`}
-                            width={32}
-                            height={32}
-                            className="hidden [html.dark_&]:block"
-                            unoptimized
-                          />
-                        </>
-                      ) : (
-                        <Image
-                          src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}.svg`}
-                          alt={`${tech.title} icon`}
-                          width={32}
-                          height={32}
-                          unoptimized
-                        />
-                      )}
-                      <span className="sr-only">{tech.title}</span>
-                    </a>
-                  </TooltipTrigger>
-
-                  <TooltipContent>
-                    <p>{tech.title}</p>
-                  </TooltipContent>
-                </Tooltip>
+                <a
+                  href={tech.href}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={tech.title}
+                  className="retina:border-[0.5px] flex items-center gap-2 border bg-zinc-50 px-2 py-1 text-xs tracking-wide text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 [&_img]:size-3.5 [&_img]:select-none"
+                >
+                  {tech.theme ? (
+                    <>
+                      <Image
+                        className="hidden grayscale [html.light_&]:block"
+                        src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-light.svg`}
+                        alt={`${tech.title} light icon`}
+                        width={14}
+                        height={14}
+                        unoptimized
+                      />
+                      <Image
+                        className="hidden grayscale [html.dark_&]:block"
+                        src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-dark.svg`}
+                        alt={`${tech.title} dark icon`}
+                        width={14}
+                        height={14}
+                        unoptimized
+                      />
+                    </>
+                  ) : (
+                    <Image
+                      src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}.svg`}
+                      // className="grayscale"
+                      alt={`${tech.title} icon`}
+                      width={14}
+                      height={14}
+                      unoptimized
+                    />
+                  )}
+                  {tech.title}
+                </a>
               </li>
-            );
+            )
           })}
         </ul>
       </PanelContent>
     </Panel>
-  );
+  )
 }

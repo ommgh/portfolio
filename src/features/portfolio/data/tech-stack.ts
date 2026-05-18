@@ -1,4 +1,4 @@
-import type { TechStack } from "../types/tech-stack";
+import type { TechStack } from "../types/tech-stack"
 
 export const TECH_STACK: TechStack[] = [
   {
@@ -21,21 +21,9 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Language"],
   },
   {
-    key: "python",
-    title: "Python",
-    href: "https://www.python.org/",
-    categories: ["Language"],
-  },
-  {
     key: "nodejs",
     title: "Node.js",
     href: "https://nodejs.org/",
-    categories: ["Runtime Environment"],
-  },
-  {
-    key: "bun",
-    title: "Bun",
-    href: "https://bun.sh/",
     categories: ["Runtime Environment"],
   },
   {
@@ -58,13 +46,11 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Framework"],
   },
   {
-    key: "shadcn-ui",
-    title: "shadcn/ui",
-    href: "https://ui.shadcn.com/",
-    categories: ["Library", "Component Library"],
-    theme: true,
+    key: "mongodb",
+    title: "MongoDB",
+    href: "https://www.mongodb.com/",
+    categories: ["Backend & Database"],
   },
-
   {
     key: "motion",
     title: "Motion",
@@ -72,11 +58,10 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Library", "Animation"],
   },
   {
-    key: "tanstack",
-    title: "TanStack",
-    href: "https://tanstack.com/",
-    categories: ["Library"],
-    theme: true,
+    key: "postgresql",
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org",
+    categories: ["Backend & Database"],
   },
 
   {
@@ -109,11 +94,4 @@ export const TECH_STACK: TechStack[] = [
     href: "https://www.figma.com/",
     categories: ["Tools", "Design"],
   },
-  {
-    key: "react-router",
-    title: "React Router",
-    href: "https://reactrouter.com/",
-    categories: ["Library", "Navigation"],
-    theme: true,
-  },
-];
+]

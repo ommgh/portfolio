@@ -13,10 +13,10 @@ import { USER } from "@/features/portfolio/data/user"
 export function ProfileHeader() {
   return (
     <div className="relative flex border-x border-edge">
-      <div className="shrink-0 border-edge p-4 pr-1">
+      <div className="shrink-0 border-edge p-3 pr-1">
         <div>
           <img
-            className="size-32 ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
+            className="size-28 ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-32"
             alt={`${USER.displayName}'s avatar`}
             src={USER.avatar}
             fetchPriority="high"
@@ -25,16 +25,16 @@ export function ProfileHeader() {
       </div>
 
       <div className="flex flex-1 flex-col">
-        <div className="absolute top-2 right-2 flex items-center *:first:mr-2">
+        <div className="absolute top-1.5 right-2 flex items-center *:first:mr-2">
           <EffectsToggle />
           <ThemeToggle />
         </div>
 
-        <div className="flex grow items-center pr-24 pl-4">
+        <div className="flex grow items-center pr-24 pl-3">
           <h1 className="text-3xl font-semibold">{USER.displayName}</h1>
         </div>
 
-        <div className="border-t border-edge py-1 pl-4">
+        <div className="border-t border-edge py-0.5 pl-3">
           <FlipSentences
             className="font-mono text-sm text-balance text-muted-foreground"
             variants={{
@@ -47,7 +47,7 @@ export function ProfileHeader() {
           </FlipSentences>
         </div>
 
-        <div className="flex items-center border-t border-edge py-1 pl-4">
+        <div className="flex items-center border-t border-edge py-0.5 pl-3">
           <div className="flex flex-row">
             <Link href={"https://x.com/ommshx"} target="_blank">
               <Button variant="ghost" size="icon">

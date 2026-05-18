@@ -63,14 +63,14 @@ export function ProjectItem({
             <h3 className="text-lg leading-snug font-medium text-balance underline-offset-4 group-hover/project:underline">
               {project.title}
             </h3>
-
-            {project.description && (
-              <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
-                {project.description}
-              </p>
-            )}
           </div>
         </div>
+
+        {project.description && (
+          <p className="line-clamp-2 text-sm text-muted-foreground">
+            {project.description}
+          </p>
+        )}
 
         {project.skills.length > 0 && (
           <ul className="flex flex-wrap gap-1.5">

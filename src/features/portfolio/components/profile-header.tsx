@@ -13,7 +13,7 @@ import { USER } from "@/features/portfolio/data/user"
 export function ProfileHeader() {
   return (
     <div className="relative flex border-x border-edge">
-      <div className="shrink-0 border-edge p-4">
+      <div className="shrink-0 border-edge p-4 pr-1">
         <div>
           <img
             className="size-32 ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"

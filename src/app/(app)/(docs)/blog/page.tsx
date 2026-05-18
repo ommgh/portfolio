@@ -1,4 +1,6 @@
+import { ChevronLeft } from "lucide-react"
 import type { Metadata } from "next"
+import Link from "next/link"
 import { Suspense } from "react"
 
 import { PostList } from "@/features/blog/components/post-list"
@@ -17,7 +19,15 @@ export default function Page() {
   return (
     <div className="min-h-svh">
       <div className="screen-line-after p-2">
-        <h1 className="text-xl font-semibold">Blogs</h1>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+          >
+            <ChevronLeft className="size-4" />
+          </Link>
+          <h1 className="text-xl font-semibold">Blogs</h1>
+        </div>
       </div>
 
       <div className="screen-line-before screen-line-after p-2">

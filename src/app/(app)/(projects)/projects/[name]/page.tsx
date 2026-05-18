@@ -1,5 +1,6 @@
 import {
   ArrowLeftIcon,
+  ChevronLeft,
   FileTextIcon,
   GithubIcon,
   GlobeIcon,
@@ -70,7 +71,7 @@ export default async function Page({ params }: PageProps) {
             href="/projects"
             className="inline-flex items-center gap-1 hover:text-foreground"
           >
-            <ArrowLeftIcon className="size-4" />
+            <ChevronLeft className="size-4" />
             Projects
           </Link>
           <span>/</span>

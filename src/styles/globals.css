@@ -123,28 +123,54 @@
   );
 }
 
-.border-edge:is(.border, .border-x, .border-y, .border-t, .border-r, .border-b, .border-l) {
+.border-edge:is(
+    .border,
+    .border-x,
+    .border-y,
+    .border-t,
+    .border-r,
+    .border-b,
+    .border-l
+  ) {
   border-color: transparent;
   background-repeat: no-repeat;
 }
 
 .border-edge.border {
-  background-image: var(--edge-border-horizontal), var(--edge-border-vertical),
+  background-image:
+    var(--edge-border-horizontal), var(--edge-border-vertical),
     var(--edge-border-horizontal), var(--edge-border-vertical);
-  background-position: top left, top right, bottom left, top left;
-  background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+  background-position:
+    top left,
+    top right,
+    bottom left,
+    top left;
+  background-size:
+    100% 1px,
+    1px 100%,
+    100% 1px,
+    1px 100%;
 }
 
 .border-edge.border-x {
   background-image: var(--edge-border-vertical), var(--edge-border-vertical);
-  background-position: top left, top right;
-  background-size: 1px 100%, 1px 100%;
+  background-position:
+    top left,
+    top right;
+  background-size:
+    1px 100%,
+    1px 100%;
 }
 
 .border-edge.border-y {
-  background-image: var(--edge-border-horizontal), var(--edge-border-horizontal);
-  background-position: top left, bottom left;
-  background-size: 100% 1px, 100% 1px;
+  background-image:
+    var(--edge-border-horizontal), var(--edge-border-horizontal);
+  background-position:
+    top left,
+    bottom left;
+  background-size:
+    100% 1px,
+    100% 1px;
 }
 
 .border-edge.border-t {
@@ -181,13 +207,12 @@
 
 :root {
   /* white */
-  --background: oklch(0.9843 0.0011 197.14);
+  --background: oklch(0.9612 0 89.88);
 
   /* zinc-950 */
-  --foreground: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.185 0 89.88);
 
-  /* zinc-950 */
-  --primary: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.185 0 89.88);
 
   /* zinc-50 */
   --primary-foreground: oklch(0.985 0 0);
@@ -195,8 +220,7 @@
   /* zinc-100 */
   --secondary: oklch(0.967 0.001 286.375);
 
-  /* zinc-950 */
-  --secondary-foreground: oklch(0.141 0.005 285.823);
+  --secondary-foreground: oklch(0.185 0 89.88);
 
   /* zinc-100 */
   --muted: oklch(0.967 0.001 286.375);
@@ -207,14 +231,13 @@
   /* white */
   --card: oklch(1 0 0);
 
-  /* zinc-950 */
-  --card-foreground: oklch(0.141 0.005 285.823);
+  --card-foreground: oklch(0.185 0 89.88);
 
   /* white */
   --popover: oklch(1 0 0);
 
   /* zinc-950 */
-  --popover-foreground: oklch(0.141 0.005 285.823);
+  --popover-foreground: oklch(0.185 0 89.88);
 
   --popover-border: color-mix(in oklab, var(--color-black) 15%, transparent);
 
@@ -229,8 +252,8 @@
   /* zinc-200 */
   --border: oklch(0.92 0.004 286.32);
 
-  /* color-mix */
-  --edge: color-mix(in oklab, var(--border) 64%, var(--background));
+  /* light-mode edge (fixed for visibility) */
+  --edge: oklch(0.85 0.005 286.32);
 
   /* zinc-200 */
   --input: oklch(0.92 0.004 286.32);
@@ -265,29 +288,24 @@
   --selection: oklch(0.141 0.005 285.823);
 
   /* zinc-50 */
-  --selection-foreground: oklch(0.985 0 0);
+  --selection-foreground: oklch(0.9612 0 89.88);
 
   --shadow-popover: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
 .dark {
-  /* zinc-950 */
-  --background: oklch(0.1408 0.0044 285.82);
+  --background: oklch(0.185 0 89.88);
 
-  /* zinc-50 */
-  --foreground: oklch(0.985 0 0);
+  --foreground: oklch(0.9612 0 89.88);
 
-  /* zinc-50 */
-  --primary: oklch(0.985 0 0);
+  --primary: oklch(0.9612 0 89.88);
 
-  /* zinc-950 */
-  --primary-foreground: oklch(0.141 0.005 285.823);
+  --primary-foreground: oklch(0.185 0 89.88);
 
   /* zinc-800 */
   --secondary: oklch(0.274 0.006 286.033);
 
-  /* zinc-50 */
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: oklch(0.9612 0 89.88);
 
   /* zinc-800 */
   --muted: oklch(0.274 0.006 286.033);
@@ -298,14 +316,12 @@
   /* zinc-900 */
   --card: oklch(0.21 0.006 285.885);
 
-  /* zinc-50 */
-  --card-foreground: oklch(0.985 0 0);
+  --card-foreground: oklch(0.9612 0 89.88);
 
   /* zinc-900 */
   --popover: oklch(0.21 0.006 285.885);
 
-  /* zinc-50 */
-  --popover-foreground: oklch(0.985 0 0);
+  --popover-foreground: oklch(0.9612 0 89.88);
 
   /* zinc-700 */
   --popover-border: oklch(0.37 0.013 285.805);
@@ -315,13 +331,13 @@
 
   --accent2: color-mix(in oklab, var(--accent) 20%, transparent);
 
-  /* zinc-50 */
-  --accent-foreground: oklch(0.985 0 0);
+  --accent-foreground: oklch(0.9612 0 89.88);
 
   /* zinc-800 */
   --border: oklch(0.274 0.006 286.033);
 
-  /* --edge: color-mix(in oklab, var(--border) 64%, var(--background)); */
+  /* color-mix */
+  --edge: color-mix(in oklab, var(--foreground) 6%, var(--border));
 
   /* zinc-800 */
   --input: oklch(0.274 0.006 286.033);
@@ -341,7 +357,6 @@
   /* zinc-900 */
   --code: oklch(0.21 0.006 285.885);
 
-  /* zinc-50 */
   --code-foreground: oklch(0.985 0 0);
 
   /* zinc-500 */
@@ -350,8 +365,7 @@
   /* zinc-800 */
   --code-highlight: oklch(0.274 0.006 286.033);
 
-  /* zinc-50 */
-  --selection: oklch(0.985 0 0);
+  --selection: oklch(0.9612 0 89.88);
 
   /* zinc-950 */
   --selection-foreground: oklch(0.141 0.005 285.823);
@@ -402,57 +416,6 @@
   [id] {
     @apply scroll-mt-18;
   }
-
-  /* Thanks https://theme-toggle.rdsx.dev */
-  /* polygon */
-  /* ::view-transition-group(root) {
-    animation-duration: 0.8s;
-    animation-timing-function: linear(
-      0 0%,
-      0.1684 2.66%,
-      0.3165 5.49%,
-      0.446 8.52%,
-      0.5581 11.78%,
-      0.6535 15.29%,
-      0.7341 19.11%,
-      0.8011 23.3%,
-      0.8557 27.93%,
-      0.8962 32.68%,
-      0.9283 38.01%,
-      0.9529 44.08%,
-      0.9711 51.14%,
-      0.9833 59.06%,
-      0.9915 68.74%,
-      1 100%
-    );
-  }
-  ::view-transition-new(root) {
-    animation-name: reveal-light;
-  }
-  ::view-transition-old(root),
-  .dark::view-transition-old(root) {
-    animation: none;
-    z-index: -1;
-  }
-  .dark::view-transition-new(root) {
-    animation-name: reveal-dark;
-  }
-  @keyframes reveal-dark {
-    from {
-      clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
-    }
-    to {
-      clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
-    }
-  }
-  @keyframes reveal-light {
-    from {
-      clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
-    }
-    to {
-      clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
-    }
-  } */
 }
 
 @layer components {

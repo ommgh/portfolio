@@ -1,4 +1,6 @@
+import { ChevronLeft } from "lucide-react"
 import type { Metadata } from "next"
+import Link from "next/link"
 
 import { ProjectItem } from "@/features/portfolio/components/projects/project-item"
 import { PROJECTS } from "@/features/portfolio/data/projects"
@@ -12,10 +14,15 @@ export default function Page() {
   return (
     <div className="min-h-svh">
       <div className="screen-line-after p-2">
-        <h1 className="text-xl font-semibold">Projects</h1>
-        <p className="text-sm text-muted-foreground">
-          A collection of products, experiments, and client work.
-        </p>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+          >
+            <ChevronLeft className="size-4" />
+          </Link>
+          <h1 className="text-xl font-semibold">Projects</h1>
+        </div>
       </div>
 
       <div className="relative">

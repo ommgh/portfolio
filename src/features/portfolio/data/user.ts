@@ -27,10 +27,13 @@ export const USER = {
   ],
 
   about: `
-  Hey, I’m a full stack engineer who likes building things from scratch and getting them into people’s hands. I focus on clean code, solid products, and details that actually matter.
+  Full stack engineer focused on building products from 0 → production.
 
-  I run Lit Labs, where I help startups go from idea to real product, fast.
-  Currently building Quickboarder — helping local merchants get online in minutes.
+  Built and led [Lit Labs](https://launchit.today) shipping web and mobile apps for 10+ clients with a team of 5.
+
+  Contributed to open-source, won bounties, and built multiple products across AI, developer tools, and frontend systems.
+
+  Currently building [Onboarder](https://onboarder.store) — platform that enables local merchants to make their products e-commerce ready in minutes.
   `,
   avatar: "https://assets.ommishra.me/images/om-avatar.jpg",
   ogImage: "https://assets.ommishra.me/images/screenshot-og-dark.png",

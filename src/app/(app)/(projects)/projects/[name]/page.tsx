@@ -99,9 +99,9 @@ export default async function Page({ params }: PageProps) {
           <div className="pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/10" />
         </div>
 
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:divide-x sm:divide-edge">
+        <div className="flex w-full divide-x divide-edge border-edge">
           <a
-            className="flex items-center justify-center gap-2 p-3 text-sm hover:bg-accent2"
+            className="flex flex-1 items-center justify-center gap-2 p-3 text-sm hover:underline"
             href={projectLink}
             target="_blank"
             rel="noopener"
@@ -111,30 +111,32 @@ export default async function Page({ params }: PageProps) {
             ) : (
               <GlobeIcon className="size-4" aria-hidden />
             )}
-            <span>{isGithub ? "GitHub" : "Website"}</span>
+            <span className="hidden sm:inline">
+              {isGithub ? "GitHub" : "Website"}
+            </span>
           </a>
 
           {projectCodeLink && (
             <a
-              className="flex items-center justify-center gap-2 p-3 text-sm hover:bg-accent2"
+              className="flex flex-1 items-center justify-center gap-2 p-3 text-sm hover:underline"
               href={projectCodeLink}
               target="_blank"
               rel="noopener"
             >
               <GithubIcon className="size-4" aria-hidden />
-              <span>Code</span>
+              <span className="hidden sm:inline">Code</span>
             </a>
           )}
 
           {projectPostLink && (
             <a
-              className="flex items-center justify-center gap-2 p-3 text-sm hover:bg-accent2"
+              className="flex flex-1 items-center justify-center gap-2 p-3 text-sm hover:underline"
               href={projectPostLink}
               target="_blank"
               rel="noopener"
             >
               <FileTextIcon className="size-4" aria-hidden />
-              <span>Post</span>
+              <span className="hidden sm:inline">Post</span>
             </a>
           )}
         </div>

@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
     period: {
       start: "12.2025",
     },
-    link: "https://superdocs.xyz",
+    link: "https://superdocs-delta.vercel.app",
     skills: ["AI", "LLMs", "Web Scraping", "Data Pipelines"],
     description:
       "Transforms websites into structured, LLM-ready data for AI agents and downstream applications",
@@ -94,11 +94,60 @@ export const PROJECTS: Project[] = [
     period: {
       start: "09.2024",
     },
-    link: "https://bashcraft.club",
+    link: "https://bashcraft.vercel.app",
     skills: ["Community", "Linux", "Open Source"],
     description:
       "A community platform for Linux enthusiasts featuring content, discussions, and a weekly newsletter.",
-    displayImage: "https://assets.ommishra.me/images/superdocs.png",
+    displayImage: "https://assets.ommishra.me/images/bash-display.png",
+  },
+
+  {
+    id: "dermai",
+    title: "DermAI",
+    period: {
+      start: "04.2025",
+    },
+    link: "https://dermai.vercel.app",
+    skills: ["AI", "Healthcare", "Recommendations"],
+    description:
+      "An AI-powered platform delivering personalized skincare recommendations.",
+    displayImage: "https://assets.ommishra.me/images/derm-display.png",
+  },
+  {
+    id: "yardstoacres",
+    title: "YardsToAcres",
+    period: {
+      start: "07.2023",
+    },
+    link: "https://yardstoacres.com",
+    skills: ["PropTech", "Marketplace", "Full Stack"],
+    description:
+      "A real estate platform for buying, selling, and renting properties.",
+    displayImage: "https://assets.ommishra.me/images/yard-display.png",
+  },
+  {
+    id: "connect4",
+    title: "Connect4",
+    period: {
+      start: "07.2024",
+    },
+    link: "https://connectfour-chi.vercel.app/",
+    skills: ["WebSockets", "Serverless", "Game Dev"],
+    description:
+      "A real-time Connect 4 game built using serverless WebSocket architecture.",
+    displayImage: "https://assets.ommishra.me/images/c4-display.png",
+  },
+  {
+    id: "nexa",
+    title: "NEXA",
+    period: {
+      start: "11.2024",
+    },
+    link: "https://nexabetx.vercel.app",
+    skills: ["Web3", "Gaming", "Crypto", "WebSockets"],
+    description:
+      "A mini-games platform offering real crypto rewards with low-latency gameplay.",
+    displayImage: "https://assets.ommishra.me/images/QL-DARK.svg",
   },
   {
     id: "auth-template",
@@ -122,54 +171,6 @@ export const PROJECTS: Project[] = [
     skills: ["SaaS", "E-commerce", "Dashboards"],
     description:
       "An e-commerce management platform to streamline operations and analytics.",
-    displayImage: "https://assets.ommishra.me/images/nex-mcf.png",
-  },
-  {
-    id: "dermai",
-    title: "DermAI",
-    period: {
-      start: "04.2025",
-    },
-    link: "https://dermai.vercel.app",
-    skills: ["AI", "Healthcare", "Recommendations"],
-    description:
-      "An AI-powered platform delivering personalized skincare recommendations.",
-    displayImage: "https://assets.ommishra.me/images/superdocs.png",
-  },
-  {
-    id: "yardstoacres",
-    title: "YardsToAcres",
-    period: {
-      start: "07.2023",
-    },
-    link: "https://yardstoacres.com",
-    skills: ["PropTech", "Marketplace", "Full Stack"],
-    description:
-      "A real estate platform for buying, selling, and renting properties.",
-    displayImage: "https://assets.ommishra.me/images/devtown-logo.svg",
-  },
-  {
-    id: "nexa",
-    title: "NEXA",
-    period: {
-      start: "11.2024",
-    },
-    link: "https://nexabetx.vercel.app",
-    skills: ["Web3", "Gaming", "Crypto", "WebSockets"],
-    description:
-      "A mini-games platform offering real crypto rewards with low-latency gameplay.",
-    displayImage: "https://assets.ommishra.me/images/QL-DARK.svg",
-  },
-  {
-    id: "connect4",
-    title: "Connect4",
-    period: {
-      start: "07.2024",
-    },
-    link: "https://connectfour-chi.vercel.app/",
-    skills: ["WebSockets", "Serverless", "Game Dev"],
-    description:
-      "A real-time Connect 4 game built using serverless WebSocket architecture.",
     displayImage: "https://assets.ommishra.me/images/nex-mcf.png",
   },
 ]

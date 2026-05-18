@@ -5,6 +5,7 @@ import { CalendarIcon, PinIcon } from "lucide-react"
 import { motion } from "motion/react"
 import Link from "next/link"
 
+import ComesInGoesOutUnderline from "@/components/fancy/text/underline-comes-in-goes-out"
 import { getIcon } from "@/components/icons"
 import type { Post } from "@/features/blog/types/post"
 
@@ -42,20 +43,9 @@ export function BlogList({ posts }: BlogListProps) {
                 </div>
               )}
               <h3 className="mb-1 inline-block leading-snug font-medium text-balance">
-                <span className="relative inline-block">
+                <ComesInGoesOutUnderline className="inline-block">
                   {post.metadata.title}
-                  <motion.span
-                    className="absolute right-0 -bottom-0.5 left-0 h-px origin-left bg-foreground"
-                    variants={{
-                      rest: { scaleX: 0 },
-                      hover: { scaleX: 1 },
-                    }}
-                    transition={{
-                      duration: 0.4,
-                      ease: [0.42, 0, 1, 1],
-                    }}
-                  />
-                </span>
+                </ComesInGoesOutUnderline>
               </h3>
 
               <dl className="text-xs text-muted-foreground">

@@ -20,12 +20,12 @@ export function TeckStack() {
                   target="_blank"
                   rel="noopener"
                   aria-label={tech.title}
-                  className="retina:border-[0.5px] flex items-center gap-2 border bg-zinc-50 px-2 py-1 text-xs tracking-wide text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 [&_img]:size-3.5 [&_img]:select-none"
+                  className="group retina:border-[0.5px] flex items-center gap-2 border bg-zinc-50 px-2 py-1 text-xs tracking-wide text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 [&_img]:size-3.5 [&_img]:select-none"
                 >
                   {tech.theme ? (
                     <>
                       <Image
-                        className="hidden grayscale [html.light_&]:block"
+                        className="hidden grayscale transition group-hover:grayscale-0 [html.light_&]:block"
                         src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-light.svg`}
                         alt={`${tech.title} light icon`}
                         width={14}
@@ -33,7 +33,7 @@ export function TeckStack() {
                         unoptimized
                       />
                       <Image
-                        className="hidden grayscale [html.dark_&]:block"
+                        className="hidden grayscale transition group-hover:grayscale-0 [html.dark_&]:block"
                         src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-dark.svg`}
                         alt={`${tech.title} dark icon`}
                         width={14}
@@ -44,7 +44,7 @@ export function TeckStack() {
                   ) : (
                     <Image
                       src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}.svg`}
-                      // className="grayscale"
+                      className="grayscale transition group-hover:grayscale-0"
                       alt={`${tech.title} icon`}
                       width={14}
                       height={14}

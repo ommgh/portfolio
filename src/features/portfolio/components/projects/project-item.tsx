@@ -2,6 +2,7 @@ import { BoxIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
+import ComesInGoesOutUnderline from "@/components/fancy/text/underline-comes-in-goes-out"
 import { Tag } from "@/components/ui/tag"
 import { cn } from "@/lib/utils"
 
@@ -60,8 +61,10 @@ export function ProjectItem({
           )}
 
           <div className="min-w-0 flex-1">
-            <h3 className="text-lg leading-snug font-medium text-balance underline-offset-4 group-hover/project:underline">
-              {project.title}
+            <h3 className="text-lg leading-snug font-medium text-balance">
+              <ComesInGoesOutUnderline className="inline-block">
+                {project.title}
+              </ComesInGoesOutUnderline>
             </h3>
           </div>
         </div>

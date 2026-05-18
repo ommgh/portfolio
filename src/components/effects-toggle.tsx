@@ -15,8 +15,8 @@ export function EffectsToggle() {
   const { reducedEffects, toggleReducedEffects } = useEffectsPreference()
   const playClick = useSound("/audio/click.wav")
   const label = reducedEffects
-    ? "Enable motion and sound"
-    : "Reduce motion and mute sound"
+    ? "Enable Motion & Audio"
+    : "Reduce Motion & Mute Audio"
 
   return (
     <Tooltip>

@@ -20,7 +20,7 @@ export const USER = {
   jobTitle: "Full Stack Developer",
   jobs: [
     {
-      title: "Founder",
+      title: "Full Stack Developer",
       company: "Lit Labs",
       website: "https://launchit.today",
     },
@@ -29,13 +29,13 @@ export const USER = {
   about: `
   Full stack engineer focused on building products from 0 → production.
 
-  Built and led [Lit Labs](https://launchit.today) shipping web and mobile apps for 10+ clients with a team of 5.
+  Built and led __Lit Labs__ shipping web and mobile apps for 10+ founders with a team of 5.
 
   Contributed to open-source, won bounties, and built multiple products across AI, developer tools, and frontend systems.
 
   Currently building [Onboarder](https://onboarder.store) — platform that enables local merchants to make their products e-commerce ready in minutes.
   `,
-  avatar: "https://assets.ommishra.me/images/om-avatar.jpg",
+  avatar: "/images/omm-pf.jpg",
   ogImage: "https://assets.ommishra.me/images/screenshot-og-dark.png",
   namePronunciationUrl: "/audio/chanhdai.mp3",
   timeZone: "Asia/Calcutta",
@@ -51,5 +51,5 @@ export const USER = {
     "mishra om",
     "ommshx",
   ],
-  dateCreated: "2025-12-20", // YYYY-MM-DD
+  dateCreated: "2026-06-15", // YYYY-MM-DD
 } satisfies User

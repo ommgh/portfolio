@@ -294,13 +294,13 @@
 }
 
 .dark {
-  --background: oklch(0.185 0 89.88);
+  --background: oklch(0.1448 0.0043 89.88);
 
   --foreground: oklch(0.9612 0 89.88);
 
   --primary: oklch(0.9612 0 89.88);
 
-  --primary-foreground: oklch(0.185 0 89.88);
+  --primary-foreground: oklch(0.1448 0.0043 89.88);
 
   /* zinc-800 */
   --secondary: oklch(0.274 0.006 286.033);

@@ -64,7 +64,7 @@ export function ProfileHeader() {
                 <LinkedIn className="h-3.5 w-3.5" />
               </Button>
             </Link>
-            <Link href={"mailto:hi@ommishra.me"}>
+            <Link href={"mailto:hi@ommishra.in"}>
               <Button variant="ghost" size="icon" className="mr-1">
                 <Mail className="h-3.5 w-3.5" />
               </Button>

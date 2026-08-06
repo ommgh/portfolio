@@ -1,6 +1,6 @@
-import type { MetadataRoute } from "next";
+import type { MetadataRoute } from "next"
 
-import { SITE_INFO } from "@/config/site";
+import { SITE_INFO } from "@/config/site"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -9,25 +9,25 @@ export default function manifest(): MetadataRoute.Manifest {
     description: SITE_INFO.description,
     icons: [
       {
-        src: "https://assets.ommishra.me/images/brand/favicon.svg",
+        src: "https://assets.ommishra.in/images/brand/favicon.svg",
         type: "image/svg+xml",
         sizes: "any",
         purpose: "any",
       },
       {
-        src: "https://assets.ommishra.me/images/brand/android-chrome-192x192.png",
+        src: "https://assets.ommishra.in/images/brand/android-chrome-192x192.png",
         type: "image/png",
         sizes: "192x192",
         purpose: "any",
       },
       {
-        src: "https://assets.ommishra.me/images/brand/android-chrome-512x512.png",
+        src: "https://assets.ommishra.in/images/brand/android-chrome-512x512.png",
         type: "image/png",
         sizes: "512x512",
         purpose: "any",
       },
       {
-        src: "https://assets.ommishra.me/images/brand/android-chrome-512x512.png",
+        src: "https://assets.ommishra.in/images/brand/android-chrome-512x512.png",
         type: "image/png",
         sizes: "512x512",
         purpose: "maskable",
@@ -39,29 +39,29 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: "/",
     screenshots: [
       {
-        src: "https://assets.ommishra.me/images/brand/screenshot-mobile-dark.jpg",
+        src: "https://assets.ommishra.in/images/brand/screenshot-mobile-dark.jpg",
         type: "image/webp",
         sizes: "440x956",
         form_factor: "narrow",
       },
       {
-        src: "https://assets.ommishra.me/images/brand/screenshot-mobile-light.jpg",
+        src: "https://assets.ommishra.in/images/brand/screenshot-mobile-light.jpg",
         type: "image/webp",
         sizes: "440x956",
         form_factor: "narrow",
       },
       {
-        src: "https://assets.ommishra.me/images/brand/screenshot-og-dark.png",
+        src: "https://assets.ommishra.in/images/brand/screenshot-og-dark.png",
         type: "image/webp",
         sizes: "1920x1080",
         form_factor: "wide",
       },
       {
-        src: "https://assets.ommishra.me/images/brand/screenshot-og-lite.png",
+        src: "https://assets.ommishra.in/images/brand/screenshot-og-lite.png",
         type: "image/webp",
         sizes: "1920x1080",
         form_factor: "wide",
       },
     ],
-  };
+  }
 }

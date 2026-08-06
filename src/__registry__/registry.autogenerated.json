@@ -1,13 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "omm",
-  "homepage": "https://ommishra.me/components",
+  "homepage": "https://ommishra.in/components",
   "items": [
     {
       "name": "utils",
       "type": "registry:lib",
       "title": "Utility Functions",
-      "author": "ommishra <om@ommishra.me>",
+      "author": "ommishra <om@ommishra.in>",
       "dependencies": [
         "clsx",
         "tailwind-merge"

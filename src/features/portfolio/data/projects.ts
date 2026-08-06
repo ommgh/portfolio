@@ -20,7 +20,7 @@ export const PROJECTS: Project[] = [
     ],
     description:
       "A platform that helps local businesses become e-commerce ready",
-    logo: "https://assets.ommishra.me/images/QL-DARK.svg",
+    logo: "https://assets.ommishra.in/images/QL-DARK.svg",
     displayImage: "https://www.onboarder.store/og-image.png",
   },
   {
@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     link: "https://audx.site",
     skills: ["Developer Tools", "Sound", "Interface", "Web Audio", "Semantic"],
     description: "Customisable UI Audio for Modern Web Apps",
-    logo: "https://assets.ommishra.me/images/audx-logo.svg",
+    logo: "https://assets.ommishra.in/images/audx-logo.svg",
     displayImage: "https://www.audx.site/hero-light.png",
   },
   {
@@ -49,8 +49,8 @@ export const PROJECTS: Project[] = [
     skills: ["AI", "LLMs", "Web Scraping", "Data Pipelines"],
     description:
       "Transforms websites into structured, LLM-ready data for AI agents and downstream applications",
-    logo: "https://assets.ommishra.me/images/superdocs.png",
-    displayImage: "https://assets.ommishra.me/images/superdocs-display.png",
+    logo: "https://assets.ommishra.in/images/superdocs.png",
+    displayImage: "https://assets.ommishra.in/images/superdocs-display.png",
   },
   {
     id: "devtown",
@@ -61,12 +61,12 @@ export const PROJECTS: Project[] = [
       start: "06.2023",
       end: "07.2023",
     },
-    link: "https://devtown.ommishra.me",
+    link: "https://devtown.ommishra.in",
     skills: ["Open Source", "Social Network", "Full Stack"],
     description:
       "A social networking platform built specifically for developers to connect and collaborate",
-    logo: "https://assets.ommishra.me/images/devtown-logo.svg",
-    displayImage: "https://assets.ommishra.me/images/devtown-display.png",
+    logo: "https://assets.ommishra.in/images/devtown-logo.svg",
+    displayImage: "https://assets.ommishra.in/images/devtown-display.png",
   },
   {
     id: "nex-mcf",
@@ -85,8 +85,8 @@ export const PROJECTS: Project[] = [
     ],
     description:
       "A central hub to manage multiple e-commerce sales channels and fulfillment workflows from a single dashboard.",
-    logo: "https://assets.ommishra.me/images/nex-mcf.png",
-    displayImage: "https://assets.ommishra.me/images/mcf-display.png",
+    logo: "https://assets.ommishra.in/images/nex-mcf.png",
+    displayImage: "https://assets.ommishra.in/images/mcf-display.png",
   },
   {
     id: "bashcraft",
@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
     skills: ["Community", "Linux", "Open Source"],
     description:
       "A community platform for Linux enthusiasts featuring content, discussions, and a weekly newsletter.",
-    displayImage: "https://assets.ommishra.me/images/bash-display.png",
+    displayImage: "https://assets.ommishra.in/images/bash-display.png",
   },
 
   {
@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
     skills: ["AI", "Healthcare", "Recommendations"],
     description:
       "An AI-powered platform delivering personalized skincare recommendations.",
-    displayImage: "https://assets.ommishra.me/images/derm-display.png",
+    displayImage: "https://assets.ommishra.in/images/derm-display.png",
   },
   {
     id: "yardstoacres",
@@ -123,7 +123,7 @@ export const PROJECTS: Project[] = [
     skills: ["PropTech", "Marketplace", "Full Stack"],
     description:
       "A real estate platform for buying, selling, and renting properties.",
-    displayImage: "https://assets.ommishra.me/images/yard-display.png",
+    displayImage: "https://assets.ommishra.in/images/yard-display.png",
   },
   {
     id: "connect4",
@@ -135,7 +135,7 @@ export const PROJECTS: Project[] = [
     skills: ["WebSockets", "Serverless", "Game Dev"],
     description:
       "A real-time Connect 4 game built using serverless WebSocket architecture.",
-    displayImage: "https://assets.ommishra.me/images/c4-display.png",
+    displayImage: "https://assets.ommishra.in/images/c4-display.png",
   },
   {
     id: "nexa",
@@ -147,7 +147,7 @@ export const PROJECTS: Project[] = [
     skills: ["Web3", "Gaming", "Crypto", "WebSockets"],
     description:
       "A mini-games platform offering real crypto rewards with low-latency gameplay.",
-    displayImage: "https://assets.ommishra.me/images/QL-DARK.svg",
+    displayImage: "https://assets.ommishra.in/images/QL-DARK.svg",
   },
   {
     id: "auth-template",
@@ -159,7 +159,7 @@ export const PROJECTS: Project[] = [
     skills: ["Auth.js", "Next.js", "Authentication"],
     description:
       "A production-ready authentication starter template built with Auth.js.",
-    displayImage: "https://assets.ommishra.me/images/devtown-logo.svg",
+    displayImage: "https://assets.ommishra.in/images/devtown-logo.svg",
   },
   {
     id: "easeecom",
@@ -171,6 +171,6 @@ export const PROJECTS: Project[] = [
     skills: ["SaaS", "E-commerce", "Dashboards"],
     description:
       "An e-commerce management platform to streamline operations and analytics.",
-    displayImage: "https://assets.ommishra.me/images/nex-mcf.png",
+    displayImage: "https://assets.ommishra.in/images/nex-mcf.png",
   },
 ]

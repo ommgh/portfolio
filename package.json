@@ -2,17 +2,17 @@
   "name": "portfolio",
   "version": "0.1.0",
   "description": "A minimal, pixel-perfect dev portfolio, component registry, and blog.",
-  "homepage": "https://ommishra.me",
+  "homepage": "https://ommishra.in",
   "license": "MIT",
   "author": {
     "name": "Om Mishra",
-    "email": "om@ommishra.me",
+    "email": "om@ommishra.in",
     "url": "https://github.com/ommgh"
   },
   "contributors": [
     {
       "name": "Om Mishra",
-      "email": "om@ommishra.me",
+      "email": "om@ommishra.in",
       "url": "https://github.com/ommgh"
     }
   ],

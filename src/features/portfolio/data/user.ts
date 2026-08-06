@@ -15,28 +15,28 @@ export const USER = {
   ],
   address: "India",
   phoneNumber: "NjI5OTkyMTA5MQ==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
-  email: "b21Ab21taXNocmEubWU=", // base64 encoded
-  website: "https://ommishra.me",
+  email: "b21Ab21taXNocmEuaW4=", // base64 encoded
+  website: "https://ommishra.in",
   jobTitle: "Full Stack Developer",
   jobs: [
     {
       title: "Full Stack Developer",
-      company: "Lit Labs",
-      website: "https://launchit.today",
+      company: "Zud Labs",
+      website: "https://zudlabs.com",
     },
   ],
 
   about: `
   Full stack engineer focused on building products from 0 → production.
 
-  Built and led __Lit Labs__ shipping web and mobile apps for 10+ founders with a team of 5.
+  Built and led __ZudLabs__ shipping web and mobile apps for 10+ founders with a team of 5.
 
   Contributed to open-source, won bounties, and built multiple products across AI, developer tools, and frontend systems.
 
   Currently building [Onboarder](https://onboarder.store) — platform that enables local merchants to make their products e-commerce ready in minutes.
   `,
   avatar: "/images/omm-pf.jpg",
-  ogImage: "https://assets.ommishra.me/images/screenshot-og-dark.png",
+  ogImage: "https://assets.ommishra.in/images/screenshot-og-dark.png",
   namePronunciationUrl: "/audio/chanhdai.mp3",
   timeZone: "Asia/Calcutta",
   keywords: [

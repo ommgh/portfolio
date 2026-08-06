@@ -1,4 +1,4 @@
-import type { Contribution } from "../types/contributions";
+import type { Contribution } from "../types/contributions"
 
 export const CONTRIBUTIONS: Contribution[] = [
   {
@@ -8,10 +8,10 @@ export const CONTRIBUTIONS: Contribution[] = [
     repository: "Fire Enrich",
     link: "https://github.com/firecrawl/fire-enrich/pull/16",
     date: "2025",
-    org: "https://assets.ommishra.me/images/firecrawl.png",
+    org: "https://assets.ommishra.in/images/firecrawl.png",
     bounty: "$125",
     type: "refactor",
     state: "merged",
     isExpanded: false,
   },
-];
+]

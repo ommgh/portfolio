@@ -39,25 +39,25 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: "/",
     screenshots: [
       {
-        src: "https://assets.ommishra.in/images/brand/screenshot-mobile-dark.jpg",
+        src: "https://assets.ommishra.in/images/brand/sc-m-dark.jpg",
         type: "image/webp",
         sizes: "440x956",
         form_factor: "narrow",
       },
       {
-        src: "https://assets.ommishra.in/images/brand/screenshot-mobile-light.jpg",
+        src: "https://assets.ommishra.in/images/brand/sc-m-light.jpg",
         type: "image/webp",
         sizes: "440x956",
         form_factor: "narrow",
       },
       {
-        src: "https://assets.ommishra.in/images/brand/screenshot-og-dark.png",
+        src: "https://assets.ommishra.in/images/brand/sc-og-dark.png",
         type: "image/webp",
         sizes: "1920x1080",
         form_factor: "wide",
       },
       {
-        src: "https://assets.ommishra.in/images/brand/screenshot-og-lite.png",
+        src: "https://assets.ommishra.in/images/brand/sc-og-light.png",
         type: "image/webp",
         sizes: "1920x1080",
         form_factor: "wide",

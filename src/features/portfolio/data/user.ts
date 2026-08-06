@@ -29,14 +29,14 @@ export const USER = {
   about: `
   Full stack engineer focused on building products from 0 → production.
 
-  Built and led __ZudLabs__ shipping web and mobile apps for 10+ founders with a team of 5.
+  Built and led [ZudLabs](https://zudlabs.com) shipping web and mobile apps for 10+ founders with a team of 5.
 
   Contributed to open-source, won bounties, and built multiple products across AI, developer tools, and frontend systems.
 
   Currently building [Onboarder](https://onboarder.store) — platform that enables local merchants to make their products e-commerce ready in minutes.
   `,
   avatar: "/images/omm-pf.jpg",
-  ogImage: "https://assets.ommishra.in/images/screenshot-og-dark.png",
+  ogImage: "https://assets.ommishra.in/images/brand/sc-og-dark.png",
   namePronunciationUrl: "/audio/chanhdai.mp3",
   timeZone: "Asia/Calcutta",
   keywords: [
@@ -46,10 +46,10 @@ export const USER = {
     "ommgh",
     "Om Kumar",
     "ommishra",
-    "lit",
-    "launchit",
+    "zud",
+    "zudlabs",
     "mishra om",
     "ommshx",
   ],
-  dateCreated: "2026-06-15", // YYYY-MM-DD
+  dateCreated: "2026-07-05", // YYYY-MM-DD
 } satisfies User

@@ -9,7 +9,7 @@ export function TeckStack() {
         <PanelTitle>Skills & Technologies</PanelTitle>
       </PanelHeader>
 
-      <PanelContent className="px-0 pt-0">
+      <PanelContent className="p-0">
         <div className="relative [--badge-height:--spacing(6)] [--col-left-width:--spacing(48)]">
           <div
             className="pointer-events-none absolute inset-y-0 left-(--col-left-width) -z-1 w-px max-sm:hidden"

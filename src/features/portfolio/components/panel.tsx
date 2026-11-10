@@ -19,7 +19,10 @@ function PanelHeader({ className, ...props }: React.ComponentProps<"header">) {
   return (
     <header
       data-slot="panel-header"
-      className={cn("screen-line-after p-2", className)}
+      className={cn(
+        "jaali screen-line-after p-2 [--jaali-opacity:0.45]",
+        className
+      )}
       {...props}
     />
   )
@@ -28,14 +31,20 @@ function PanelHeader({ className, ...props }: React.ComponentProps<"header">) {
 function PanelTitle({
   className,
   asChild = false,
+  numbered = true,
   ...props
-}: React.ComponentProps<"h2"> & { asChild?: boolean }) {
+}: React.ComponentProps<"h2"> & { asChild?: boolean; numbered?: boolean }) {
   const Comp = asChild ? Slot : "h2"
 
   return (
     <Comp
       data-slot="panel-title"
-      className={cn("text-xl font-semibold", className)}
+      className={cn(
+        "text-xl font-semibold",
+        // Devanagari section numeral, counted automatically by CSS.
+        numbered && "panel-numeral",
+        className
+      )}
       {...props}
     />
   )

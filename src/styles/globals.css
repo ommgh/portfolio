@@ -48,11 +48,15 @@
   --color-code-foreground: var(--code-foreground);
   --color-code-number: var(--code-number);
   --color-code-highlight: var(--code-highlight);
+  --color-sindoor: var(--sindoor);
+  --color-sindoor-ink: var(--sindoor-ink);
+  --color-haldi: var(--haldi);
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-devanagari: var(--font-devanagari);
 
   --shadow-popover: var(--shadow-popover);
 
@@ -100,27 +104,61 @@
   @apply font-medium underline underline-offset-4;
 }
 
+/*
+ * Every rule on the page is a row of pulli.
+ *
+ * These used to be 10px rectangular dashes at 50% duty, which read as a
+ * blueprint grid — the one element of the layout still speaking in straight
+ * hard-edged segments while everything around it had become dots and curves.
+ * Drawing them as dots instead puts them in the same vocabulary as the kolam:
+ * the cover is a stroke drawn around a dot grid, and the rules are that grid.
+ *
+ * A radial-gradient is used rather than a dashed segment because its edges are
+ * antialiased, so each dot reads as round even in a 1px-tall strip where no
+ * actual curve can be drawn. Ink drops from 50% duty to roughly 25%, which is
+ * what makes the page feel quieter.
+ */
+@theme inline {
+  --rule-dot: radial-gradient(
+    circle at center,
+    var(--color-edge) 0 0.9px,
+    transparent 1.4px
+  );
+  --rule-pitch: 7px;
+}
+
 @utility screen-line-before {
-  @apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw];
-  @apply before:bg-[repeating-linear-gradient(to_right,var(--color-edge)_0_10px,transparent_10px_20px)];
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    z-index: -1;
+    width: 200vw;
+    height: 1px;
+    background-image: var(--rule-dot);
+    background-size: var(--rule-pitch) 1px;
+    background-repeat: repeat-x;
+  }
 }
 
 @utility screen-line-after {
-  @apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw];
-  @apply after:bg-[repeating-linear-gradient(to_right,var(--color-edge)_0_10px,transparent_10px_20px)];
-}
+  position: relative;
 
-.border-edge {
-  --edge-border-horizontal: repeating-linear-gradient(
-    to right,
-    var(--color-edge) 0 10px,
-    transparent 10px 20px
-  );
-  --edge-border-vertical: repeating-linear-gradient(
-    to bottom,
-    var(--color-edge) 0 10px,
-    transparent 10px 20px
-  );
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    z-index: -1;
+    width: 200vw;
+    height: 1px;
+    background-image: var(--rule-dot);
+    background-size: var(--rule-pitch) 1px;
+    background-repeat: repeat-x;
+  }
 }
 
 .border-edge:is(
@@ -133,68 +171,130 @@
     .border-l
   ) {
   border-color: transparent;
-  background-repeat: no-repeat;
 }
 
 .border-edge.border {
-  background-image:
-    var(--edge-border-horizontal), var(--edge-border-vertical),
-    var(--edge-border-horizontal), var(--edge-border-vertical);
+  background-image: var(--rule-dot), var(--rule-dot), var(--rule-dot),
+    var(--rule-dot);
   background-position:
     top left,
     top right,
     bottom left,
     top left;
   background-size:
-    100% 1px,
-    1px 100%,
-    100% 1px,
-    1px 100%;
+    var(--rule-pitch) 1px,
+    1px var(--rule-pitch),
+    var(--rule-pitch) 1px,
+    1px var(--rule-pitch);
+  background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
 }
 
 .border-edge.border-x {
-  background-image: var(--edge-border-vertical), var(--edge-border-vertical);
+  background-image: var(--rule-dot), var(--rule-dot);
   background-position:
     top left,
     top right;
-  background-size:
-    1px 100%,
-    1px 100%;
+  background-size: 1px var(--rule-pitch), 1px var(--rule-pitch);
+  background-repeat: repeat-y, repeat-y;
 }
 
 .border-edge.border-y {
-  background-image:
-    var(--edge-border-horizontal), var(--edge-border-horizontal);
+  background-image: var(--rule-dot), var(--rule-dot);
   background-position:
     top left,
     bottom left;
-  background-size:
-    100% 1px,
-    100% 1px;
+  background-size: var(--rule-pitch) 1px, var(--rule-pitch) 1px;
+  background-repeat: repeat-x, repeat-x;
 }
 
 .border-edge.border-t {
-  background-image: var(--edge-border-horizontal);
+  background-image: var(--rule-dot);
   background-position: top left;
-  background-size: 100% 1px;
+  background-size: var(--rule-pitch) 1px;
+  background-repeat: repeat-x;
 }
 
 .border-edge.border-r {
-  background-image: var(--edge-border-vertical);
+  background-image: var(--rule-dot);
   background-position: top right;
-  background-size: 1px 100%;
+  background-size: 1px var(--rule-pitch);
+  background-repeat: repeat-y;
 }
 
 .border-edge.border-b {
-  background-image: var(--edge-border-horizontal);
+  background-image: var(--rule-dot);
   background-position: bottom left;
-  background-size: 100% 1px;
+  background-size: var(--rule-pitch) 1px;
+  background-repeat: repeat-x;
 }
 
 .border-edge.border-l {
-  background-image: var(--edge-border-vertical);
+  background-image: var(--rule-dot);
   background-position: top left;
-  background-size: 1px 100%;
+  background-size: 1px var(--rule-pitch);
+  background-repeat: repeat-y;
+}
+
+/*
+ * Jaali — the pierced stone screen of Indo-Islamic architecture, where light
+ * comes through a geometric lattice rather than an open window. Used here at
+ * very low contrast as a texture behind section headers and the footer.
+ *
+ * The tile is an eight-pointed star (two overlapping squares, one turned 45°)
+ * with bars running to the edge midpoints, so stars link up across tiles. It is
+ * applied through `mask-image` rather than `background-image` so the lattice
+ * takes its colour from a theme token and follows light and dark automatically.
+ */
+@utility jaali {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--color-edge);
+    opacity: var(--jaali-opacity, 0.5);
+    mask-image: var(--jaali-tile);
+    mask-size: 44px 44px;
+    mask-repeat: repeat;
+    mask-position: center;
+    -webkit-mask-image: var(--jaali-tile);
+    -webkit-mask-size: 44px 44px;
+    -webkit-mask-repeat: repeat;
+    -webkit-mask-position: center;
+  }
+}
+
+/*
+ * Section numerals in Devanagari. CSS counter styles include `devanagari`
+ * natively, so the numbering stays automatic — sections can be reordered,
+ * added or removed without renumbering anything by hand.
+ */
+@utility panel-counter {
+  counter-reset: panel;
+}
+
+/* Zero-padded Devanagari numerals: ०१, ०२ ... rather than १, २. */
+@counter-style devanagari-padded {
+  system: extends devanagari;
+  pad: 2 "\0966";
+}
+
+@utility panel-numeral {
+  counter-increment: panel;
+
+  &::before {
+    content: counter(panel, devanagari-padded);
+    font-family: var(--font-devanagari), var(--font-sans);
+    font-variant-numeric: normal;
+    font-weight: 400;
+    color: var(--color-muted-foreground);
+    opacity: 0.75;
+    margin-inline-end: --spacing(2.5);
+    user-select: none;
+  }
 }
 
 @utility step {
@@ -206,171 +306,154 @@
 }
 
 :root {
-  /* white */
-  --background: oklch(0.9612 0 89.88);
+  /* jaali lattice tile — colourless; the mask takes its colour from a token */
+  --jaali-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.1' stroke-linejoin='round'%3E%3Cpath d='M22 7 L37 22 L22 37 L7 22 Z'/%3E%3Cpath d='M11.5 11.5 H32.5 V32.5 H11.5 Z'/%3E%3Cpath d='M22 7 V0 M22 37 V44 M7 22 H0 M37 22 H44'/%3E%3Cpath d='M0 -7 L7 0 L0 7 L-7 0 Z'/%3E%3Cpath d='M44 -7 L51 0 L44 7 L37 0 Z'/%3E%3Cpath d='M0 37 L7 44 L0 51 L-7 44 Z'/%3E%3Cpath d='M44 37 L51 44 L44 51 L37 44 Z'/%3E%3C/g%3E%3C/svg%3E");
 
-  /* zinc-950 */
-  --foreground: oklch(0.185 0 89.88);
+  /* khadi — handmade paper off-white */
+  --background: oklch(0.9678 0.0086 84.57);
 
-  --primary: oklch(0.185 0 89.88);
+  /* kajal — warm lamp-black */
+  --foreground: oklch(0.2070 0.0075 67.39);
 
-  /* zinc-50 */
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.2070 0.0075 67.39);
 
-  /* zinc-100 */
-  --secondary: oklch(0.967 0.001 286.375);
+  --primary-foreground: oklch(0.9678 0.0086 84.57);
 
-  --secondary-foreground: oklch(0.185 0 89.88);
+  --secondary: oklch(0.9437 0.0127 86.83);
 
-  /* zinc-100 */
-  --muted: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.2070 0.0075 67.39);
 
-  /* zinc-500 */
-  --muted-foreground: oklch(0.552 0.016 285.938);
+  --muted: oklch(0.9437 0.0127 86.83);
 
-  /* white */
-  --card: oklch(1 0 0);
+  --muted-foreground: oklch(0.5278 0.0222 80.02);
 
-  --card-foreground: oklch(0.185 0 89.88);
+  --card: oklch(0.9910 0.0041 91.45);
 
-  /* white */
-  --popover: oklch(1 0 0);
+  --card-foreground: oklch(0.2070 0.0075 67.39);
 
-  /* zinc-950 */
-  --popover-foreground: oklch(0.185 0 89.88);
+  --popover: oklch(0.9910 0.0041 91.45);
 
-  --popover-border: color-mix(in oklab, var(--color-black) 15%, transparent);
+  --popover-foreground: oklch(0.2070 0.0075 67.39);
 
-  /* zinc-100 */
-  --accent: oklch(0.967 0.001 286.375);
+  --popover-border: color-mix(in oklab, var(--foreground) 14%, transparent);
+
+  --accent: oklch(0.9437 0.0127 86.83);
 
   --accent2: color-mix(in oklab, var(--accent) 50%, transparent);
 
-  /* zinc-900 */
-  --accent-foreground: oklch(0.21 0.006 285.885);
+  --accent-foreground: oklch(0.2070 0.0075 67.39);
 
-  /* zinc-200 */
-  --border: oklch(0.92 0.004 286.32);
+  --border: oklch(0.9018 0.0187 86.15);
 
-  /* light-mode edge (fixed for visibility) */
-  --edge: oklch(0.85 0.005 286.32);
+  /* the dashed rule colour — warm, so it stops reading as cool zinc */
+  --edge: oklch(0.8445 0.0264 84.59);
 
-  /* zinc-200 */
-  --input: oklch(0.92 0.004 286.32);
+  --input: oklch(0.9018 0.0187 86.15);
 
-  /* zinc-400 */
-  --ring: oklch(0.705 0.015 286.067);
+  /* sindoor — the one accent */
+  --sindoor: oklch(0.6129 0.2000 29.14);
+
+  /* deepened for text contrast on paper (5.5:1) */
+  --sindoor-ink: oklch(0.5189 0.1682 32.23);
+
+  /* haldi — reserved for the kolam stroke only */
+  --haldi: oklch(0.7298 0.1399 76.32);
+
+  --ring: var(--sindoor);
 
   --info: oklch(0.67 0.17 244.98);
 
-  /* green-500 */
   --success: oklch(0.723 0.219 149.579);
 
-  /* red-600 */
   --destructive: oklch(0.577 0.245 27.325);
 
-  /* blue-700 */
-  --link: oklch(0.488 0.243 264.376);
+  --link: var(--sindoor-ink);
 
-  /* zinc-50 */
-  --code: oklch(0.985 0 0);
+  --code: oklch(0.9437 0.0127 86.83);
 
-  /* zinc-950 */
-  --code-foreground: oklch(0.141 0.005 285.823);
+  --code-foreground: oklch(0.2070 0.0075 67.39);
 
-  /* zinc-400 */
-  --code-number: oklch(0.705 0.015 286.067);
+  --code-number: oklch(0.6800 0.0200 80.00);
 
-  /* zinc-100 */
-  --code-highlight: oklch(0.967 0.001 286.375);
+  --code-highlight: oklch(0.9180 0.0180 86.00);
 
-  /* zinc-950 */
-  --selection: oklch(0.141 0.005 285.823);
+  --selection: oklch(0.6129 0.2000 29.14);
 
-  /* zinc-50 */
-  --selection-foreground: oklch(0.9612 0 89.88);
+  --selection-foreground: oklch(0.9910 0.0041 91.45);
 
-  --shadow-popover: 0 6px 24px rgba(0, 0, 0, 0.25);
+  --shadow-popover: 0 6px 24px color-mix(in oklab, oklch(0.2070 0.0075 67.39) 22%, transparent);
 }
 
 .dark {
-  --background: oklch(0.1448 0.0043 89.88);
+  /* kajal — warm lamp-black */
+  --background: oklch(0.1838 0.0052 67.50);
 
-  --foreground: oklch(0.9612 0 89.88);
+  --foreground: oklch(0.9618 0.0086 84.57);
 
-  --primary: oklch(0.9612 0 89.88);
+  --primary: oklch(0.9618 0.0086 84.57);
 
-  --primary-foreground: oklch(0.1448 0.0043 89.88);
+  --primary-foreground: oklch(0.1838 0.0052 67.50);
 
-  /* zinc-800 */
-  --secondary: oklch(0.274 0.006 286.033);
+  --secondary: oklch(0.2712 0.0108 73.47);
 
-  --secondary-foreground: oklch(0.9612 0 89.88);
+  --secondary-foreground: oklch(0.9618 0.0086 84.57);
 
-  /* zinc-800 */
-  --muted: oklch(0.274 0.006 286.033);
+  --muted: oklch(0.2712 0.0108 73.47);
 
-  /* zinc-400 */
-  --muted-foreground: oklch(0.705 0.015 286.067);
+  --muted-foreground: oklch(0.7027 0.0238 80.65);
 
-  /* zinc-900 */
-  --card: oklch(0.21 0.006 285.885);
+  --card: oklch(0.2158 0.0075 67.42);
 
-  --card-foreground: oklch(0.9612 0 89.88);
+  --card-foreground: oklch(0.9618 0.0086 84.57);
 
-  /* zinc-900 */
-  --popover: oklch(0.21 0.006 285.885);
+  --popover: oklch(0.2158 0.0075 67.42);
 
-  --popover-foreground: oklch(0.9612 0 89.88);
+  --popover-foreground: oklch(0.9618 0.0086 84.57);
 
-  /* zinc-700 */
-  --popover-border: oklch(0.37 0.013 285.805);
+  --popover-border: oklch(0.3517 0.0173 78.05);
 
-  /* zinc-800 */
-  --accent: oklch(0.274 0.006 286.033);
+  --accent: oklch(0.2712 0.0108 73.47);
 
   --accent2: color-mix(in oklab, var(--accent) 20%, transparent);
 
-  --accent-foreground: oklch(0.9612 0 89.88);
+  --accent-foreground: oklch(0.9618 0.0086 84.57);
 
-  /* zinc-800 */
-  --border: oklch(0.274 0.006 286.033);
+  --border: oklch(0.2921 0.0143 76.32);
 
-  /* color-mix */
-  --edge: color-mix(in oklab, var(--foreground) 6%, var(--border));
+  --edge: oklch(0.3517 0.0173 78.05);
 
-  /* zinc-800 */
-  --input: oklch(0.274 0.006 286.033);
+  --input: oklch(0.2921 0.0143 76.32);
 
-  /* zinc-500 */
-  --ring: oklch(0.552 0.016 285.938);
+  /* sindoor — the one accent */
+  --sindoor: oklch(0.6942 0.1620 30.70);
 
-  /* green-500 */
+  --sindoor-ink: oklch(0.6942 0.1620 30.70);
+
+  --haldi: oklch(0.7298 0.1399 76.32);
+
+  --ring: var(--sindoor);
+
+  --info: oklch(0.67 0.17 244.98);
+
   --success: oklch(0.723 0.219 149.579);
 
-  /* red-700 */
-  --destructive: oklch(0.505 0.213 27.518);
+  --destructive: oklch(0.577 0.245 27.325);
 
-  /* blue-500 */
-  --link: oklch(0.623 0.214 259.815);
+  --link: var(--sindoor-ink);
 
-  /* zinc-900 */
-  --code: oklch(0.21 0.006 285.885);
+  --code: oklch(0.2158 0.0075 67.42);
 
-  --code-foreground: oklch(0.985 0 0);
+  --code-foreground: oklch(0.9618 0.0086 84.57);
 
-  /* zinc-500 */
-  --code-number: oklch(0.552 0.016 285.938);
+  --code-number: oklch(0.5200 0.0180 78.00);
 
-  /* zinc-800 */
-  --code-highlight: oklch(0.274 0.006 286.033);
+  --code-highlight: oklch(0.2712 0.0108 73.47);
 
-  --selection: oklch(0.9612 0 89.88);
+  --selection: oklch(0.6942 0.1620 30.70);
 
-  /* zinc-950 */
-  --selection-foreground: oklch(0.141 0.005 285.823);
+  --selection-foreground: oklch(0.1838 0.0052 67.50);
 
-  --shadow-popover: 0 0 24px rgba(0, 0, 0, 0.5);
+  --shadow-popover: 0 0 24px color-mix(in oklab, black 55%, transparent);
 }
 
 @layer base {

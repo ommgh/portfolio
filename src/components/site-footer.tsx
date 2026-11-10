@@ -1,15 +1,24 @@
 import { RssIcon } from "lucide-react"
 
+import { KolamMark } from "@/components/kolam-divider"
 import { SITE_INFO } from "@/config/site"
 
 export function SiteFooter() {
   return (
     <footer className="max-w-screen overflow-x-hidden px-2">
       <div className="mx-auto border-x border-edge pt-4 md:max-w-3xl">
+        {/*
+          The kolam mark sits on the closing rule the way the drawing sits on a
+          threshold — at the edge, where you leave.
+        */}
+        <div className="flex justify-center pb-3">
+          <KolamMark className="text-muted-foreground/55" />
+        </div>
+
         <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
-          <div className="mx-auto flex items-center justify-center gap-3 border-x border-edge bg-background px-4">
+          <div className="jaali mx-auto flex items-center justify-center gap-3 border-x border-edge bg-background px-4 [--jaali-opacity:0.4]">
             <a
-              className="flex font-mono text-xs font-medium text-muted-foreground"
+              className="flex font-mono text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               href={`${SITE_INFO.url}/llms.txt`}
               target="_blank"
               rel="noopener noreferrer"

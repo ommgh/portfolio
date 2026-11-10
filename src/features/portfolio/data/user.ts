@@ -4,6 +4,7 @@ export const USER = {
   firstName: "Om Kumar",
   lastName: "Mishra",
   displayName: "Om Mishra",
+  displayNameDevanagari: "ओम मिश्रा",
   username: "omm",
   gender: "male",
   pronouns: "he/him",

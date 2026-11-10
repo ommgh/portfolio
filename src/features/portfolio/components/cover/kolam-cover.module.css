@@ -1,0 +1,78 @@
+.cover {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  user-select: none;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* The pulli — the dot grid the stroke is drawn around. */
+.dot {
+  fill: var(--color-edge);
+}
+
+.loop {
+  fill: none;
+  stroke: var(--color-foreground);
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  opacity: 0.22;
+
+  /* Length is computed analytically by the generator, so the draw-in needs no
+     DOM measurement and starts on the very first painted frame. */
+  stroke-dasharray: var(--kolam-length);
+  stroke-dashoffset: var(--kolam-length);
+  animation: kolam-draw 1.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  animation-delay: var(--kolam-delay, 0ms);
+}
+
+/* One orbit carries the accent — the single coloured line in an otherwise
+   white rice-flour drawing. */
+.accent {
+  stroke: var(--color-sindoor);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+@keyframes kolam-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Soften the frame so the weave fades out rather than butting the panel edge. */
+.fade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to right,
+      var(--color-background),
+      transparent 14%,
+      transparent 86%,
+      var(--color-background)
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-background) 72%, transparent),
+      transparent 32%,
+      transparent 68%,
+      color-mix(in oklab, var(--color-background) 72%, transparent)
+    );
+}
+
+/* Respect the OS setting: show the finished kolam immediately rather than
+   animating it. */
+@media (prefers-reduced-motion: reduce) {
+  .loop {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

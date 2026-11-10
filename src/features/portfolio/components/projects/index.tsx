@@ -17,11 +17,12 @@ export function Projects() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2">
-        <div className="border-r border-edge" />
-      </div>
-
       <div className="relative">
+        {/* Column rule, scoped to the grid so it stops short of the header. */}
+        <div className="absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2">
+          <div className="border-r border-edge" />
+        </div>
+
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {PROJECTS.slice(0, 4).map((project) => (
             <ProjectItem key={project.id} project={project} />

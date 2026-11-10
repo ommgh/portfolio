@@ -1,8 +1,6 @@
 import {
-  ArrowLeftIcon,
   ChevronLeft,
   FileTextIcon,
-  GithubIcon,
   GlobeIcon,
   InfinityIcon,
 } from "lucide-react"
@@ -11,6 +9,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import { GitHub } from "@/components/icons/github"
 import { Markdown } from "@/components/markdown"
 import { Tag } from "@/components/ui/tag"
 import { ProseMono } from "@/components/ui/typography"
@@ -80,7 +79,7 @@ export default async function Page({ params }: PageProps) {
       </div>
 
       <div className="px-4 pt-4">
-        <div className="overflow-hidden border border-edge bg-muted">
+        <div className="relative overflow-hidden border border-edge bg-muted">
           {displayImage ? (
             <Image
               src={displayImage}
@@ -99,7 +98,7 @@ export default async function Page({ params }: PageProps) {
           <div className="pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/10" />
         </div>
 
-        <div className="flex w-full divide-x divide-edge border-edge">
+        <div className="flex w-full divide-x divide-edge border-t border-edge">
           <a
             className="flex flex-1 items-center justify-center gap-2 p-3 text-sm hover:underline"
             href={projectLink}
@@ -107,7 +106,7 @@ export default async function Page({ params }: PageProps) {
             rel="noopener"
           >
             {isGithub ? (
-              <GithubIcon className="size-4" aria-hidden />
+              <GitHub className="size-4" aria-hidden />
             ) : (
               <GlobeIcon className="size-4" aria-hidden />
             )}
@@ -123,7 +122,7 @@ export default async function Page({ params }: PageProps) {
               target="_blank"
               rel="noopener"
             >
-              <GithubIcon className="size-4" aria-hidden />
+              <GitHub className="size-4" aria-hidden />
               <span className="hidden sm:inline">Code</span>
             </a>
           )}

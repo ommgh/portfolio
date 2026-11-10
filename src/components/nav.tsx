@@ -1,17 +1,16 @@
-import Link from "next/link";
-import React from "react";
+import Link from "next/link"
+import React from "react"
 
-import { cn } from "@/lib/utils";
-import type { NavItem } from "@/types/nav";
+import { cn } from "@/lib/utils"
+import type { NavItem } from "@/types/nav"
 
-import { Kbd } from "./ui/kbd";
+import { Kbd } from "./ui/kbd"
 
 // Map of nav item titles to their keyboard shortcuts
 const KEYBOARD_SHORTCUTS: Record<string, string> = {
   Portfolio: "P",
-  Components: "C",
   Blog: "B",
-};
+}
 
 export function Nav({
   items,
@@ -19,10 +18,10 @@ export function Nav({
   className,
   showShortcuts = false,
 }: {
-  items: NavItem[];
-  activeId?: string;
-  className?: string;
-  showShortcuts?: boolean;
+  items: NavItem[]
+  activeId?: string
+  className?: string
+  showShortcuts?: boolean
 }) {
   return (
     <nav
@@ -34,9 +33,9 @@ export function Nav({
           activeId === href ||
           (href === "/" // Home page
             ? ["/", "/index"].includes(activeId || "")
-            : activeId?.startsWith(href));
+            : activeId?.startsWith(href))
 
-        const shortcut = KEYBOARD_SHORTCUTS[title];
+        const shortcut = KEYBOARD_SHORTCUTS[title]
 
         return (
           <NavItem key={href} href={href} active={active}>
@@ -45,17 +44,17 @@ export function Nav({
             )}
             {title}
           </NavItem>
-        );
+        )
       })}
     </nav>
-  );
+  )
 }
 
 export function NavItem({
   active,
   ...props
 }: React.ComponentProps<typeof Link> & {
-  active?: boolean;
+  active?: boolean
 }) {
   return (
     <Link
@@ -65,5 +64,5 @@ export function NavItem({
       )}
       {...props}
     />
-  );
+  )
 }

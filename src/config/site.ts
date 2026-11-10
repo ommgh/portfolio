@@ -10,18 +10,14 @@ export const SITE_INFO = {
 }
 
 export const META_THEME_COLORS = {
-  light: "#ffffff",
-  dark: "#09090b",
+  light: "#f7f4ee",
+  dark: "#141210",
 }
 
 export const MAIN_NAV: NavItem[] = [
   {
     title: "Portfolio",
     href: "/",
-  },
-  {
-    title: "Components",
-    href: "/components",
   },
   {
     title: "Blog",

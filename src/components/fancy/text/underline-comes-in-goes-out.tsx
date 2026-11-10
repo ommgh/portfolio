@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import cn from "clsx"
-import type { Transition } from "motion/react"
+import type { HTMLMotionProps, Transition } from "motion/react"
 import { motion, useAnimationControls } from "motion/react"
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react"
-import { useEffect, useMemo, useRef, useState } from "react"
+import type { ReactNode } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface ComesInGoesOutUnderlineProps {
   children: ReactNode
-  as?: ElementType
   direction?: "left" | "right"
   className?: string
   underlineHeightRatio?: number
@@ -20,7 +19,6 @@ interface ComesInGoesOutUnderlineProps {
 
 const ComesInGoesOutUnderline = ({
   children,
-  as,
   direction = "left",
   className,
   underlineHeightRatio = 0.1,
@@ -32,12 +30,11 @@ const ComesInGoesOutUnderline = ({
   trigger = "parent",
   parentSelector = "a",
   ...props
-}: ComesInGoesOutUnderlineProps & ComponentPropsWithoutRef<"span">) => {
+}: ComesInGoesOutUnderlineProps & HTMLMotionProps<"span">) => {
   const controls = useAnimationControls()
   const [blocked, setBlocked] = useState(false)
   const textRef = useRef<HTMLSpanElement>(null)
   const isMounted = useRef(true)
-  const MotionComponent = useMemo(() => motion.create(as ?? "span"), [as])
 
   useEffect(() => {
     return () => {
@@ -117,7 +114,7 @@ const ComesInGoesOutUnderline = ({
   }, [parentSelector, trigger])
 
   return (
-    <MotionComponent
+    <motion.span
       className={cn("relative inline-block", className)}
       onHoverStart={trigger === "hover" ? animateIn : undefined}
       onHoverEnd={trigger === "hover" ? animateOut : undefined}
@@ -137,7 +134,7 @@ const ComesInGoesOutUnderline = ({
         animate={controls}
         aria-hidden="true"
       />
-    </MotionComponent>
+    </motion.span>
   )
 }
 

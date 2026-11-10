@@ -3,7 +3,7 @@ import type { NextConfig } from "next"
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
-  allowedDevOrigins: ["ncdai.localhost", "ncdai.local"],
+  allowedDevOrigins: ["ommishra.localhost", "ommishra.local"],
   devIndicators: false,
   images: {
     remotePatterns: [
@@ -70,10 +70,6 @@ const nextConfig: NextConfig = {
       {
         source: "/rss",
         destination: "/blog/rss",
-      },
-      {
-        source: "/registry/rss",
-        destination: "/components/rss",
       },
     ]
   },

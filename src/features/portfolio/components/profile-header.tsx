@@ -1,7 +1,6 @@
 import { Mail, PhoneIcon } from "lucide-react"
 import Link from "next/link"
 
-import { EffectsToggle } from "@/components/effects-toggle"
 import { FlipSentences } from "@/components/flip-sentences"
 import { GitHub } from "@/components/icons/github"
 import { LinkedIn } from "@/components/icons/linkedin"
@@ -25,13 +24,23 @@ export function ProfileHeader() {
       </div>
 
       <div className="flex flex-1 flex-col">
-        <div className="absolute top-1.5 right-2 flex items-center *:first:mr-2">
-          <EffectsToggle />
+        <div className="absolute top-1.5 right-2 flex items-center">
           <ThemeToggle />
         </div>
 
-        <div className="flex grow items-center pr-24 pl-3">
-          <h1 className="text-3xl font-semibold">{USER.displayName}</h1>
+        <div className="flex grow flex-col justify-center pr-24 pl-3">
+          <h1 className="text-3xl leading-none font-semibold">
+            {USER.displayName}
+          </h1>
+
+          {USER.displayNameDevanagari && (
+            <p
+              className="ms-1 mt-2.5 font-devanagari text-sm leading-none text-muted-foreground/70 select-none"
+              aria-hidden="true"
+            >
+              {USER.displayNameDevanagari}
+            </p>
+          )}
         </div>
 
         <div className="border-t border-edge py-0.5 pl-3">

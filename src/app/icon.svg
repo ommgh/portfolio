@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-7 -7 38 38" width="38" height="38">
+  <title>Om Mishra</title>
+  <!--
+    A four-pulli sikku kolam, taken from the same generator that draws the site
+    cover (seed "ommishra", 2x2 grid): an eight-arc scalloped ring enclosing a
+    four-petal quatrefoil, with the centre dot it is drawn around.
+
+    The inner ring and dot are cut out through a mask rather than painted, so
+    the holes take the colour of whatever browser chrome sits behind them and
+    the mark works on both light and dark tabs. Solid shapes rather than thin
+    strokes, because strokes vanish at 16px.
+  -->
+  <mask id="kolam-cut">
+    <rect x="-7" y="-7" width="38" height="38" fill="white" />
+    <path
+      d="M 6 12 A 6 6 0 0 1 12 6 A 6 6 0 0 1 18 12 A 6 6 0 0 1 12 18 A 6 6 0 0 1 6 12 Z"
+      fill="none"
+      stroke="black"
+      stroke-width="2.6"
+    />
+    <circle cx="12" cy="12" r="2" fill="black" />
+  </mask>
+
+  <path
+    fill="#E34234"
+    mask="url(#kolam-cut)"
+    d="M 6 0 A 6 6 0 0 1 0 6 A 6 6 0 0 0 0 18 A 6 6 0 0 1 6 24 A 6 6 0 0 0 18 24 A 6 6 0 0 1 24 18 A 6 6 0 0 0 24 6 A 6 6 0 0 1 18 0 A 6 6 0 0 0 6 0 Z"
+  />
+</svg>

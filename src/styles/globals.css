@@ -105,26 +105,38 @@
 }
 
 /*
- * Every rule on the page is a row of pulli.
+ * Every rule on the page is a kolam scallop.
  *
- * These used to be 10px rectangular dashes at 50% duty, which read as a
- * blueprint grid — the one element of the layout still speaking in straight
- * hard-edged segments while everything around it had become dots and curves.
- * Drawing them as dots instead puts them in the same vocabulary as the kolam:
- * the cover is a stroke drawn around a dot grid, and the rules are that grid.
+ * These started as 10px blueprint dashes, then became plain dots. Dots were
+ * quieter but said nothing in particular — every design system has dotted
+ * rules. The scallop is the edge a bordered kolam actually has: where the
+ * looping stroke reaches the boundary of the dot grid it turns back on itself,
+ * and that row of returning arcs is the border. The cover already draws exactly
+ * this along its perimeter, so the rules and the hero became the same gesture
+ * at two scales.
  *
- * A radial-gradient is used rather than a dashed segment because its edges are
- * antialiased, so each dot reads as round even in a 1px-tall strip where no
- * actual curve can be drawn. Ink drops from 50% duty to roughly 25%, which is
- * what makes the page feel quieter.
+ * Arcs cannot be drawn with CSS gradients, so each tile is an inline SVG. The
+ * stroke colour is baked in and swapped under `.dark` rather than masked from a
+ * token: a mask would clip the element's own background as well, and several of
+ * these rules sit on panels that paint one.
+ *
+ * Other motifs explored, if this ever wants swapping — replace the path and
+ * adjust --rule-pitch / --rule-thickness:
+ *   kantha running stitch (Bengal)  two rects, 6 long then 3, in an 18x3 tile
+ *   warli sawtooth (Maharashtra)    M0 4.5 L3 0.8 L6 4.5 L9 0.8 L12 4.5   12x5
+ *   temple step (gopuram cornice)   M0 4.5 H4 V2 H8 V4.5 H12 V2 H16       16x5
  */
-@theme inline {
-  --rule-dot: radial-gradient(
-    circle at center,
-    var(--color-edge) 0 0.9px,
-    transparent 1.4px
-  );
-  --rule-pitch: 7px;
+:root {
+  --rule-h: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2714%27%20height=%275%27%20viewBox=%270%200%2014%205%27%3E%3Cpath%20d=%27M0%204.4%20A%203.5%203.5%200%200%201%207%204.4%20A%203.5%203.5%200%200%201%2014%204.4%27%20fill=%27none%27%20stroke=%27%23d4cbb9%27%20stroke-width=%271%27/%3E%3C/svg%3E");
+  --rule-v: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%275%27%20height=%2714%27%20viewBox=%270%200%205%2014%27%3E%3Cpath%20d=%27M4.4%200%20A%203.5%203.5%200%200%200%204.4%207%20A%203.5%203.5%200%200%200%204.4%2014%27%20fill=%27none%27%20stroke=%27%23d4cbb9%27%20stroke-width=%271%27/%3E%3C/svg%3E");
+  /* Along the rule, and across it. */
+  --rule-pitch: 14px;
+  --rule-thickness: 5px;
+}
+
+.dark {
+  --rule-h: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2714%27%20height=%275%27%20viewBox=%270%200%2014%205%27%3E%3Cpath%20d=%27M0%204.4%20A%203.5%203.5%200%200%201%207%204.4%20A%203.5%203.5%200%200%201%2014%204.4%27%20fill=%27none%27%20stroke=%27%23403a31%27%20stroke-width=%271%27/%3E%3C/svg%3E");
+  --rule-v: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%275%27%20height=%2714%27%20viewBox=%270%200%205%2014%27%3E%3Cpath%20d=%27M4.4%200%20A%203.5%203.5%200%200%200%204.4%207%20A%203.5%203.5%200%200%200%204.4%2014%27%20fill=%27none%27%20stroke=%27%23403a31%27%20stroke-width=%271%27/%3E%3C/svg%3E");
 }
 
 @utility screen-line-before {
@@ -133,13 +145,15 @@
   &::before {
     content: "";
     position: absolute;
-    top: 0;
+    /* The arc baseline sits near the foot of the tile, so lift it to land on
+       the element's top edge rather than hanging below it. */
+    top: calc(1px - var(--rule-thickness));
     left: -100vw;
     z-index: -1;
     width: 200vw;
-    height: 1px;
-    background-image: var(--rule-dot);
-    background-size: var(--rule-pitch) 1px;
+    height: var(--rule-thickness);
+    background-image: var(--rule-h);
+    background-size: var(--rule-pitch) var(--rule-thickness);
     background-repeat: repeat-x;
   }
 }
@@ -154,9 +168,9 @@
     left: -100vw;
     z-index: -1;
     width: 200vw;
-    height: 1px;
-    background-image: var(--rule-dot);
-    background-size: var(--rule-pitch) 1px;
+    height: var(--rule-thickness);
+    background-image: var(--rule-h);
+    background-size: var(--rule-pitch) var(--rule-thickness);
     background-repeat: repeat-x;
   }
 }
@@ -174,64 +188,67 @@
 }
 
 .border-edge.border {
-  background-image: var(--rule-dot), var(--rule-dot), var(--rule-dot),
-    var(--rule-dot);
+  background-image: var(--rule-h), var(--rule-v), var(--rule-h), var(--rule-v);
   background-position:
     top left,
     top right,
     bottom left,
     top left;
   background-size:
-    var(--rule-pitch) 1px,
-    1px var(--rule-pitch),
-    var(--rule-pitch) 1px,
-    1px var(--rule-pitch);
+    var(--rule-pitch) var(--rule-thickness),
+    var(--rule-thickness) var(--rule-pitch),
+    var(--rule-pitch) var(--rule-thickness),
+    var(--rule-thickness) var(--rule-pitch);
   background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
 }
 
 .border-edge.border-x {
-  background-image: var(--rule-dot), var(--rule-dot);
+  background-image: var(--rule-v), var(--rule-v);
   background-position:
     top left,
     top right;
-  background-size: 1px var(--rule-pitch), 1px var(--rule-pitch);
+  background-size:
+    var(--rule-thickness) var(--rule-pitch),
+    var(--rule-thickness) var(--rule-pitch);
   background-repeat: repeat-y, repeat-y;
 }
 
 .border-edge.border-y {
-  background-image: var(--rule-dot), var(--rule-dot);
+  background-image: var(--rule-h), var(--rule-h);
   background-position:
     top left,
     bottom left;
-  background-size: var(--rule-pitch) 1px, var(--rule-pitch) 1px;
+  background-size:
+    var(--rule-pitch) var(--rule-thickness),
+    var(--rule-pitch) var(--rule-thickness);
   background-repeat: repeat-x, repeat-x;
 }
 
 .border-edge.border-t {
-  background-image: var(--rule-dot);
+  background-image: var(--rule-h);
   background-position: top left;
-  background-size: var(--rule-pitch) 1px;
+  background-size: var(--rule-pitch) var(--rule-thickness);
   background-repeat: repeat-x;
 }
 
 .border-edge.border-r {
-  background-image: var(--rule-dot);
+  background-image: var(--rule-v);
   background-position: top right;
-  background-size: 1px var(--rule-pitch);
+  background-size: var(--rule-thickness) var(--rule-pitch);
   background-repeat: repeat-y;
 }
 
 .border-edge.border-b {
-  background-image: var(--rule-dot);
+  background-image: var(--rule-h);
   background-position: bottom left;
-  background-size: var(--rule-pitch) 1px;
+  background-size: var(--rule-pitch) var(--rule-thickness);
   background-repeat: repeat-x;
 }
 
 .border-edge.border-l {
-  background-image: var(--rule-dot);
+  background-image: var(--rule-v);
   background-position: top left;
-  background-size: 1px var(--rule-pitch);
+  background-size: var(--rule-thickness) var(--rule-pitch);
   background-repeat: repeat-y;
 }
 

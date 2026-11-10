@@ -1,4 +1,4 @@
-import type { Award } from "../types/awards";
+import type { Award } from "../types/awards"
 
 export const AWARDS: Award[] = [
   {
@@ -12,13 +12,22 @@ export const AWARDS: Award[] = [
     referenceLink: "https://github.com/firecrawl/fire-enrich/pull/16",
   },
   {
+    id: "bashcraft-technical-lead",
+    prize: "Technical Lead",
+    title: "BashCraft Club",
+    date: "2025-01",
+    grade: "Community",
+    description:
+      "Ran 5 open-source workshops for 300+ students, covering Git, contribution workflow and shipping to production.",
+  },
+  {
     id: "05e1c61b-6dc1-11f0-8000-679dd01e0504",
     prize: "National Finalist",
     title: "Amazon Sambhav Hackathon",
     date: "2024-11",
     grade: "Hackathon",
     description:
-      "Ranked Top 10 nationally among 100,000+ teams for AI-powered multi-channel fulfillment platform for small business owners.",
+      "Ranked Top 10 nationally out of 105,000+ participants for AI-powered multi-channel fulfillment platform for small business owners.",
     referenceLink: "https://amazonsmbhav2024.hackerearth.com/",
   },
-];
+]

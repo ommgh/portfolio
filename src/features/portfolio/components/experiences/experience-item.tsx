@@ -1,12 +1,14 @@
-import Image from "next/image";
-import React from "react";
+import Image from "next/image"
+import React from "react"
 
-import type { Experience } from "../../types/experiences";
-import { ExperiencePositionItem } from "./experience-position-item";
+import type { Experience } from "../../types/experiences"
+import { ExperiencePositionItem } from "./experience-position-item"
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
+  // The last item's rule would otherwise land exactly on the next panel's
+  // top rule, drawing two scallop bands a pixel apart.
   return (
-    <div className="screen-line-after space-y-4 py-4">
+    <div className="screen-line-after space-y-4 py-4 last:after:hidden">
       <div className="flex items-center gap-3">
         <div className="flex size-6 shrink-0 items-center justify-center select-none">
           {experience.companyLogo ? (
@@ -21,7 +23,11 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
               aria-hidden
             />
           ) : (
-            <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+            /* The company sits on the thread as a pulli with its loop drawn. */
+            <span
+              className="size-2.5 rounded-full border border-muted-foreground/45"
+              aria-hidden
+            />
           )}
         </div>
 
@@ -30,19 +36,25 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         </h3>
 
         {experience.isCurrentEmployer && (
-          <span className="relative flex items-center justify-center">
-            <span className="absolute inline-flex size-3 animate-ping rounded-full bg-info opacity-50" />
-            <span className="relative inline-flex size-2 rounded-full bg-info" />
-            <span className="sr-only">Current Employer</span>
+          /* The one accent on the page is sindoor; the stock blue dot pulled a
+             second accent colour into the layout for no reason. */
+          <span className="flex items-center gap-1.5 font-mono text-xs text-sindoor">
+            <span className="size-1.5 rounded-full bg-sindoor" aria-hidden />
+            Present
+            <span className="sr-only">Current employer</span>
           </span>
         )}
       </div>
 
-      <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
+      {/*
+        The thread joining the roles is the vertical scallop used on every other
+        edge of the site, rather than a plain solid hairline.
+      */}
+      <div className="relative space-y-4 before:absolute before:left-[9px] before:h-full before:w-(--rule-thickness) before:bg-(image:--rule-v) before:bg-[length:var(--rule-thickness)_var(--rule-pitch)] before:bg-repeat-y">
         {experience.positions.map((position) => (
           <ExperiencePositionItem key={position.id} position={position} />
         ))}
       </div>
     </div>
-  );
+  )
 }

@@ -75,23 +75,6 @@ export const metadata: Metadata = {
     creator: "@ommshx",
     images: [SITE_INFO.ogImage],
   },
-  icons: {
-    icon: [
-      {
-        url: "https://assets.ommishra.in/images/favicon.ico",
-        sizes: "any",
-      },
-      {
-        url: "https://assets.ommishra.in/images/favicon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: {
-      url: "https://assets.ommishra.in/images/apple-touch-icon.png",
-      type: "image/png",
-      sizes: "180x180",
-    },
-  },
 }
 
 export const viewport: Viewport = {

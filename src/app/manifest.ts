@@ -9,25 +9,25 @@ export default function manifest(): MetadataRoute.Manifest {
     description: SITE_INFO.description,
     icons: [
       {
-        src: "https://assets.ommishra.in/images/brand/favicon.svg",
+        src: "/icon.svg",
         type: "image/svg+xml",
         sizes: "any",
         purpose: "any",
       },
       {
-        src: "https://assets.ommishra.in/images/brand/android-chrome-192x192.png",
+        src: "/images/icon-192.png",
         type: "image/png",
         sizes: "192x192",
         purpose: "any",
       },
       {
-        src: "https://assets.ommishra.in/images/brand/android-chrome-512x512.png",
+        src: "/images/icon-512.png",
         type: "image/png",
         sizes: "512x512",
         purpose: "any",
       },
       {
-        src: "https://assets.ommishra.in/images/brand/android-chrome-512x512.png",
+        src: "/images/icon-512.png",
         type: "image/png",
         sizes: "512x512",
         purpose: "maskable",

@@ -7,6 +7,7 @@ import { useHotkeys } from "react-hotkeys-hook"
 import { META_THEME_COLORS } from "@/config/site"
 import { useMetaColor } from "@/hooks/use-meta-color"
 import { useSound } from "@/hooks/use-sound"
+import { CLICK_SOFT_SOUND } from "@/lib/sounds"
 
 import { MoonIcon } from "./animated-icons/moon"
 import { SunMediumIcon } from "./animated-icons/sun-medium"
@@ -19,7 +20,7 @@ export function ThemeToggle() {
 
   const { setMetaColor } = useMetaColor()
 
-  const playClick = useSound("/audio/click.wav")
+  const playClick = useSound(CLICK_SOFT_SOUND)
 
   const switchTheme = useCallback(() => {
     playClick(0.5)

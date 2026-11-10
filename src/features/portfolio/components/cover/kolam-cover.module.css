@@ -68,6 +68,19 @@
     );
 }
 
+/*
+ * The side rules have to be painted above .fade: the fade is opaque background
+ * at the left and right extremes, so a border on the cover itself disappears
+ * under it and the panel edges look as though they only begin at the profile
+ * header below.
+ */
+.edges {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
 /* Respect the OS setting: show the finished kolam immediately rather than
    animating it. */
 @media (prefers-reduced-motion: reduce) {

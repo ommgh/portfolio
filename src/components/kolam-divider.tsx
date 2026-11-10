@@ -58,6 +58,6 @@ export function KolamDivider({
 
 function Rule() {
   return (
-    <div className="h-px flex-1 bg-(image:--rule-dot) bg-[length:var(--rule-pitch)_1px] bg-repeat-x" />
+    <div className="h-(--rule-thickness) flex-1 bg-(image:--rule-h) bg-[length:var(--rule-pitch)_var(--rule-thickness)] bg-repeat-x" />
   )
 }

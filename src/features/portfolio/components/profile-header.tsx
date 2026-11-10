@@ -57,7 +57,9 @@ export function ProfileHeader() {
         </div>
 
         <div className="flex items-center border-t border-edge py-0.5 pl-3">
-          <div className="flex flex-row">
+          {/* Pull back by the icon button's own inset so the first glyph
+              lines up with the tagline above, not the button box. */}
+          <div className="-ml-2 flex flex-row">
             <Link href={"https://x.com/ommshx"} target="_blank">
               <Button variant="ghost" size="icon">
                 <XformerlyTwitter className="h-3.5 w-3.5" />

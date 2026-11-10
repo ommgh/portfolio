@@ -39,6 +39,7 @@ import type { Post } from "@/features/blog/types/post"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 import { useSound } from "@/hooks/use-sound"
 import { trackEvent } from "@/lib/events"
+import { CLICK_SOFT_SOUND } from "@/lib/sounds"
 import { copyText } from "@/utils/copy"
 
 import { BrandMark, getMarkSVG } from "./brand-mark"
@@ -138,7 +139,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
   const [open, setOpen] = useState(false)
 
-  const playClick = useSound("/audio/click.wav")
+  const playClick = useSound(CLICK_SOFT_SOUND)
 
   useHotkeys("mod+k, slash", (e) => {
     e.preventDefault()

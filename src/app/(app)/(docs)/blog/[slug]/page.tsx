@@ -1,5 +1,6 @@
+import { format } from "date-fns"
 import { getTableOfContents } from "fumadocs-core/content/toc"
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
+import { ArrowLeftIcon } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -8,15 +9,10 @@ import type { BlogPosting as PageSchema, WithContext } from "schema-dts"
 import { InlineTOC } from "@/components/inline-toc"
 import { MDX } from "@/components/mdx"
 import { Button } from "@/components/ui/button"
-import { Kbd } from "@/components/ui/kbd"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 import { Prose } from "@/components/ui/typography"
 import { SITE_INFO } from "@/config/site"
 import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts"
+import { PostNavigation } from "@/features/blog/components/post-navigation"
 import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions"
 import { PostShareMenu } from "@/features/blog/components/post-share-menu"
 import {
@@ -24,6 +20,7 @@ import {
   getAllPosts,
   getPostBySlug,
 } from "@/features/blog/data/posts"
+import { getReadingTime } from "@/features/blog/lib/reading-time"
 import type { Post } from "@/features/blog/types/post"
 import { USER } from "@/features/portfolio/data/user"
 import { cn } from "@/lib/utils"
@@ -116,6 +113,7 @@ export default async function Page({
 
   const allPosts = getAllPosts()
   const { previous, next } = findNeighbour(allPosts, slug)
+  const readingTime = getReadingTime(post.content)
 
   return (
     <>
@@ -152,12 +150,31 @@ export default async function Page({
 
       <div className="screen-line-before screen-line-after"></div>
 
-      <Prose className="px-4">
-        <h3 className="screen-line-after py-2 text-2xl font-semibold">
+      <Prose
+        className={cn(
+          "px-4",
+          // Readability research puts comfortable prose at 50-75 characters per
+          // line; the container alone runs to roughly 95. Constrain the running
+          // text only, so code blocks, tables and figures keep the full width.
+          "[&_blockquote]:max-w-prose [&_h2]:max-w-prose [&_h3]:max-w-prose",
+          "[&_li]:max-w-prose [&_ol]:max-w-prose [&_p]:max-w-prose [&_ul]:max-w-prose"
+        )}
+      >
+        <h1 className="screen-line-after py-2 text-2xl font-semibold text-balance">
           {post.metadata.title}
-        </h3>
+        </h1>
 
-        <p className="text-muted-foreground">{post.metadata.description}</p>
+        <p className="max-w-prose text-muted-foreground">
+          {post.metadata.description}
+        </p>
+
+        <div className="not-prose flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted-foreground">
+          <time dateTime={new Date(post.metadata.createdAt).toISOString()}>
+            {format(new Date(post.metadata.createdAt), "d MMM yyyy")}
+          </time>
+          <span aria-hidden>·</span>
+          <span>{readingTime} min read</span>
+        </div>
 
         <InlineTOC items={toc} />
 
@@ -168,60 +185,7 @@ export default async function Page({
 
       <div className="screen-line-before w-full" />
 
-      <div
-        className={cn(
-          "flex items-center p-2",
-          previous && next
-            ? "justify-between"
-            : next
-              ? "justify-end"
-              : "justify-start"
-        )}
-      >
-        {previous && (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="secondary" size="icon-sm" asChild>
-                <Link href={`/blog/${previous.slug}`}>
-                  <ArrowLeftIcon />
-                  <span className="sr-only">Previous</span>
-                </Link>
-              </Button>
-            </TooltipTrigger>
-
-            <TooltipContent className="pr-2 pl-3">
-              <div className="flex items-center gap-3">
-                Previous Post
-                <Kbd>
-                  <ArrowLeftIcon />
-                </Kbd>
-              </div>
-            </TooltipContent>
-          </Tooltip>
-        )}
-
-        {next && (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="secondary" size="icon-sm" asChild>
-                <Link href={`/blog/${next.slug}`}>
-                  <span className="sr-only">Next</span>
-                  <ArrowRightIcon />
-                </Link>
-              </Button>
-            </TooltipTrigger>
-
-            <TooltipContent className="pr-2 pl-3">
-              <div className="flex items-center gap-3">
-                Next Post
-                <Kbd>
-                  <ArrowRightIcon />
-                </Kbd>
-              </div>
-            </TooltipContent>
-          </Tooltip>
-        )}
-      </div>
+      <PostNavigation previous={previous} next={next} />
     </>
   )
 }

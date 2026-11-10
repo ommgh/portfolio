@@ -42,7 +42,9 @@ export function KolamCover({
   return (
     <div
       className={cn(
-        "group screen-line-before screen-line-after relative aspect-5/2 border-x border-edge before:-top-px after:-bottom-px sm:aspect-10/3",
+        // No rule along the bottom: the kolam already fades out into the
+        // profile header, and a hairline there only interrupts it.
+        "group screen-line-before relative aspect-5/2 before:-top-px sm:aspect-10/3",
         styles.cover,
         className
       )}
@@ -82,6 +84,12 @@ export function KolamCover({
       </svg>
 
       <div className={styles.fade} aria-hidden="true" />
+
+      {/* Painted last so the panel edges run unbroken behind the banner. */}
+      <div
+        className={cn(styles.edges, "border-x border-edge")}
+        aria-hidden="true"
+      />
     </div>
   )
 }

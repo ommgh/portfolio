@@ -22,19 +22,17 @@ export const USER = {
   jobs: [
     {
       title: "Full Stack Developer",
-      company: "Zud Labs",
-      website: "https://zudlabs.com",
+      company: "Campsunion",
+      website: "https://campsunion.com",
     },
   ],
 
   about: `
   Full stack engineer focused on building products from 0 → production.
 
-  Built and led [ZudLabs](https://zudlabs.com) shipping web and mobile apps for 10+ founders with a team of 5.
+  Founding engineer at Campsunion, where I shipped [Stipnd](https://stipnd.app) — a React Native app, NestJS API and Next.js admin — to both app stores in 7 weeks, now serving 1,000+ users.
 
-  Contributed to open-source, won bounties, and built multiple products across AI, developer tools, and frontend systems.
-
-  Currently building [Onboarder](https://onboarder.store) — platform that enables local merchants to make their products e-commerce ready in minutes.
+  Before that I founded and led [ZudLabs](https://zudlabs.com), a 5-person studio shipping web and mobile products for 10+ startups.
   `,
   avatar: "/images/omm-pf.jpg",
   ogImage: "https://assets.ommishra.in/images/brand/sc-og-dark.png",

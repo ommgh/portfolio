@@ -4,6 +4,7 @@ import { About } from "@/features/portfolio/components/about"
 import { Awards } from "@/features/portfolio/components/awards"
 import { Blog } from "@/features/portfolio/components/blog"
 import { ProfileCover } from "@/features/portfolio/components/cover/profile-cover"
+import { Experiences } from "@/features/portfolio/components/experiences"
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
 import { ProfileHeader } from "@/features/portfolio/components/profile-header"
 import { Projects } from "@/features/portfolio/components/projects"
@@ -26,6 +27,8 @@ export default function Page() {
         <ProfileHeader />
 
         <About />
+
+        <Experiences />
 
         <GitHubContributions />
 

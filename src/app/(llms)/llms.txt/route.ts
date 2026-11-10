@@ -1,11 +1,14 @@
 import { SITE_INFO } from "@/config/site"
 import { getAllPosts } from "@/features/blog/data/posts"
+import { USER } from "@/features/portfolio/data/user"
 
 const allPosts = getAllPosts()
 
-const content = `# chanhdai.com
+const SITE_HOST = new URL(SITE_INFO.url).hostname
 
-> A minimal dev portfolio and blog showcasing my work as a Design Engineer.
+const content = `# ${SITE_HOST}
+
+> A minimal dev portfolio and blog showcasing my work as a ${USER.jobTitle}.
 
 - [About](${SITE_INFO.url}/about.md): A quick intro to me, my tech stack, and how to connect.
 - [Experience](${SITE_INFO.url}/experience.md): Highlights from my career and key roles I've taken on.

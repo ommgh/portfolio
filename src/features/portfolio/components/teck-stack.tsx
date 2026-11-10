@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils"
+
 import { TECH_STACK } from "../data/tech-stack"
 import type { TechStack as TechStackType } from "../types/tech-stack"
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel"
@@ -17,7 +19,13 @@ export function TeckStack() {
           />
 
           {Object.entries(groupByCategory(TECH_STACK)).map(
-            ([category, items], index) => {
+            ([category, items], index, categories) => {
+              // The rules are painted as a background-image by `.border-edge`,
+              // which is unlayered CSS and so outranks any Tailwind variant —
+              // `last:border-none` and `last:bg-none` both get overridden. Drop
+              // the class outright instead, otherwise the final row's rule
+              // lands on the next panel's top rule.
+              const isLast = index === categories.length - 1
               const categoryId = `${category
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, "-")
@@ -26,7 +34,10 @@ export function TeckStack() {
               return (
                 <div
                   key={category}
-                  className="grid items-start gap-y-2 border-b border-edge py-4 last:border-none sm:grid-cols-[var(--col-left-width)_1fr]"
+                  className={cn(
+                    "grid items-start gap-y-2 py-4 sm:grid-cols-[var(--col-left-width)_1fr]",
+                    !isLast && "border-b border-edge"
+                  )}
                 >
                   <div
                     id={categoryId}

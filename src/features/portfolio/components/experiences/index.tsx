@@ -12,9 +12,16 @@ export function Experiences() {
       </PanelHeader>
 
       <div className="px-4">
-        {EXPERIENCES.map((experience) => (
-          <ExperienceItem key={experience.id} experience={experience} />
-        ))}
+        {/*
+          One kolam thread runs the whole length of the section — the companies
+          and the roles under them are pulli strung on it. It lives here rather
+          than on each item so it never breaks between companies.
+        */}
+        <div className="relative before:absolute before:inset-y-0 before:left-[9px] before:w-(--rule-thickness) before:bg-(image:--rule-v) before:bg-[length:var(--rule-thickness)_var(--rule-pitch)] before:bg-repeat-y">
+          {EXPERIENCES.map((experience) => (
+            <ExperienceItem key={experience.id} experience={experience} />
+          ))}
+        </div>
       </div>
     </Panel>
   )

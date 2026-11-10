@@ -42,9 +42,10 @@ export function KolamCover({
   return (
     <div
       className={cn(
-        // No rule along the bottom: the kolam already fades out into the
-        // profile header, and a hairline there only interrupts it.
-        "group screen-line-before relative aspect-5/2 before:-top-px sm:aspect-10/3",
+        // No rule on any edge: the kolam is the first thing on the page, so a
+        // top rule reads as a stray border laid over the banner, and along the
+        // bottom the weave already fades out into the profile header.
+        "group relative aspect-5/2 sm:aspect-10/3",
         styles.cover,
         className
       )}

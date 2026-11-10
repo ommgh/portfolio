@@ -5,10 +5,9 @@ import type { Experience } from "../../types/experiences"
 import { ExperiencePositionItem } from "./experience-position-item"
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
-  // The last item's rule would otherwise land exactly on the next panel's
-  // top rule, drawing two scallop bands a pixel apart.
+  // Nothing separates the companies but the gap: a rule here cut the thread.
   return (
-    <div className="screen-line-after space-y-4 py-4 last:after:hidden">
+    <div className="space-y-4 py-4">
       <div className="flex items-center gap-3">
         <div className="flex size-6 shrink-0 items-center justify-center select-none">
           {experience.companyLogo ? (
@@ -25,7 +24,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
           ) : (
             /* The company sits on the thread as a pulli with its loop drawn. */
             <span
-              className="size-2.5 rounded-full border border-muted-foreground/45"
+              className="size-2.5 rounded-full border border-muted-foreground/45 bg-background"
               aria-hidden
             />
           )}
@@ -46,11 +45,8 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         )}
       </div>
 
-      {/*
-        The thread joining the roles is the vertical scallop used on every other
-        edge of the site, rather than a plain solid hairline.
-      */}
-      <div className="relative space-y-4 before:absolute before:left-[9px] before:h-full before:w-(--rule-thickness) before:bg-(image:--rule-v) before:bg-[length:var(--rule-thickness)_var(--rule-pitch)] before:bg-repeat-y">
+      {/* The thread itself is drawn once for the whole section, in `index`. */}
+      <div className="space-y-4">
         {experience.positions.map((position) => (
           <ExperiencePositionItem key={position.id} position={position} />
         ))}

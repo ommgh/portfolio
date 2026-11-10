@@ -12,15 +12,6 @@ export const AWARDS: Award[] = [
     referenceLink: "https://github.com/firecrawl/fire-enrich/pull/16",
   },
   {
-    id: "bashcraft-technical-lead",
-    prize: "Technical Lead",
-    title: "BashCraft Club",
-    date: "2025-01",
-    grade: "Community",
-    description:
-      "Ran 5 open-source workshops for 300+ students, covering Git, contribution workflow and shipping to production.",
-  },
-  {
     id: "05e1c61b-6dc1-11f0-8000-679dd01e0504",
     prize: "National Finalist",
     title: "Amazon Sambhav Hackathon",

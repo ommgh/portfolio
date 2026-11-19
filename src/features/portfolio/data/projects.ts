@@ -75,6 +75,27 @@ export const PROJECTS: Project[] = [
     displayImage: "https://assets.ommishra.in/images/devtown-display.png",
   },
   {
+    id: "nummo",
+    title: "nummo",
+    code: "https://github.com/ommgh/nummo",
+    period: {
+      start: "11.2026",
+    },
+    link: "https://api-production-7ec092f8.up.railway.app",
+    skills: [
+      "Open Source",
+      "Usage Billing",
+      "Solana",
+      "Stablecoins",
+      "Payments",
+      "TypeScript",
+    ],
+    description:
+      "Open-source usage billing and entitlements, settled in USDC on Solana through its native Subscriptions program",
+    logo: "https://api-production-7ec092f8.up.railway.app/favicon.svg",
+    displayImage: "/images/nummo-display.webp",
+  },
+  {
     id: "superdocs",
     title: "SuperDocs",
     code: "https://github.com/ommgh/superdocs",
@@ -157,41 +178,5 @@ export const PROJECTS: Project[] = [
     description:
       "A real-time Connect 4 game built using serverless WebSocket architecture.",
     displayImage: "https://assets.ommishra.in/images/c4-display.png",
-  },
-  {
-    id: "nexa",
-    title: "NEXA",
-    period: {
-      start: "11.2024",
-    },
-    link: "https://nexabetx.vercel.app",
-    skills: ["Web3", "Gaming", "Crypto", "WebSockets"],
-    description:
-      "A mini-games platform offering real crypto rewards with low-latency gameplay.",
-    displayImage: "https://assets.ommishra.in/images/QL-DARK.svg",
-  },
-  {
-    id: "auth-template",
-    title: "Auth",
-    period: {
-      start: "12.2024",
-    },
-    link: "https://github.com/ommgh/auth",
-    skills: ["Auth.js", "Next.js", "Authentication"],
-    description:
-      "A production-ready authentication starter template built with Auth.js.",
-    displayImage: "https://assets.ommishra.in/images/devtown-logo.svg",
-  },
-  {
-    id: "easeecom",
-    title: "EaseEcom",
-    period: {
-      start: "04.2025",
-    },
-    link: "https://easecom.vercel.app",
-    skills: ["SaaS", "E-commerce", "Dashboards"],
-    description:
-      "An e-commerce management platform to streamline operations and analytics.",
-    displayImage: "https://assets.ommishra.in/images/nex-mcf.png",
   },
 ]

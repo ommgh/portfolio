@@ -75,6 +75,27 @@ export const PROJECTS: Project[] = [
     displayImage: "https://assets.ommishra.in/images/devtown-display.png",
   },
   {
+    id: "upwell",
+    title: "Upwell",
+    code: "https://github.com/updateswell/upwell",
+    period: {
+      start: "10.2026",
+    },
+    link: "https://upwell.run",
+    skills: [
+      "Open Source",
+      "React Native",
+      "Expo",
+      "OTA Updates",
+      "Android",
+      "iOS",
+    ],
+    description:
+      "Open-source update orchestrator for React Native and Expo. One remote policy drives OTA updates, forced updates, Play in-app updates and App Store prompts",
+    logo: "https://upwell.run/icon.svg",
+    displayImage: "https://upwell.run/og.png",
+  },
+  {
     id: "nummo",
     title: "nummo",
     code: "https://github.com/ommgh/nummo",

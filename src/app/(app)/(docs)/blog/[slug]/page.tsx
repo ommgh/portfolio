@@ -176,7 +176,7 @@ export default async function Page({
           <span>{readingTime} min read</span>
         </div>
 
-        <InlineTOC items={toc} />
+        <InlineTOC items={toc} className="mt-6" />
 
         <div>
           <MDX code={post.content} />

@@ -8,6 +8,7 @@ import { PROJECTS } from "@/features/portfolio/data/projects"
 export const metadata: Metadata = {
   title: "Projects",
   description: "A collection of products, experiments, and client work.",
+  alternates: { canonical: "/projects" },
 }
 
 export default function Page() {

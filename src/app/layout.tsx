@@ -6,7 +6,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app"
 import type { WebSite, WithContext } from "schema-dts"
 
 import { Providers } from "@/components/providers"
-import { META_THEME_COLORS, SITE_INFO } from "@/config/site"
+import { GOOGLE_TAG_ID, META_THEME_COLORS, SITE_INFO } from "@/config/site"
 import { USER } from "@/features/portfolio/data/user"
 import { fontDevanagari, fontMono, fontSans } from "@/lib/fonts"
 
@@ -37,9 +37,6 @@ const darkModeScript = String.raw`
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
-  alternates: {
-    canonical: "/",
-  },
   title: {
     template: `%s – ${SITE_INFO.name}`,
     default: `${USER.displayName} – ${USER.jobTitle}`,
@@ -55,7 +52,6 @@ export const metadata: Metadata = {
   creator: "omm",
   openGraph: {
     siteName: SITE_INFO.name,
-    url: "/",
     type: "profile",
     firstName: USER.firstName,
     lastName: USER.lastName,
@@ -117,6 +113,20 @@ export default function RootLayout({
         <Providers>
           <NuqsAdapter>{children}</NuqsAdapter>
         </Providers>
+
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtm.js?id=${GOOGLE_TAG_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-tag" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   )

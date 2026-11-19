@@ -9,6 +9,9 @@ export const SITE_INFO = {
   keywords: USER.keywords,
 }
 
+/** Google tag (GA4 + Tag Manager). Public by design, it ships in the page. */
+export const GOOGLE_TAG_ID = "GTM-T8J9FW9Q"
+
 export const META_THEME_COLORS = {
   light: "#f7f4ee",
   dark: "#141210",

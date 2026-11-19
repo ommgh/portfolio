@@ -1,6 +1,13 @@
-import { Overview } from "@/features/portfolio/components/overview";
-import { ProfileHeader } from "@/features/portfolio/components/profile-header";
-import { cn } from "@/lib/utils";
+import type { Metadata } from "next"
+
+import { Overview } from "@/features/portfolio/components/overview"
+import { ProfileHeader } from "@/features/portfolio/components/profile-header"
+import { cn } from "@/lib/utils"
+
+// Screenshot source for the OG image, not a page for search results.
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+}
 
 export default function Page() {
   return (
@@ -18,7 +25,7 @@ export default function Page() {
         <div className="grow border-x border-edge" />
       </div>
     </>
-  );
+  )
 }
 
 function Separator({ className }: { className?: string }) {
@@ -31,5 +38,5 @@ function Separator({ className }: { className?: string }) {
         className
       )}
     />
-  );
+  )
 }

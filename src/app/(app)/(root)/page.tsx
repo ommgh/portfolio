@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts"
 
 import { About } from "@/features/portfolio/components/about"
@@ -10,6 +11,10 @@ import { ProfileHeader } from "@/features/portfolio/components/profile-header"
 import { Projects } from "@/features/portfolio/components/projects"
 import { TeckStack } from "@/features/portfolio/components/teck-stack"
 import { USER } from "@/features/portfolio/data/user"
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+}
 
 export default function Page() {
   return (

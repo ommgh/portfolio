@@ -38,19 +38,25 @@ export const PROJECTS: Project[] = [
     displayImage: "https://www.audx.site/hero-light.png",
   },
   {
-    id: "superdocs",
-    title: "SuperDocs",
-    code: "https://github.com/ommgh/superdocs",
-    post: "https://x.com/ommshx/status/2047337161016725590",
+    id: "fancyborders",
+    title: "fancyborders",
+    code: "https://github.com/ommgh/fancyborders",
     period: {
-      start: "12.2025",
+      start: "11.2026",
     },
-    link: "https://superdocs-delta.vercel.app",
-    skills: ["AI", "LLMs", "Web Scraping", "Data Pipelines"],
+    link: "https://fancyborders.vercel.app",
+    skills: [
+      "Open Source",
+      "UI Components",
+      "React",
+      "Tailwind CSS",
+      "shadcn Registry",
+      "MCP",
+    ],
     description:
-      "Transforms websites into structured, LLM-ready data for AI agents and downstream applications",
-    logo: "https://assets.ommishra.in/images/superdocs.png",
-    displayImage: "https://assets.ommishra.in/images/superdocs-display.png",
+      "Copy-paste frames, outlines and effects for React and Tailwind CSS, installable with the shadcn CLI and usable by AI agents over MCP",
+    logo: "https://fancyborders.vercel.app/icon.svg",
+    displayImage: "https://fancyborders.vercel.app/opengraph-image",
   },
   {
     id: "devtown",
@@ -67,6 +73,21 @@ export const PROJECTS: Project[] = [
       "A social networking platform built specifically for developers to connect and collaborate",
     logo: "https://assets.ommishra.in/images/devtown-logo.svg",
     displayImage: "https://assets.ommishra.in/images/devtown-display.png",
+  },
+  {
+    id: "superdocs",
+    title: "SuperDocs",
+    code: "https://github.com/ommgh/superdocs",
+    post: "https://x.com/ommshx/status/2047337161016725590",
+    period: {
+      start: "12.2025",
+    },
+    link: "https://superdocs-delta.vercel.app",
+    skills: ["AI", "LLMs", "Web Scraping", "Data Pipelines"],
+    description:
+      "Transforms websites into structured, LLM-ready data for AI agents and downstream applications",
+    logo: "https://assets.ommishra.in/images/superdocs.png",
+    displayImage: "https://assets.ommishra.in/images/superdocs-display.png",
   },
   {
     id: "nex-mcf",

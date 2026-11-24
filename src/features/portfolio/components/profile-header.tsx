@@ -5,6 +5,7 @@ import { FlipSentences } from "@/components/flip-sentences"
 import { GitHub } from "@/components/icons/github"
 import { LinkedIn } from "@/components/icons/linkedin"
 import { XformerlyTwitter } from "@/components/icons/x"
+import { ShareQr } from "@/components/share-qr"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { USER } from "@/features/portfolio/data/user"
@@ -25,6 +26,7 @@ export function ProfileHeader() {
 
       <div className="flex flex-1 flex-col">
         <div className="absolute top-1.5 right-2 flex items-center">
+          <ShareQr />
           <ThemeToggle />
         </div>
 
